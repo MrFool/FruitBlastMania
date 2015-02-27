@@ -1,0 +1,654 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34CF55421AA100750048A92D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55411AA100750048A92D /* AppDelegate.swift */; };
+		34CF55471AA100750048A92D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55451AA100750048A92D /* Main.storyboard */; };
+		34CF55491AA100750048A92D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55481AA100750048A92D /* Images.xcassets */; };
+		34CF554C1AA100750048A92D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34CF554A1AA100750048A92D /* LaunchScreen.xib */; };
+		34CF556D1AA1011C0048A92D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF556C1AA1011C0048A92D /* Queue.swift */; };
+		34CF55711AA1012E0048A92D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF556E1AA1012E0048A92D /* Node.swift */; };
+		34CF55721AA1012E0048A92D /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF556F1AA1012E0048A92D /* Edge.swift */; };
+		34CF55731AA1012E0048A92D /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55701AA1012E0048A92D /* Graph.swift */; };
+		34CF55751AA1013A0048A92D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55741AA1013A0048A92D /* GameEngine.swift */; };
+		34CF55771AA101410048A92D /* BasicLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55761AA101410048A92D /* BasicLevel.swift */; };
+		34CF55791AA101470048A92D /* NumberUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55781AA101470048A92D /* NumberUtilities.swift */; };
+		34CF557B1AA1014F0048A92D /* FruitBlastManiaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557A1AA1014F0048A92D /* FruitBlastManiaConstants.swift */; };
+		34CF557D1AA101580048A92D /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557C1AA101580048A92D /* PhysicsBody.swift */; };
+		34CF55811AA101720048A92D /* BaseBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557E1AA101720048A92D /* BaseBubble.swift */; };
+		34CF55821AA101720048A92D /* ColorBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557F1AA101720048A92D /* ColorBubble.swift */; };
+		34CF55831AA101720048A92D /* ProjectileBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55801AA101720048A92D /* ProjectileBubble.swift */; };
+		34CF55851AA1017F0048A92D /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55841AA1017F0048A92D /* GridCollectionViewCell.swift */; };
+		34CF55891AA101880048A92D /* BaseGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55861AA101880048A92D /* BaseGrid.swift */; };
+		34CF558A1AA101880048A92D /* BasicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55871AA101880048A92D /* BasicGrid.swift */; };
+		34CF558B1AA101880048A92D /* BasicGridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55881AA101880048A92D /* BasicGridFlowLayout.swift */; };
+		34CF55941AA101970048A92D /* FruitBlastManiaMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558C1AA101970048A92D /* FruitBlastManiaMainViewController.swift */; };
+		34CF55951AA101970048A92D /* FruitBlastManiaGameViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */; };
+		34CF55961AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558E1AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift */; };
+		34CF55971AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558F1AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift */; };
+		34CF55981AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55901AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift */; };
+		34CF55991AA101970048A92D /* FruitBlastManiaGameGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55911AA101970048A92D /* FruitBlastManiaGameGridViewController.swift */; };
+		34CF559A1AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55921AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift */; };
+		34CF559B1AA101970048A92D /* FruitBlastManiaPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55931AA101970048A92D /* FruitBlastManiaPaletteViewController.swift */; };
+		34CF55A21AA101A10048A92D /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF559C1AA101A10048A92D /* QueueTests.swift */; };
+		34CF55A31AA101A10048A92D /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF559D1AA101A10048A92D /* NodeTests.swift */; };
+		34CF55A41AA101A10048A92D /* EdgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF559E1AA101A10048A92D /* EdgeTests.swift */; };
+		34CF55A51AA101A10048A92D /* GraphTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF559F1AA101A10048A92D /* GraphTests.swift */; };
+		34CF55A61AA101A10048A92D /* GameEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55A01AA101A10048A92D /* GameEngineTests.swift */; };
+		34CF55A71AA101A10048A92D /* LevelSavingLoadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55A11AA101A10048A92D /* LevelSavingLoadingTests.swift */; };
+		34CF55A81AA103780048A92D /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF556C1AA1011C0048A92D /* Queue.swift */; };
+		34CF55A91AA103780048A92D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF556E1AA1012E0048A92D /* Node.swift */; };
+		34CF55AA1AA103780048A92D /* Edge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF556F1AA1012E0048A92D /* Edge.swift */; };
+		34CF55AB1AA103780048A92D /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55701AA1012E0048A92D /* Graph.swift */; };
+		34CF55AC1AA103780048A92D /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55741AA1013A0048A92D /* GameEngine.swift */; };
+		34CF55AD1AA103780048A92D /* BasicLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55761AA101410048A92D /* BasicLevel.swift */; };
+		34CF55AE1AA103780048A92D /* NumberUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55781AA101470048A92D /* NumberUtilities.swift */; };
+		34CF55AF1AA103780048A92D /* FruitBlastManiaConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557A1AA1014F0048A92D /* FruitBlastManiaConstants.swift */; };
+		34CF55B01AA103780048A92D /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557C1AA101580048A92D /* PhysicsBody.swift */; };
+		34CF55B11AA103780048A92D /* BaseBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557E1AA101720048A92D /* BaseBubble.swift */; };
+		34CF55B21AA103790048A92D /* ColorBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF557F1AA101720048A92D /* ColorBubble.swift */; };
+		34CF55B31AA103790048A92D /* ProjectileBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55801AA101720048A92D /* ProjectileBubble.swift */; };
+		34CF55B41AA103790048A92D /* GridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55841AA1017F0048A92D /* GridCollectionViewCell.swift */; };
+		34CF55B51AA103790048A92D /* BaseGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55861AA101880048A92D /* BaseGrid.swift */; };
+		34CF55B61AA103790048A92D /* BasicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55871AA101880048A92D /* BasicGrid.swift */; };
+		34CF55B71AA103790048A92D /* BasicGridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55881AA101880048A92D /* BasicGridFlowLayout.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34CF55521AA100750048A92D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34CF55341AA100750048A92D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34CF553B1AA100750048A92D;
+			remoteInfo = FruitBlastMania;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		34CF553C1AA100750048A92D /* FruitBlastMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitBlastMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34CF55401AA100750048A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34CF55411AA100750048A92D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		34CF55461AA100750048A92D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		34CF55481AA100750048A92D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		34CF554B1AA100750048A92D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		34CF55511AA100750048A92D /* FruitBlastManiaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FruitBlastManiaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34CF55561AA100750048A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34CF556C1AA1011C0048A92D /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		34CF556E1AA1012E0048A92D /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		34CF556F1AA1012E0048A92D /* Edge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edge.swift; sourceTree = "<group>"; };
+		34CF55701AA1012E0048A92D /* Graph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
+		34CF55741AA1013A0048A92D /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
+		34CF55761AA101410048A92D /* BasicLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicLevel.swift; sourceTree = "<group>"; };
+		34CF55781AA101470048A92D /* NumberUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberUtilities.swift; sourceTree = "<group>"; };
+		34CF557A1AA1014F0048A92D /* FruitBlastManiaConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaConstants.swift; sourceTree = "<group>"; };
+		34CF557C1AA101580048A92D /* PhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
+		34CF557E1AA101720048A92D /* BaseBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseBubble.swift; sourceTree = "<group>"; };
+		34CF557F1AA101720048A92D /* ColorBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorBubble.swift; sourceTree = "<group>"; };
+		34CF55801AA101720048A92D /* ProjectileBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectileBubble.swift; sourceTree = "<group>"; };
+		34CF55841AA1017F0048A92D /* GridCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewCell.swift; sourceTree = "<group>"; };
+		34CF55861AA101880048A92D /* BaseGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseGrid.swift; sourceTree = "<group>"; };
+		34CF55871AA101880048A92D /* BasicGrid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicGrid.swift; sourceTree = "<group>"; };
+		34CF55881AA101880048A92D /* BasicGridFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicGridFlowLayout.swift; sourceTree = "<group>"; };
+		34CF558C1AA101970048A92D /* FruitBlastManiaMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaMainViewController.swift; sourceTree = "<group>"; };
+		34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaGameViewMainController.swift; sourceTree = "<group>"; };
+		34CF558E1AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaLevelDesignerViewMainController.swift; sourceTree = "<group>"; };
+		34CF558F1AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaLevelSelectorViewMainController.swift; sourceTree = "<group>"; };
+		34CF55901AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaLevelDesignerGridViewController.swift; sourceTree = "<group>"; };
+		34CF55911AA101970048A92D /* FruitBlastManiaGameGridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaGameGridViewController.swift; sourceTree = "<group>"; };
+		34CF55921AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaBubbleShooterViewController.swift; sourceTree = "<group>"; };
+		34CF55931AA101970048A92D /* FruitBlastManiaPaletteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitBlastManiaPaletteViewController.swift; sourceTree = "<group>"; };
+		34CF559C1AA101A10048A92D /* QueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
+		34CF559D1AA101A10048A92D /* NodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeTests.swift; sourceTree = "<group>"; };
+		34CF559E1AA101A10048A92D /* EdgeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgeTests.swift; sourceTree = "<group>"; };
+		34CF559F1AA101A10048A92D /* GraphTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphTests.swift; sourceTree = "<group>"; };
+		34CF55A01AA101A10048A92D /* GameEngineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngineTests.swift; sourceTree = "<group>"; };
+		34CF55A11AA101A10048A92D /* LevelSavingLoadingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSavingLoadingTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		34CF55391AA100750048A92D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34CF554E1AA100750048A92D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34CF55331AA100750048A92D = {
+			isa = PBXGroup;
+			children = (
+				34CF553E1AA100750048A92D /* FruitBlastMania */,
+				34CF55541AA100750048A92D /* FruitBlastManiaTests */,
+				34CF553D1AA100750048A92D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		34CF553D1AA100750048A92D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34CF553C1AA100750048A92D /* FruitBlastMania.app */,
+				34CF55511AA100750048A92D /* FruitBlastManiaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34CF553E1AA100750048A92D /* FruitBlastMania */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55611AA100AB0048A92D /* DataStructures */,
+				34CF55621AA100B00048A92D /* Graph */,
+				34CF55631AA100B50048A92D /* GameEngineFiles */,
+				34CF55641AA100C40048A92D /* Levels */,
+				34CF55651AA100D50048A92D /* Utilities */,
+				34CF55661AA100D90048A92D /* Constants */,
+				34CF55671AA100DE0048A92D /* PhysicsEngine */,
+				34CF55681AA100E40048A92D /* Bubble */,
+				34CF55691AA100E70048A92D /* GridCell */,
+				34CF556A1AA100EB0048A92D /* Grid */,
+				34CF556B1AA100EE0048A92D /* Controllers */,
+				34CF55451AA100750048A92D /* Main.storyboard */,
+				34CF554A1AA100750048A92D /* LaunchScreen.xib */,
+				34CF55481AA100750048A92D /* Images.xcassets */,
+				34CF55411AA100750048A92D /* AppDelegate.swift */,
+				34CF553F1AA100750048A92D /* Supporting Files */,
+			);
+			path = FruitBlastMania;
+			sourceTree = "<group>";
+		};
+		34CF553F1AA100750048A92D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55401AA100750048A92D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		34CF55541AA100750048A92D /* FruitBlastManiaTests */ = {
+			isa = PBXGroup;
+			children = (
+				34CF559C1AA101A10048A92D /* QueueTests.swift */,
+				34CF559D1AA101A10048A92D /* NodeTests.swift */,
+				34CF559E1AA101A10048A92D /* EdgeTests.swift */,
+				34CF559F1AA101A10048A92D /* GraphTests.swift */,
+				34CF55A01AA101A10048A92D /* GameEngineTests.swift */,
+				34CF55A11AA101A10048A92D /* LevelSavingLoadingTests.swift */,
+				34CF55551AA100750048A92D /* Supporting Files */,
+			);
+			path = FruitBlastManiaTests;
+			sourceTree = "<group>";
+		};
+		34CF55551AA100750048A92D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55561AA100750048A92D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		34CF55611AA100AB0048A92D /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				34CF556C1AA1011C0048A92D /* Queue.swift */,
+			);
+			name = DataStructures;
+			sourceTree = "<group>";
+		};
+		34CF55621AA100B00048A92D /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				34CF556E1AA1012E0048A92D /* Node.swift */,
+				34CF556F1AA1012E0048A92D /* Edge.swift */,
+				34CF55701AA1012E0048A92D /* Graph.swift */,
+			);
+			name = Graph;
+			sourceTree = "<group>";
+		};
+		34CF55631AA100B50048A92D /* GameEngineFiles */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55741AA1013A0048A92D /* GameEngine.swift */,
+			);
+			name = GameEngineFiles;
+			sourceTree = "<group>";
+		};
+		34CF55641AA100C40048A92D /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55761AA101410048A92D /* BasicLevel.swift */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		34CF55651AA100D50048A92D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55781AA101470048A92D /* NumberUtilities.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		34CF55661AA100D90048A92D /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				34CF557A1AA1014F0048A92D /* FruitBlastManiaConstants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		34CF55671AA100DE0048A92D /* PhysicsEngine */ = {
+			isa = PBXGroup;
+			children = (
+				34CF557C1AA101580048A92D /* PhysicsBody.swift */,
+			);
+			name = PhysicsEngine;
+			sourceTree = "<group>";
+		};
+		34CF55681AA100E40048A92D /* Bubble */ = {
+			isa = PBXGroup;
+			children = (
+				34CF557E1AA101720048A92D /* BaseBubble.swift */,
+				34CF557F1AA101720048A92D /* ColorBubble.swift */,
+				34CF55801AA101720048A92D /* ProjectileBubble.swift */,
+			);
+			name = Bubble;
+			sourceTree = "<group>";
+		};
+		34CF55691AA100E70048A92D /* GridCell */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55841AA1017F0048A92D /* GridCollectionViewCell.swift */,
+			);
+			name = GridCell;
+			sourceTree = "<group>";
+		};
+		34CF556A1AA100EB0048A92D /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				34CF55861AA101880048A92D /* BaseGrid.swift */,
+				34CF55871AA101880048A92D /* BasicGrid.swift */,
+				34CF55881AA101880048A92D /* BasicGridFlowLayout.swift */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
+		34CF556B1AA100EE0048A92D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34CF558C1AA101970048A92D /* FruitBlastManiaMainViewController.swift */,
+				34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */,
+				34CF558E1AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift */,
+				34CF558F1AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift */,
+				34CF55901AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift */,
+				34CF55911AA101970048A92D /* FruitBlastManiaGameGridViewController.swift */,
+				34CF55921AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift */,
+				34CF55931AA101970048A92D /* FruitBlastManiaPaletteViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		34CF553B1AA100750048A92D /* FruitBlastMania */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34CF555B1AA100750048A92D /* Build configuration list for PBXNativeTarget "FruitBlastMania" */;
+			buildPhases = (
+				34CF55381AA100750048A92D /* Sources */,
+				34CF55391AA100750048A92D /* Frameworks */,
+				34CF553A1AA100750048A92D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FruitBlastMania;
+			productName = FruitBlastMania;
+			productReference = 34CF553C1AA100750048A92D /* FruitBlastMania.app */;
+			productType = "com.apple.product-type.application";
+		};
+		34CF55501AA100750048A92D /* FruitBlastManiaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34CF555E1AA100750048A92D /* Build configuration list for PBXNativeTarget "FruitBlastManiaTests" */;
+			buildPhases = (
+				34CF554D1AA100750048A92D /* Sources */,
+				34CF554E1AA100750048A92D /* Frameworks */,
+				34CF554F1AA100750048A92D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34CF55531AA100750048A92D /* PBXTargetDependency */,
+			);
+			name = FruitBlastManiaTests;
+			productName = FruitBlastManiaTests;
+			productReference = 34CF55511AA100750048A92D /* FruitBlastManiaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		34CF55341AA100750048A92D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "National University of Singapore (Department of Computer Science)";
+				TargetAttributes = {
+					34CF553B1AA100750048A92D = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					34CF55501AA100750048A92D = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 34CF553B1AA100750048A92D;
+					};
+				};
+			};
+			buildConfigurationList = 34CF55371AA100750048A92D /* Build configuration list for PBXProject "FruitBlastMania" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 34CF55331AA100750048A92D;
+			productRefGroup = 34CF553D1AA100750048A92D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				34CF553B1AA100750048A92D /* FruitBlastMania */,
+				34CF55501AA100750048A92D /* FruitBlastManiaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		34CF553A1AA100750048A92D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34CF55471AA100750048A92D /* Main.storyboard in Resources */,
+				34CF554C1AA100750048A92D /* LaunchScreen.xib in Resources */,
+				34CF55491AA100750048A92D /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34CF554F1AA100750048A92D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		34CF55381AA100750048A92D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34CF55981AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */,
+				34CF55731AA1012E0048A92D /* Graph.swift in Sources */,
+				34CF55791AA101470048A92D /* NumberUtilities.swift in Sources */,
+				34CF55991AA101970048A92D /* FruitBlastManiaGameGridViewController.swift in Sources */,
+				34CF55811AA101720048A92D /* BaseBubble.swift in Sources */,
+				34CF55821AA101720048A92D /* ColorBubble.swift in Sources */,
+				34CF55971AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift in Sources */,
+				34CF557D1AA101580048A92D /* PhysicsBody.swift in Sources */,
+				34CF558B1AA101880048A92D /* BasicGridFlowLayout.swift in Sources */,
+				34CF55751AA1013A0048A92D /* GameEngine.swift in Sources */,
+				34CF556D1AA1011C0048A92D /* Queue.swift in Sources */,
+				34CF55961AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift in Sources */,
+				34CF55421AA100750048A92D /* AppDelegate.swift in Sources */,
+				34CF558A1AA101880048A92D /* BasicGrid.swift in Sources */,
+				34CF55851AA1017F0048A92D /* GridCollectionViewCell.swift in Sources */,
+				34CF55891AA101880048A92D /* BaseGrid.swift in Sources */,
+				34CF557B1AA1014F0048A92D /* FruitBlastManiaConstants.swift in Sources */,
+				34CF55951AA101970048A92D /* FruitBlastManiaGameViewMainController.swift in Sources */,
+				34CF55771AA101410048A92D /* BasicLevel.swift in Sources */,
+				34CF55721AA1012E0048A92D /* Edge.swift in Sources */,
+				34CF559B1AA101970048A92D /* FruitBlastManiaPaletteViewController.swift in Sources */,
+				34CF55831AA101720048A92D /* ProjectileBubble.swift in Sources */,
+				34CF559A1AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift in Sources */,
+				34CF55941AA101970048A92D /* FruitBlastManiaMainViewController.swift in Sources */,
+				34CF55711AA1012E0048A92D /* Node.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34CF554D1AA100750048A92D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34CF55A81AA103780048A92D /* Queue.swift in Sources */,
+				34CF55A91AA103780048A92D /* Node.swift in Sources */,
+				34CF55AA1AA103780048A92D /* Edge.swift in Sources */,
+				34CF55AB1AA103780048A92D /* Graph.swift in Sources */,
+				34CF55AC1AA103780048A92D /* GameEngine.swift in Sources */,
+				34CF55AD1AA103780048A92D /* BasicLevel.swift in Sources */,
+				34CF55AE1AA103780048A92D /* NumberUtilities.swift in Sources */,
+				34CF55AF1AA103780048A92D /* FruitBlastManiaConstants.swift in Sources */,
+				34CF55B01AA103780048A92D /* PhysicsBody.swift in Sources */,
+				34CF55B11AA103780048A92D /* BaseBubble.swift in Sources */,
+				34CF55B21AA103790048A92D /* ColorBubble.swift in Sources */,
+				34CF55B31AA103790048A92D /* ProjectileBubble.swift in Sources */,
+				34CF55B41AA103790048A92D /* GridCollectionViewCell.swift in Sources */,
+				34CF55B51AA103790048A92D /* BaseGrid.swift in Sources */,
+				34CF55B61AA103790048A92D /* BasicGrid.swift in Sources */,
+				34CF55B71AA103790048A92D /* BasicGridFlowLayout.swift in Sources */,
+				34CF55A31AA101A10048A92D /* NodeTests.swift in Sources */,
+				34CF55A51AA101A10048A92D /* GraphTests.swift in Sources */,
+				34CF55A41AA101A10048A92D /* EdgeTests.swift in Sources */,
+				34CF55A21AA101A10048A92D /* QueueTests.swift in Sources */,
+				34CF55A61AA101A10048A92D /* GameEngineTests.swift in Sources */,
+				34CF55A71AA101A10048A92D /* LevelSavingLoadingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		34CF55531AA100750048A92D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34CF553B1AA100750048A92D /* FruitBlastMania */;
+			targetProxy = 34CF55521AA100750048A92D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		34CF55451AA100750048A92D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34CF55461AA100750048A92D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		34CF554A1AA100750048A92D /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34CF554B1AA100750048A92D /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		34CF55591AA100750048A92D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		34CF555A1AA100750048A92D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34CF555C1AA100750048A92D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FruitBlastMania/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		34CF555D1AA100750048A92D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FruitBlastMania/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		34CF555F1AA100750048A92D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FruitBlastManiaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FruitBlastMania.app/FruitBlastMania";
+			};
+			name = Debug;
+		};
+		34CF55601AA100750048A92D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FruitBlastManiaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FruitBlastMania.app/FruitBlastMania";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		34CF55371AA100750048A92D /* Build configuration list for PBXProject "FruitBlastMania" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34CF55591AA100750048A92D /* Debug */,
+				34CF555A1AA100750048A92D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34CF555B1AA100750048A92D /* Build configuration list for PBXNativeTarget "FruitBlastMania" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34CF555C1AA100750048A92D /* Debug */,
+				34CF555D1AA100750048A92D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		34CF555E1AA100750048A92D /* Build configuration list for PBXNativeTarget "FruitBlastManiaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34CF555F1AA100750048A92D /* Debug */,
+				34CF55601AA100750048A92D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 34CF55341AA100750048A92D /* Project object */;
+}

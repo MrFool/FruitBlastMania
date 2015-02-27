@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--Fruit Blast Mania Level Designer View Main Controller-->
+        <scene sceneID="R5O-VG-TW3">
+            <objects>
+                <viewController id="Xtj-Rl-3WA" customClass="FruitBlastManiaLevelDesignerViewMainController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tJJ-pe-Thh"/>
+                        <viewControllerLayoutGuide type="bottom" id="5S9-HX-X2R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UUh-9B-XTf" userLabel="designerView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Nf-Jz-l20" userLabel="gridContainerView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                                <connections>
+                                    <segue destination="keE-gc-p9b" kind="embed" id="0cT-GQ-MEC"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJ0-3y-dKj" userLabel="paletteContainerView">
+                                <rect key="frame" x="0.0" y="924" width="768" height="100"/>
+                                <connections>
+                                    <segue destination="RBC-Qp-BBR" kind="embed" id="fsc-YM-rgj"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lKA-sO-tuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="-568"/>
+        </scene>
+        <!--Fruit Blast Mania Game Grid View Controller-->
+        <scene sceneID="Nf3-A5-O03">
+            <objects>
+                <collectionViewController id="rgS-yj-XIJ" customClass="FruitBlastManiaGameGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e80-Pg-J7h">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l8m-1L-qHz">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Pbn-cc-slT" customClass="GridCollectionViewCell" customModule="FruitBlastMania" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="64" height="64"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="rgS-yj-XIJ" id="goR-w2-vnG"/>
+                            <outlet property="delegate" destination="rgS-yj-XIJ" id="NHw-NL-IB7"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qmE-o4-dQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2930" y="1012"/>
+        </scene>
+        <!--Fruit Blast Mania Level Designer Grid View Controller-->
+        <scene sceneID="8aC-ZX-qa9">
+            <objects>
+                <collectionViewController id="keE-gc-p9b" customClass="FruitBlastManiaLevelDesignerGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3R1-fA-PTb">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uaO-Md-eWZ">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BcN-E3-Gjy" customClass="GridCollectionViewCell" customModule="FruitBlastMania" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <size key="customSize" width="64" height="64"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="keE-gc-p9b" id="dpt-iG-2Zc"/>
+                            <outlet property="delegate" destination="keE-gc-p9b" id="GKs-sW-zpK"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N0s-re-yfk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="-568"/>
+        </scene>
+        <!--Fruit Blast Mania Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FruitBlastManiaMainViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="menuView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.74999999999999978" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-background" translatesAutoresizingMaskIntoConstraints="NO" id="JKC-mB-Hkm">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Fruit Blast Mania Level Selector View Main Controller-->
+        <scene sceneID="UhT-KU-sH4">
+            <objects>
+                <viewController id="jpf-rO-hBD" customClass="FruitBlastManiaLevelSelectorViewMainController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jTN-nX-URr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qpb-mi-f8S"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m82-hG-Ps3" userLabel="selectorView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aaG-gl-TQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1040" y="1012"/>
+        </scene>
+        <!--Fruit Blast Mania Game View Main Controller-->
+        <scene sceneID="Ltd-S1-qZD">
+            <objects>
+                <viewController id="NUX-D3-2gt" customClass="FruitBlastManiaGameViewMainController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="819-y6-Ld3"/>
+                        <viewControllerLayoutGuide type="bottom" id="OTB-aq-8JQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b4X-jD-Lzr" userLabel="gameArea">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kw4-86-Tsz" userLabel="gameGridContainerView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                                <connections>
+                                    <segue destination="rgS-yj-XIJ" kind="embed" id="QRH-Fd-eb2"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBg-F7-ZQC" userLabel="gameShooterContainerView">
+                                <rect key="frame" x="0.0" y="924" width="768" height="100"/>
+                                <connections>
+                                    <segue destination="REk-I4-IMu" kind="embed" id="iWF-Fd-NL6"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xnp-P4-ohh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1976" y="1012"/>
+        </scene>
+        <!--Fruit Blast Mania Palette View Controller-->
+        <scene sceneID="aUs-wg-uAA">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RBC-Qp-BBR" customClass="FruitBlastManiaPaletteViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pgc-kM-Uhz"/>
+                        <viewControllerLayoutGuide type="bottom" id="oBt-BP-tc2"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0dv-be-uAn" userLabel="palette">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sxv-qh-4pZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="162"/>
+        </scene>
+        <!--Fruit Blast Mania Bubble Shooter View Controller-->
+        <scene sceneID="ITG-EF-bLq">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="REk-I4-IMu" customClass="FruitBlastManiaBubbleShooterViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rTN-2P-VcL"/>
+                        <viewControllerLayoutGuide type="bottom" id="PvH-2U-3sb"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CTi-Fv-Zjg" userLabel="shooterArea">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vum-9T-1Ak" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1976" y="1744"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="menu-background" width="474" height="723"/>
+    </resources>
+</document>
