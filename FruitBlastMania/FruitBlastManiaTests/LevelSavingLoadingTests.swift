@@ -8,13 +8,7 @@ import UIKit
 import XCTest
 
 class LevelSavingLoadingTests: XCTestCase {
-    
-    // helper function for getting the documents path
-    func documentsDirectory() -> NSString {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentDirectory = paths[0] as String
-        return documentDirectory
-    }
+    var fileUtils = FileUtilities()
     
     // Mark: test for ColorBubble Model
     
@@ -35,7 +29,7 @@ class LevelSavingLoadingTests: XCTestCase {
     
     func testBasicLevelArchiving() {
         var basicLevel: BasicLevel = BasicLevel()
-        var filePath = self.documentsDirectory().stringByAppendingPathComponent("testingEmptyBasicLevel" +
+        var filePath = fileUtils.documentsDirectory().stringByAppendingPathComponent("testingEmptyBasicLevel" +
             FruitBlastManiaConstants.levelExtension)
         
         NSKeyedArchiver.archiveRootObject([basicLevel], toFile: filePath)
@@ -48,7 +42,7 @@ class LevelSavingLoadingTests: XCTestCase {
         
         basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
         
-        filePath = self.documentsDirectory().stringByAppendingPathComponent("testingOneCellBasicLevel" +
+        filePath = fileUtils.documentsDirectory().stringByAppendingPathComponent("testingOneCellBasicLevel" +
             FruitBlastManiaConstants.levelExtension)
         
         NSKeyedArchiver.archiveRootObject([basicLevel], toFile: filePath)
@@ -59,7 +53,7 @@ class LevelSavingLoadingTests: XCTestCase {
         assert(basicLevel.collectionOfBubbles == levelToLookAt.collectionOfBubbles,
             "The encoding and decoding of a single cell basic level was not done right!")
         
-        filePath = self.documentsDirectory().stringByAppendingPathComponent("testingEmptyBasicLevel" +
+        filePath = fileUtils.documentsDirectory().stringByAppendingPathComponent("testingEmptyBasicLevel" +
             FruitBlastManiaConstants.levelExtension)
         
         NSKeyedArchiver.archiveRootObject([basicLevel], toFile: filePath)

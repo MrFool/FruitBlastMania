@@ -19,6 +19,13 @@ class GameEngine {
         anIndexPath: NSIndexPath(forRow: 0, inSection: 1000))
     )
     
+    // for unit testing purposes, do not remove
+    init(aLevel: BasicLevel) {
+        currentLevel = aLevel
+        
+        graphRepresentationOfGameState.addNode(rootNode)
+    }
+    
     init(aLevel: BasicLevel, aCollectionView: UICollectionView) {
         currentLevel = aLevel
         
@@ -41,13 +48,6 @@ class GameEngine {
         for key in dictionaryOfBubblesInColorBubbleFormat.keys {
             updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
         }
-    }
-    
-    // for unit testing purposes, do not remove
-    init(aLevel: BasicLevel) {
-        currentLevel = aLevel
-        
-        graphRepresentationOfGameState.addNode(rootNode)
     }
     
     // TODO refactor
@@ -316,6 +316,7 @@ class GameEngine {
             }
         }
     }
+    // TODO refactor
     
     func bubblesToPopAfterSnapping(snappedBubble: ColorBubble) -> [NSIndexPath] {
         var arrayToReturn = [NSIndexPath]()
@@ -543,11 +544,41 @@ class GameEngine {
             return (speedInXDirection, speedInYDirection)
         }
     }
+    // TODO refactor
     
-    // TODO make the algorithm better than just full random, take into account what is currently inside the game arena
     func generateBubbleToBeShotName() -> String {
-        let randomNumber = Int(arc4random_uniform(FruitBlastManiaConstants.numberOfStaticBubbles))
+        var existingBubblesChecker: Dictionary<String, Bool> = Dictionary<String, Bool>()
         
-        return FruitBlastManiaConstants.randomRollerArray[randomNumber]
+        existingBubblesChecker[FruitBlastManiaConstants.redBubbleName] = false
+        existingBubblesChecker[FruitBlastManiaConstants.orangeBubbleName] = false
+        existingBubblesChecker[FruitBlastManiaConstants.greenBubbleName] = false
+        existingBubblesChecker[FruitBlastManiaConstants.blueBubbleName] = false
+        
+        let allNodes = graphRepresentationOfGameState.nodes
+        
+        for node in allNodes {
+            let bubbleName: String = node.getLabel().getBubbleName()
+            
+            if existingBubblesChecker[bubbleName] == nil {
+                // do nothing, this is a special bubble, open for changes in the future if we allow
+                // for shooting of special bubbles but for now there's no need to care about this case
+            } else {
+                if existingBubblesChecker[bubbleName] == false {
+                    existingBubblesChecker[bubbleName] = true
+                }
+            }
+        }
+        
+        var randomRollerArray: [String] = [String]()
+        
+        for key in existingBubblesChecker.keys {
+            if existingBubblesChecker[key] == true {
+                randomRollerArray.append(key)
+            }
+        }
+        
+        let randomNumber = Int(arc4random_uniform(UInt32(randomRollerArray.count)))
+        
+        return randomRollerArray[randomNumber]
     }
 }

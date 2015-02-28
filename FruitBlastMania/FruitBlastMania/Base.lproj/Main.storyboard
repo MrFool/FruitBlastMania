@@ -43,9 +43,9 @@
         <!--Fruit Blast Mania Game Grid View Controller-->
         <scene sceneID="Nf3-A5-O03">
             <objects>
-                <collectionViewController id="rgS-yj-XIJ" customClass="FruitBlastManiaGameGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController title="Fruit Blast Mania Game Grid View Controller" id="rgS-yj-XIJ" customClass="FruitBlastManiaGameGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e80-Pg-J7h">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l8m-1L-qHz">
@@ -74,14 +74,14 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmE-o4-dQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2930" y="1012"/>
+            <point key="canvasLocation" x="2930" y="1006"/>
         </scene>
         <!--Fruit Blast Mania Level Designer Grid View Controller-->
         <scene sceneID="8aC-ZX-qa9">
             <objects>
                 <collectionViewController id="keE-gc-p9b" customClass="FruitBlastManiaLevelDesignerGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3R1-fA-PTb">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uaO-Md-eWZ">
@@ -210,16 +210,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBb-NI-dfM">
-                                <rect key="frame" x="301" y="323" width="167" height="125"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Level One" backgroundImage="scroll">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="NUX-D3-2gt" kind="show" id="p3L-vR-iU2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ha3-id-oLg" userLabel="Level Two">
                                 <rect key="frame" x="301" y="456" width="167" height="125"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
@@ -238,6 +228,16 @@
                                 </state>
                                 <connections>
                                     <segue destination="NUX-D3-2gt" kind="show" id="8Ka-W8-Ke4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ud-LM-CiB">
+                                <rect key="frame" x="301" y="722" width="167" height="125"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Level Four" backgroundImage="scroll">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="EwS-ge-0Bf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDU-Ls-Y7h">
@@ -272,14 +272,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ud-LM-CiB">
-                                <rect key="frame" x="301" y="722" width="167" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBb-NI-dfM">
+                                <rect key="frame" x="301" y="323" width="167" height="125"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Level Four" backgroundImage="scroll">
+                                <state key="normal" title="Level One" backgroundImage="scroll">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="NUX-D3-2gt" kind="show" id="EwS-ge-0Bf"/>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="p3L-vR-iU2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -294,7 +294,7 @@
         <!--Fruit Blast Mania Game View Main Controller-->
         <scene sceneID="Ltd-S1-qZD">
             <objects>
-                <viewController id="NUX-D3-2gt" customClass="FruitBlastManiaGameViewMainController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Fruit Blast Mania Game View Main Controller" id="NUX-D3-2gt" customClass="FruitBlastManiaGameViewMainController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="819-y6-Ld3"/>
                         <viewControllerLayoutGuide type="bottom" id="OTB-aq-8JQ"/>
@@ -325,7 +325,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xnp-P4-ohh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976" y="1012"/>
+            <point key="canvasLocation" x="1976" y="1006"/>
         </scene>
         <!--Fruit Blast Mania Palette View Controller-->
         <scene sceneID="aUs-wg-uAA">
@@ -336,7 +336,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oBt-BP-tc2"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0dv-be-uAn" userLabel="palette">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivm-2O-Xj9" userLabel="bubbleSelectionView">
@@ -451,6 +451,7 @@
                                         <state key="normal" title="Play This Level"/>
                                         <connections>
                                             <action selector="controlButtonPressed:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="cba-tz-3uF"/>
+                                            <segue destination="NUX-D3-2gt" kind="show" id="diU-OS-qkG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqV-B6-Iz8">
@@ -490,18 +491,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxv-qh-4pZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="57"/>
+            <point key="canvasLocation" x="1062" y="65"/>
         </scene>
         <!--Fruit Blast Mania Bubble Shooter View Controller-->
         <scene sceneID="ITG-EF-bLq">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="REk-I4-IMu" customClass="FruitBlastManiaBubbleShooterViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Fruit Blast Mania Bubble Shooter View Controller" automaticallyAdjustsScrollViewInsets="NO" id="REk-I4-IMu" customClass="FruitBlastManiaBubbleShooterViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rTN-2P-VcL"/>
                         <viewControllerLayoutGuide type="bottom" id="PvH-2U-3sb"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CTi-Fv-Zjg" userLabel="shooterArea">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGW-Vm-iwj" userLabel="currentBubbleToBeShot">
@@ -511,7 +512,7 @@
                                 <rect key="frame" x="0.0" y="36" width="64" height="64"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <connections>
@@ -521,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vum-9T-1Ak" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976" y="1744"/>
+            <point key="canvasLocation" x="1976" y="1722"/>
         </scene>
     </scenes>
     <resources>
@@ -540,9 +541,9 @@
         <image name="selector-background" width="467" height="712"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bTb-nR-Paz"/>
-        <segue reference="Mfc-Wy-m5o"/>
         <segue reference="dK5-Tq-x4U"/>
-        <segue reference="p3L-vR-iU2"/>
+        <segue reference="Mfc-Wy-m5o"/>
+        <segue reference="diU-OS-qkG"/>
+        <segue reference="LXu-ug-sbz"/>
     </inferredMetricsTieBreakers>
 </document>

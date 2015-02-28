@@ -15,27 +15,24 @@ class FruitBlastManiaLevelSelectorViewMainController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.destinationViewController.title == "Fruit Blast Mania Game View Main Controller" {
+        if segue.destinationViewController.title == FruitBlastManiaConstants.gameMainViewControllerTitle {
             let levelSelectedButton = sender as UIButton
             
-            switch levelSelectedButton.titleLabel.text! {
-            case "Level One":
-                // in some way, initiate level one into the game controller
-                break;
-            case "Level Two":
-                // in some way, initiate level two into the game controller
-                break;
-            case "Level Three":
-                // in some way, initiate level three into the game controller
-                break;
-            case "Level Four":
-                // in some way, initiate level four into the game controller
-                break;
-            case "Level Five":
-                // in some way, initiate level five into the game controller
-                break;
+            let thatViewController = segue.destinationViewController as FruitBlastManiaGameViewMainController
+            
+            switch levelSelectedButton.titleLabel!.text! {
+            case FruitBlastManiaConstants.levelOne:
+                thatViewController.currentLevelName = FruitBlastManiaConstants.levelOne
+            case FruitBlastManiaConstants.levelTwo:
+                thatViewController.currentLevelName = FruitBlastManiaConstants.levelTwo
+            case FruitBlastManiaConstants.levelThree:
+                thatViewController.currentLevelName = FruitBlastManiaConstants.levelThree
+            case FruitBlastManiaConstants.levelFour:
+                thatViewController.currentLevelName = FruitBlastManiaConstants.levelFour
+            case FruitBlastManiaConstants.levelFive:
+                thatViewController.currentLevelName = FruitBlastManiaConstants.levelFive
             default:
-                break;
+                break
             }
         }
     }

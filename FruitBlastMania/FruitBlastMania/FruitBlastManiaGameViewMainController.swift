@@ -6,6 +6,8 @@
 import UIKit
 
 class FruitBlastManiaGameViewMainController: UIViewController {
+    var currentLevelName: String?
+    var currentLevel: BasicLevel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

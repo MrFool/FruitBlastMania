@@ -8,9 +8,9 @@ import UIKit
 
 struct FruitBlastManiaConstants {
     // View Controllers titles
-    static let mainViewControllerTitle: String = "mainViewController"
-    static let shooterViewControllerTitle: String = "shooterViewController"
-    static let gridViewControllerTitle: String = "gridViewController"
+    static let gameMainViewControllerTitle: String = "Fruit Blast Mania Game View Main Controller"
+    static let shooterViewControllerTitle: String = "Fruit Blast Mania Bubble Shooter View Controller"
+    static let gridViewControllerTitle: String = "Fruit Blast Mania Game Grid View Controller"
     
     // Device constants
     static let screenSize: CGRect = UIScreen.mainScreen().bounds
@@ -92,15 +92,16 @@ struct FruitBlastManiaConstants {
         "starBubbleFileName": starBubbleFileName
     ]
     
-    // Random roller array
-    static let randomRollerArray: [String] = [blueBubbleName, redBubbleName, orangeBubbleName, greenBubbleName]
-    
-    // Number of bubbles to randomise amongst
-    static let numberOfStaticBubbles: UInt32 = UInt32(randomRollerArray.count)
-    
     // File Type constants
     static let levelExtension: String = ".level"
     
     // Number of bubbles connected for bursting
     static let numberOfBubblesConnectedBeforeBursting: Int = 3
+    
+    // Packaged Level Names
+    static let levelOne = "Level One"
+    static let levelTwo = "Level Two"
+    static let levelThree = "Level Three"
+    static let levelFour = "Level Four"
+    static let levelFive = "Level Five"
 }

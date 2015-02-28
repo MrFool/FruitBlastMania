@@ -78,7 +78,7 @@ class BasicLevel: NSObject, NSCoding {
         self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 4)] = FruitBlastManiaConstants.orangeBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
-        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 4)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
