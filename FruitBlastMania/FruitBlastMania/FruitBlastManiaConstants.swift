@@ -30,8 +30,6 @@ struct FruitBlastManiaConstants {
     static let refreshTimer60fps: Double = 1.0 / 60
     
     // Image file constants
-    static let menuBackgroundFileName: String = "menu-background"
-    static let gameBackgroundFileName: String = "game-background"
     static let blueBubbleFileName: String = "bubble-blue"
     static let redBubbleFileName: String = "bubble-red"
     static let orangeBubbleFileName: String = "bubble-orange"
@@ -46,6 +44,8 @@ struct FruitBlastManiaConstants {
     static let bubbleWidth: CGFloat = CGFloat(deviceWidth / maxNumberOfBubblesPerRow)
     static let bubbleHeight: CGFloat = bubbleWidth
     static let bubbleRadius: Int = Int(bubbleWidth / 2)
+    static let selectedBubbleAlpha: CGFloat = 1.0
+    static let notSelectedBubbleAlpha: CGFloat = 0.7
     static let unfilledBubbleColor: UIColor = UIColor(red: 0.5, green: 128/255.0, blue: 0.5, alpha: 0.35)
     static let unfilledBubbleBorderWidth: CGFloat = 2.0
     static let shotBubbleTag: Int = 1
@@ -70,11 +70,33 @@ struct FruitBlastManiaConstants {
     static let basicGridEvenRowNumberOfBubbles: Int = maxNumberOfBubblesPerRow
     static let basicGridOddRowNumberOfBubbles: Int = basicGridEvenRowNumberOfBubbles - 1
     
+    // Bubble Cycling constants
+    // TODO change into an array and use an index to keep track.
+
+    static let cyclingDictionary = [
+        "afterred": orangeBubbleName,
+        "afterorange": greenBubbleName,
+        "aftergreen": blueBubbleName,
+        "afterblue": indestructibleBubbleName,
+        "afterindestructible": lightningBubbleName,
+        "afterlightning": bombBubbleName,
+        "afterbomb": starBubbleName,
+        "afterstar": redBubbleName,
+        "redBubbleFileName": redBubbleFileName,
+        "orangeBubbleFileName": orangeBubbleFileName,
+        "greenBubbleFileName": greenBubbleFileName,
+        "blueBubbleFileName": blueBubbleFileName,
+        "indestructibleBubbleFileName": indestructibleBubbleFileName,
+        "lightningBubbleFileName": lightningBubbleFileName,
+        "bombBubbleFileName": bombBubbleFileName,
+        "starBubbleFileName": starBubbleFileName
+    ]
+    
     // Random roller array
     static let randomRollerArray: [String] = [blueBubbleName, redBubbleName, orangeBubbleName, greenBubbleName]
     
     // Number of bubbles to randomise amongst
-    static let numberOfStaticBubbles: UInt32 = 4
+    static let numberOfStaticBubbles: UInt32 = UInt32(randomRollerArray.count)
     
     // File Type constants
     static let levelExtension: String = ".level"

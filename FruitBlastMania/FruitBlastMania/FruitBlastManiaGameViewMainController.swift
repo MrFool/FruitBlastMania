@@ -10,18 +10,15 @@ class FruitBlastManiaGameViewMainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // this is where we attach the NSTimer to simulate the framing per second
+        
+        // this is where we attach the gesture for pew pew
+        
+        // this is where we attach the sound thing? I think...
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // do we really need this?
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
     override func prefersStatusBarHidden() -> Bool {

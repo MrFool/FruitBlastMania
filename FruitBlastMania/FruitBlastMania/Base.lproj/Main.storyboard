@@ -7,7 +7,7 @@
         <!--Fruit Blast Mania Level Designer View Main Controller-->
         <scene sceneID="R5O-VG-TW3">
             <objects>
-                <viewController id="Xtj-Rl-3WA" customClass="FruitBlastManiaLevelDesignerViewMainController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xtj-Rl-3WA" customClass="FruitBlastManiaLevelDesignerViewMainController" customModule="FruitBlastMania" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tJJ-pe-Thh"/>
                         <viewControllerLayoutGuide type="bottom" id="5S9-HX-X2R"/>
@@ -28,7 +28,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJ0-3y-dKj" userLabel="paletteContainerView">
                                 <rect key="frame" x="0.0" y="924" width="768" height="100"/>
                                 <connections>
-                                    <segue destination="RBC-Qp-BBR" kind="embed" id="fsc-YM-rgj"/>
+                                    <segue destination="RBC-Qp-BBR" kind="embed" id="9op-Mh-4X3"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -327,59 +327,86 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivm-2O-Xj9" userLabel="bubbleSelectionView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKw-Hr-36O" userLabel="greenBubbleButton">
-                                        <rect key="frame" x="152" y="0.0" width="64" height="64"/>
-                                        <state key="normal" image="bubble-green">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fi-s6-xxI" userLabel="blueBubbleButton">
-                                        <rect key="frame" x="224" y="0.0" width="64" height="64"/>
-                                        <state key="normal" image="bubble-blue">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OQ-XR-UFY" userLabel="eraserButton">
-                                        <rect key="frame" x="296" y="0.0" width="64" height="64"/>
-                                        <state key="normal" image="eraser-1">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-dg-D8k" userLabel="indestructibleBubbleButton">
-                                        <rect key="frame" x="368" y="0.0" width="64" height="64"/>
-                                        <state key="normal" image="bubble-indestructible">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sp1-A2-HsC" userLabel="lightningBubbleButton">
-                                        <rect key="frame" x="440" y="0.0" width="64" height="64"/>
-                                        <state key="normal" image="bubble-lightning">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9G-jJ-eGo" userLabel="bombBubbleButton">
-                                        <rect key="frame" x="512" y="0.0" width="64" height="64"/>
-                                        <state key="normal" image="bubble-bomb">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fik-Fn-faC" userLabel="starBubbleButton">
-                                        <rect key="frame" x="584" y="0.0" width="64" height="64"/>
-                                        <state key="normal" image="bubble-star">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEv-5c-6N9" userLabel="redBubbleButton">
                                         <rect key="frame" x="8" y="0.0" width="64" height="64"/>
                                         <state key="normal" image="bubble-red">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="6ds-li-YXj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM2-H1-Vdb" userLabel="orangeBubbleButton">
                                         <rect key="frame" x="80" y="0.0" width="64" height="64"/>
                                         <state key="normal" image="bubble-orange">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="1q6-Ta-2hx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKw-Hr-36O" userLabel="greenBubbleButton">
+                                        <rect key="frame" x="152" y="0.0" width="64" height="64"/>
+                                        <state key="normal" image="bubble-green">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="g7H-oL-MOm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fi-s6-xxI" userLabel="blueBubbleButton">
+                                        <rect key="frame" x="224" y="0.0" width="64" height="64"/>
+                                        <state key="normal" image="bubble-blue">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="bKv-db-KNH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OQ-XR-UFY" userLabel="eraserButton">
+                                        <rect key="frame" x="296" y="0.0" width="64" height="64"/>
+                                        <state key="normal" image="eraser-1">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="LkV-eQ-fvt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4q-dg-D8k" userLabel="indestructibleBubbleButton">
+                                        <rect key="frame" x="368" y="0.0" width="64" height="64"/>
+                                        <state key="normal" image="bubble-indestructible">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="gaS-xA-W4a"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sp1-A2-HsC" userLabel="lightningBubbleButton">
+                                        <rect key="frame" x="440" y="0.0" width="64" height="64"/>
+                                        <state key="normal" image="bubble-lightning">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="TgQ-Nu-tFA"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9G-jJ-eGo" userLabel="bombBubbleButton">
+                                        <rect key="frame" x="512" y="0.0" width="64" height="64"/>
+                                        <state key="normal" image="bubble-bomb">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="X9H-zr-qCC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fik-Fn-faC" userLabel="starBubbleButton">
+                                        <rect key="frame" x="584" y="0.0" width="64" height="64"/>
+                                        <state key="normal" image="bubble-star">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="paletteButtonTapped:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="a1W-uP-8iR"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -399,21 +426,33 @@
                                         <rect key="frame" x="73" y="3" width="57" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Reset"/>
+                                        <connections>
+                                            <action selector="controlButtonPressed:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="hjo-ns-SUd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2a-xh-f8l">
                                         <rect key="frame" x="409" y="3" width="151" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Play This Level"/>
+                                        <connections>
+                                            <action selector="controlButtonPressed:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="cba-tz-3uF"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EqV-B6-Iz8">
                                         <rect key="frame" x="703" y="3" width="57" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Load"/>
+                                        <connections>
+                                            <action selector="controlButtonPressed:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="nBY-gG-0JG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCG-BX-V8l">
                                         <rect key="frame" x="638" y="3" width="57" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="controlButtonPressed:" destination="RBC-Qp-BBR" eventType="touchUpInside" id="9CV-IV-fdw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wa7-kS-Z3Q">
                                         <rect key="frame" x="209" y="3" width="151" height="30"/>
@@ -430,10 +469,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="paletteBar" destination="ivm-2O-Xj9" id="3I2-Av-UG3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxv-qh-4pZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="-228"/>
+            <point key="canvasLocation" x="1062" y="57"/>
         </scene>
         <!--Fruit Blast Mania Bubble Shooter View Controller-->
         <scene sceneID="ITG-EF-bLq">
@@ -471,8 +513,8 @@
         <image name="selector-background" width="467" height="712"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dK5-Tq-x4U"/>
-        <segue reference="L3P-xR-Ji8"/>
-        <segue reference="bTb-nR-Paz"/>
+        <segue reference="LXu-ug-sbz"/>
+        <segue reference="8Ux-1o-55Z"/>
+        <segue reference="Mfc-Wy-m5o"/>
     </inferredMetricsTieBreakers>
 </document>

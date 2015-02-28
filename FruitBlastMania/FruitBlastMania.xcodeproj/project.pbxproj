@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34BFE8681AA21AAD00F63E0E /* FruitBlastManiaMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558C1AA101970048A92D /* FruitBlastManiaMainViewController.swift */; };
+		34BFE8691AA21AAD00F63E0E /* FruitBlastManiaLevelSelectorViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558F1AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift */; };
+		34BFE86A1AA21AAD00F63E0E /* FruitBlastManiaLevelDesignerViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558E1AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift */; };
+		34BFE86B1AA21AAD00F63E0E /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55901AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift */; };
+		34BFE86C1AA21AAD00F63E0E /* FruitBlastManiaPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55931AA101970048A92D /* FruitBlastManiaPaletteViewController.swift */; };
+		34BFE86D1AA21AAD00F63E0E /* FruitBlastManiaGameViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */; };
+		34BFE86E1AA21AAD00F63E0E /* FruitBlastManiaGameGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55911AA101970048A92D /* FruitBlastManiaGameGridViewController.swift */; };
+		34BFE86F1AA21AAD00F63E0E /* FruitBlastManiaBubbleShooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55921AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift */; };
 		34CF55421AA100750048A92D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55411AA100750048A92D /* AppDelegate.swift */; };
 		34CF55471AA100750048A92D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55451AA100750048A92D /* Main.storyboard */; };
 		34CF55491AA100750048A92D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55481AA100750048A92D /* Images.xcassets */; };
@@ -27,14 +35,6 @@
 		34CF55891AA101880048A92D /* BaseGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55861AA101880048A92D /* BaseGrid.swift */; };
 		34CF558A1AA101880048A92D /* BasicGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55871AA101880048A92D /* BasicGrid.swift */; };
 		34CF558B1AA101880048A92D /* BasicGridFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55881AA101880048A92D /* BasicGridFlowLayout.swift */; };
-		34CF55941AA101970048A92D /* FruitBlastManiaMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558C1AA101970048A92D /* FruitBlastManiaMainViewController.swift */; };
-		34CF55951AA101970048A92D /* FruitBlastManiaGameViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */; };
-		34CF55961AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558E1AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift */; };
-		34CF55971AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558F1AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift */; };
-		34CF55981AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55901AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift */; };
-		34CF55991AA101970048A92D /* FruitBlastManiaGameGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55911AA101970048A92D /* FruitBlastManiaGameGridViewController.swift */; };
-		34CF559A1AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55921AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift */; };
-		34CF559B1AA101970048A92D /* FruitBlastManiaPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55931AA101970048A92D /* FruitBlastManiaPaletteViewController.swift */; };
 		34CF55A21AA101A10048A92D /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF559C1AA101A10048A92D /* QueueTests.swift */; };
 		34CF55A31AA101A10048A92D /* NodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF559D1AA101A10048A92D /* NodeTests.swift */; };
 		34CF55A41AA101A10048A92D /* EdgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF559E1AA101A10048A92D /* EdgeTests.swift */; };
@@ -289,13 +289,13 @@
 			isa = PBXGroup;
 			children = (
 				34CF558C1AA101970048A92D /* FruitBlastManiaMainViewController.swift */,
-				34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */,
-				34CF558E1AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift */,
 				34CF558F1AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift */,
+				34CF558E1AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift */,
 				34CF55901AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift */,
+				34CF55931AA101970048A92D /* FruitBlastManiaPaletteViewController.swift */,
+				34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */,
 				34CF55911AA101970048A92D /* FruitBlastManiaGameGridViewController.swift */,
 				34CF55921AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift */,
-				34CF55931AA101970048A92D /* FruitBlastManiaPaletteViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -400,30 +400,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34CF55981AA101970048A92D /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */,
+				34BFE8681AA21AAD00F63E0E /* FruitBlastManiaMainViewController.swift in Sources */,
 				34CF55731AA1012E0048A92D /* Graph.swift in Sources */,
 				34CF55791AA101470048A92D /* NumberUtilities.swift in Sources */,
-				34CF55991AA101970048A92D /* FruitBlastManiaGameGridViewController.swift in Sources */,
+				34BFE86E1AA21AAD00F63E0E /* FruitBlastManiaGameGridViewController.swift in Sources */,
 				34CF55811AA101720048A92D /* BaseBubble.swift in Sources */,
 				34CF55821AA101720048A92D /* ColorBubble.swift in Sources */,
-				34CF55971AA101970048A92D /* FruitBlastManiaLevelSelectorViewMainController.swift in Sources */,
+				34BFE86C1AA21AAD00F63E0E /* FruitBlastManiaPaletteViewController.swift in Sources */,
 				34CF557D1AA101580048A92D /* PhysicsBody.swift in Sources */,
 				34CF558B1AA101880048A92D /* BasicGridFlowLayout.swift in Sources */,
 				34CF55751AA1013A0048A92D /* GameEngine.swift in Sources */,
 				34CF556D1AA1011C0048A92D /* Queue.swift in Sources */,
-				34CF55961AA101970048A92D /* FruitBlastManiaLevelDesignerViewMainController.swift in Sources */,
 				34CF55421AA100750048A92D /* AppDelegate.swift in Sources */,
 				34CF558A1AA101880048A92D /* BasicGrid.swift in Sources */,
 				34CF55851AA1017F0048A92D /* GridCollectionViewCell.swift in Sources */,
 				34CF55891AA101880048A92D /* BaseGrid.swift in Sources */,
 				34CF557B1AA1014F0048A92D /* FruitBlastManiaConstants.swift in Sources */,
-				34CF55951AA101970048A92D /* FruitBlastManiaGameViewMainController.swift in Sources */,
+				34BFE86A1AA21AAD00F63E0E /* FruitBlastManiaLevelDesignerViewMainController.swift in Sources */,
 				34CF55771AA101410048A92D /* BasicLevel.swift in Sources */,
+				34BFE86D1AA21AAD00F63E0E /* FruitBlastManiaGameViewMainController.swift in Sources */,
 				34CF55721AA1012E0048A92D /* Edge.swift in Sources */,
-				34CF559B1AA101970048A92D /* FruitBlastManiaPaletteViewController.swift in Sources */,
 				34CF55831AA101720048A92D /* ProjectileBubble.swift in Sources */,
-				34CF559A1AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift in Sources */,
-				34CF55941AA101970048A92D /* FruitBlastManiaMainViewController.swift in Sources */,
+				34BFE8691AA21AAD00F63E0E /* FruitBlastManiaLevelSelectorViewMainController.swift in Sources */,
+				34BFE86F1AA21AAD00F63E0E /* FruitBlastManiaBubbleShooterViewController.swift in Sources */,
+				34BFE86B1AA21AAD00F63E0E /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */,
 				34CF55711AA1012E0048A92D /* Node.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,6 +639,7 @@
 				34CF555D1AA100750048A92D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34CF555E1AA100750048A92D /* Build configuration list for PBXNativeTarget "FruitBlastManiaTests" */ = {
 			isa = XCConfigurationList;
@@ -647,6 +648,7 @@
 				34CF55601AA100750048A92D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
