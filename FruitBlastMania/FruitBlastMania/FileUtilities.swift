@@ -1,5 +1,5 @@
 /*
-    NumberUtilities is where we keep the utility functions for nfile manipulations
+    FileUtilities is where we keep the utility functions for file manipulations
 */
 
 import Foundation

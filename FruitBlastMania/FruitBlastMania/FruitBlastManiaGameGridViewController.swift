@@ -17,8 +17,6 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     var currentlyShotBubble: ProjectileBubble?
     var bubbleToBeShotName: String?
     
-    var currentLevel: BasicLevel?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

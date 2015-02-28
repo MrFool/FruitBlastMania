@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		346AD5631AA26C65009BB688 /* BubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346AD5621AA26C65009BB688 /* BubbleFactory.swift */; };
 		34BFE8711AA2409900F63E0E /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFE8701AA2409900F63E0E /* FileUtilities.swift */; };
 		34CF55421AA100750048A92D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55411AA100750048A92D /* AppDelegate.swift */; };
 		34CF55471AA100750048A92D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55451AA100750048A92D /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		346AD5621AA26C65009BB688 /* BubbleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleFactory.swift; sourceTree = "<group>"; };
 		34BFE8701AA2409900F63E0E /* FileUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		34CF553C1AA100750048A92D /* FruitBlastMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitBlastMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CF55401AA100750048A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		346AD5641AA26C6A009BB688 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				346AD5621AA26C65009BB688 /* BubbleFactory.swift */,
+			);
+			name = Factories;
+			sourceTree = "<group>";
+		};
 		34CF55331AA100750048A92D = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +167,7 @@
 				34CF55631AA100B50048A92D /* GameEngineFiles */,
 				34CF55641AA100C40048A92D /* Levels */,
 				34CF55651AA100D50048A92D /* Utilities */,
+				346AD5641AA26C6A009BB688 /* Factories */,
 				34CF55661AA100D90048A92D /* Constants */,
 				34CF55671AA100DE0048A92D /* PhysicsEngine */,
 				34CF55681AA100E40048A92D /* Bubble */,
@@ -426,6 +437,7 @@
 				34CF55721AA1012E0048A92D /* Edge.swift in Sources */,
 				34CF55831AA101720048A92D /* ProjectileBubble.swift in Sources */,
 				34EA55391AA2682A008BB78E /* FruitBlastManiaPaletteViewController.swift in Sources */,
+				346AD5631AA26C65009BB688 /* BubbleFactory.swift in Sources */,
 				34EA55311AA2676D008BB78E /* FruitBlastManiaMainViewController.swift in Sources */,
 				34EA55371AA2676D008BB78E /* FruitBlastManiaGameGridViewController.swift in Sources */,
 				34EA55381AA2676D008BB78E /* FruitBlastManiaBubbleShooterViewController.swift in Sources */,
