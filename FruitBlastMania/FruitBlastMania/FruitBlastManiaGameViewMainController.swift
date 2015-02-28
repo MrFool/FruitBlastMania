@@ -9,12 +9,6 @@ class FruitBlastManiaGameViewMainController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // this is where we attach the NSTimer to simulate the framing per second
-        
-        // this is where we attach the gesture for pew pew
-        
-        // this is where we attach the sound thing? I think...
     }
     
     override func didReceiveMemoryWarning() {

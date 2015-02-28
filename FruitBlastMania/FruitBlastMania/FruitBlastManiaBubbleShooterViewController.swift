@@ -6,6 +6,8 @@
 import UIKit
 
 class FruitBlastManiaBubbleShooterViewController: UIViewController {
+    @IBOutlet weak var currentBubbleToBeShot: UIImageView!
+    @IBOutlet weak var nextBubbleToBeShot: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
