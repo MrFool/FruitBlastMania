@@ -216,6 +216,9 @@
                                 <state key="normal" title="Level One" backgroundImage="scroll">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="p3L-vR-iU2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ha3-id-oLg" userLabel="Level Two">
                                 <rect key="frame" x="301" y="456" width="167" height="125"/>
@@ -223,6 +226,9 @@
                                 <state key="normal" title="Level Two" backgroundImage="scroll">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="IKJ-fW-ocF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWq-sI-zED">
                                 <rect key="frame" x="301" y="589" width="167" height="125"/>
@@ -230,13 +236,9 @@
                                 <state key="normal" title="Level Three" backgroundImage="scroll">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ud-LM-CiB">
-                                <rect key="frame" x="301" y="722" width="167" height="125"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Level Four" backgroundImage="scroll">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="8Ka-W8-Ke4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDU-Ls-Y7h">
                                 <rect key="frame" x="301" y="855" width="167" height="125"/>
@@ -244,6 +246,9 @@
                                 <state key="normal" title="Level Five" backgroundImage="scroll">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="fia-hx-Dmu"/>
+                                </connections>
                             </button>
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JsH-fV-uOs" userLabel="controlView">
                                 <rect key="frame" x="0.0" y="988" width="768" height="36"/>
@@ -267,6 +272,16 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ud-LM-CiB">
+                                <rect key="frame" x="301" y="722" width="167" height="125"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Level Four" backgroundImage="scroll">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="EwS-ge-0Bf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -513,8 +528,9 @@
         <image name="selector-background" width="467" height="712"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LXu-ug-sbz"/>
-        <segue reference="8Ux-1o-55Z"/>
+        <segue reference="bTb-nR-Paz"/>
         <segue reference="Mfc-Wy-m5o"/>
+        <segue reference="dK5-Tq-x4U"/>
+        <segue reference="p3L-vR-iU2"/>
     </inferredMetricsTieBreakers>
 </document>

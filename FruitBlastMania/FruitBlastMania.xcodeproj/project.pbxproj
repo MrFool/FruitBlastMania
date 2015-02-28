@@ -15,6 +15,7 @@
 		34BFE86D1AA21AAD00F63E0E /* FruitBlastManiaGameViewMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF558D1AA101970048A92D /* FruitBlastManiaGameViewMainController.swift */; };
 		34BFE86E1AA21AAD00F63E0E /* FruitBlastManiaGameGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55911AA101970048A92D /* FruitBlastManiaGameGridViewController.swift */; };
 		34BFE86F1AA21AAD00F63E0E /* FruitBlastManiaBubbleShooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55921AA101970048A92D /* FruitBlastManiaBubbleShooterViewController.swift */; };
+		34BFE8711AA2409900F63E0E /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFE8701AA2409900F63E0E /* FileUtilities.swift */; };
 		34CF55421AA100750048A92D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55411AA100750048A92D /* AppDelegate.swift */; };
 		34CF55471AA100750048A92D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55451AA100750048A92D /* Main.storyboard */; };
 		34CF55491AA100750048A92D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55481AA100750048A92D /* Images.xcassets */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34BFE8701AA2409900F63E0E /* FileUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		34CF553C1AA100750048A92D /* FruitBlastMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitBlastMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CF55401AA100750048A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34CF55411AA100750048A92D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				34CF55781AA101470048A92D /* NumberUtilities.swift */,
+				34BFE8701AA2409900F63E0E /* FileUtilities.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				34CF55851AA1017F0048A92D /* GridCollectionViewCell.swift in Sources */,
 				34CF55891AA101880048A92D /* BaseGrid.swift in Sources */,
 				34CF557B1AA1014F0048A92D /* FruitBlastManiaConstants.swift in Sources */,
+				34BFE8711AA2409900F63E0E /* FileUtilities.swift in Sources */,
 				34BFE86A1AA21AAD00F63E0E /* FruitBlastManiaLevelDesignerViewMainController.swift in Sources */,
 				34CF55771AA101410048A92D /* BasicLevel.swift in Sources */,
 				34BFE86D1AA21AAD00F63E0E /* FruitBlastManiaGameViewMainController.swift in Sources */,

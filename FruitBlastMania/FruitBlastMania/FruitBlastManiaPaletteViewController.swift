@@ -20,8 +20,10 @@ class FruitBlastManiaPaletteViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // I think this is where we pass in the objects when we do the storyboard segues
-        // Get the new view controller using [segue destinationViewController].
+        if segue.destinationViewController.title == "Fruit Blast Mania Game View Main Controller" {
+            // package up the current level as a basic level and "send it
+            // to the game view controller to handle"
+        }
     }
     
     func handleSave() {
