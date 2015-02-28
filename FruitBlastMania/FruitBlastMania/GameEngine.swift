@@ -13,7 +13,11 @@ class GameEngine {
     var currentLevel: BasicLevel?
     var numUtils = NumberUtilities()
     
-    let rootNode = Node<ColorBubble>(ColorBubble(nameGiven: "rootNode", bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: NSIndexPath(forRow: 0, inSection: 1000)))
+    let rootNode = Node<ColorBubble>(ColorBubble(
+        nameGiven: "rootNode",
+        bodyCenter: CGPoint(x: 0, y: 0),
+        anIndexPath: NSIndexPath(forRow: 0, inSection: 1000))
+    )
     
     init(aLevel: BasicLevel, aCollectionView: UICollectionView) {
         currentLevel = aLevel
@@ -23,8 +27,11 @@ class GameEngine {
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!,
-                bodyCenter: aCollectionView.cellForItemAtIndexPath(key)!.center, anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: aCollectionView.cellForItemAtIndexPath(key)!.center,
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -340,7 +347,8 @@ class GameEngine {
             let adjacentNodesToNodeToVisit = graphRepresentationOfGameState.adjacentNodesFromNode(nodeToVisit)
             
             for node in adjacentNodesToNodeToVisit {
-                if dictionaryOfVisitedBubbles[node.getLabel().indexPath] != true && node.getLabel().getBubbleName() == snappedBubbleColor {
+                if dictionaryOfVisitedBubbles[node.getLabel().indexPath] != true &&
+                    node.getLabel().getBubbleName() == snappedBubbleColor {
                     queueOfNodesToVisit.enqueue(node)
                     
                     arrayOfBubblesToRemove.append(node.getLabel())
@@ -457,7 +465,11 @@ class GameEngine {
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: aCollectionView.cellForItemAtIndexPath(key)!.center, anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: aCollectionView.cellForItemAtIndexPath(key)!.center,
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -532,6 +544,7 @@ class GameEngine {
         }
     }
     
+    // TODO make the algorithm better than just full random, take into account what is currently inside the game arena
     func generateBubbleToBeShotName() -> String {
         let randomNumber = Int(arc4random_uniform(FruitBlastManiaConstants.numberOfStaticBubbles))
         
