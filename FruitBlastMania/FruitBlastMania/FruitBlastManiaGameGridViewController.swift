@@ -188,41 +188,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         }
         
         if !cellsThatNeedsToHaveTheirBubblesRemoved.isEmpty {
-            let cellsThatNeedsToHaveTheirBubblesAnimateDownwards: [NSIndexPath] = gameEngine!.unattachedBubbles()
-            
-            for cellToCheckIndexPath in cellsThatNeedsToHaveTheirBubblesAnimateDownwards {
-                var cellToAnimate =  self.collectionView!.cellForItemAtIndexPath(cellToCheckIndexPath) as GridCollectionViewCell
-                
-                for bubbleView in cellToAnimate.subviews as [UIImageView] {
-                    var newBubbleView = UIImageView(
-                        frame: CGRect(
-                            x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
-                            y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
-                            width: FruitBlastManiaConstants.bubbleWidth,
-                            height: FruitBlastManiaConstants.bubbleWidth
-                        )
-                    )
-                    
-                    newBubbleView.image = bubbleView.image!
-                    
-                    self.collectionView!.addSubview(newBubbleView)
-                    
-                    bubbleView.removeFromSuperview()
-                    
-                    // TODO make it more physically accurate
-                    UIView.animateWithDuration(0.875,
-                        delay: 0.25,
-                        options: .CurveEaseIn,
-                        animations: {
-                        newBubbleView.center.y = CGFloat(FruitBlastManiaConstants.deviceBottomBarrier) +
-                            CGFloat(FruitBlastManiaConstants.bubbleHeight)
-                        }, completion: { finished in
-                            newBubbleView.removeFromSuperview()
-                    })
-                }
-                
-                cellToAnimate.bubbleAttached = nil
-            }
+            removeHangingBubbles()
         }
     }
     
@@ -324,6 +290,43 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         }
     }
     
+    func removeHangingBubbles() {
+        let cellsThatNeedsToHaveTheirBubblesAnimateDownwards: [NSIndexPath] = gameEngine!.unattachedBubbles()
+        
+        for cellToCheckIndexPath in cellsThatNeedsToHaveTheirBubblesAnimateDownwards {
+            var cellToAnimate =  self.collectionView!.cellForItemAtIndexPath(cellToCheckIndexPath) as GridCollectionViewCell
+            
+            for bubbleView in cellToAnimate.subviews as [UIImageView] {
+                var newBubbleView = UIImageView(
+                    frame: CGRect(
+                        x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                        y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                        width: FruitBlastManiaConstants.bubbleWidth,
+                        height: FruitBlastManiaConstants.bubbleWidth
+                    )
+                )
+                
+                newBubbleView.image = bubbleView.image!
+                
+                self.collectionView!.addSubview(newBubbleView)
+                
+                bubbleView.removeFromSuperview()
+                
+                UIView.animateWithDuration(0.875,
+                    delay: 0.25,
+                    options: .CurveEaseIn,
+                    animations: {
+                        newBubbleView.center.y += CGFloat(FruitBlastManiaConstants.deviceHeight)
+                    }, completion: { finished in
+                        newBubbleView.removeFromSuperview()
+                })
+            }
+            
+            cellToAnimate.bubbleAttached = nil
+        }
+
+    }
+    
     func initialiseGame() {
         resetGridInitial()
         
@@ -397,6 +400,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         }
         
         addInitialBubbleToShooter()
+        
+        removeHangingBubbles()
         
         isGameInitialised = true
     }
