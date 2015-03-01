@@ -17,6 +17,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     
     var isBubbleShooting: Bool = false
     var currentlyShotBubble: ProjectileBubble?
+    var nextBubbleToBeShotName: String?
     var bubbleToBeShotName: String?
     
     var isGameInitialised: Bool = false
@@ -224,7 +225,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 if gameEngine!.isCollided(theMovingBubble, staticBubblePoint: cell.center) {
                     isBubbleShooting = false
                     
-                    snapToClosestCell(theMovingBubble)
+                    snapToClosestCell(theMovingBubble, self.collectionView!.indexPathForCell)
                     
                     break
                     // do not remove, to ensure that even if the projectile 
@@ -253,6 +254,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         return false
     }
     
+    // TODO Improve on the kind of bubbles being given, but other than that it's ok enough already
     func addNewBubbleToShooter() {
         for viewController in self.parentViewController!.childViewControllers {
             if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
@@ -261,14 +263,35 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 
                 var newBubbleFileName: String = bubbleFactory.createBubble(aNewRandomBubbleName)
                 
-                bubbleToBeShotName = aNewRandomBubbleName
+                bubbleToBeShotName = nextBubbleToBeShotName
                 
                 let bubbleImage = UIImage(named: newBubbleFileName)
                 
-                thatViewController.currentBubbleToBeShot.image = bubbleImage
+                thatViewController.currentBubbleToBeShot.image = thatViewController.nextBubbleToBeShot.image
+                thatViewController.nextBubbleToBeShot.image = bubbleImage
+                
+                nextBubbleToBeShotName = aNewRandomBubbleName
             }
         }
     }
+    
+    func addInitialBubbleToShooter() {
+        for viewController in self.parentViewController!.childViewControllers {
+            if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                let aNewRandomBubbleName = gameEngine!.generateBubbleToBeShotName()
+                
+                var newBubbleFileName: String = bubbleFactory.createBubble(aNewRandomBubbleName)
+                
+                nextBubbleToBeShotName = aNewRandomBubbleName
+                
+                let bubbleImage = UIImage(named: newBubbleFileName)
+                
+                thatViewController.nextBubbleToBeShot.image = bubbleImage
+            }
+        }
+    }
+    // TODO Improve on the kind of bubbles being given, but other than that it's ok enough already
     
     func removeCurrentlyShotBubble() {
         if let doesShotBubbleExist = self.view.viewWithTag(FruitBlastManiaConstants.shotBubbleTag) {
@@ -363,6 +386,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             cellToUpdate.addSubview(imageView)
             cellToUpdate.bubbleAttached = createdBubbleValues.1
         }
+        
+        addInitialBubbleToShooter()
         
         isGameInitialised = true
     }

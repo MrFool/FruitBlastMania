@@ -2,39 +2,107 @@
 # CS3217 Problem Set 5 #
 ########################
 
-# Name: 
-# Matric No:
-# Tutor:
+# Name: Yap Jun Hao
+# Matric No: A0113694A
+# Tutor: Cui Wei
 
 ######################
 # Rules of Your Game #
 ######################
 
-Your Answer here
+Rules for standard bubble interaction
+
+- Destruction of similarly coloured bubbles that are connected adjacently in groups of 3 or more. Hanging bubbles are also removed at the end of each turn.
+
+Rules for special bubble interaction
+
+- Indestructible bubbles have to be removed by falling out of the screen OR be bombed OR be electrocuted by the lightning bubble
+- Lightning bubbles removes all bubbles in the same row and if any other lightning or bomb bubbles are removed that way, they are triggered as well. If a star bubble is triggered that way, nothing special happens.
+- Bomb bubbles removes all bubbles adjacent to the cell it is at and if any other lightning or bomb bubbles are removed that way, they are triggered as well. If a star bubble is triggered that way, nothing special happens.
+- Star bubbles removed all bubbles of the same color of the bubble that triggered it (can only be a normal bubble).
+
+Rules for winning game
+
+- No more bubbles in the game arena
+
+Rules for losing game
+
+- Bubbles are beyond what the grid can contain (a.k.a 9 rows or 12 / 11)
+- No more bubbles to be shot by the cannon
+
 
 ###############################
 # Problem 1: Cannon Direction #
 ###############################
 
-Your Answer here
+The user is supposed to select the cannon direction by simply tapping the screen.
+
 
 ###############################
 # Problem 2: Upcoming Bubbles #
 ###############################
 
-Your Answer here
+Number of bubble(s) to show: 1
+
+Algorithm:
+
+In essence, randomise between the number of basic bubbles still in the game arena and they can and may be changed depending on if the next bubble shown is no longer in the game arena after the current bubble is shot.
+
+Basic Bubbles include:
+
+Red
+Orange
+Green
+Blue
 
 ##########################
 # Problem 3: Integration #
 ##########################
 
-Your Answer here
+My design allowed the integration of the game engine because the main way of parsing a game level designed or packaged is through the same class “Basic Level” and having a game engine that knows how to unpack these “levels” or other possible levels (if ever in the future).
+
+In that sense, we can simply segue into the game view controller and have the game engine there simply unpack the level that is “passed” over during the segue.
+
+Advantages:
+
+1. No monolithic view controller that contains logic that might not be applicable to it’s different uses
+
+2. Able to more easily visualise on the storyboard how the different scenes of the game connect, i.e. easier to see how the game flows on the storyboard
+
+Disadvantages:
+
+1. Have to load another view controller entirely and can’t share certain portions of code that might be used on both the designer controller and the game controller
+
+2. Each kind of “levels” that we want to implement, we will need to teach the game engine how to unpack and each different kind of configuration or arrangement there’ll need to be logic dealing with that
+
+Alternative approach / approaches:
+
+a) Have one view controller that can deal with both designing and the game engine portion and simply change the grid containing the bubbles with the designer grid to be the actual screen play area, enabling and disabling the appropriate gesture recognisers.
+
+Advantages:
+
+1. Instantaneously able to share code with the game portion especially for code that makes sense for both like updating grids etc.
+
+2. More flexible and easier to implement different kind of “levels” since there is no need to unpack the levels as it is already there.
+
+Disadvantages:
+
+1. Have one monolithic view controller that might have a large amount of logic, difficult to read through in one shot and may scare newer developers or partners from being able to parse the code effectively
+
+2. Might not be apparent to a non-technical person how the game scenes actually link with each other etc.
+
+b)
+
+…
+
 
 ###############
 # Problem 4.3 #
 ###############
 
-Your Answer here
+My general strategy for implementing these special behaviours is to detect when a special bubble has been “collided with” and append to a Queue the special bubbles that needs to be dealt with. In that sense, if more special bubbles are met along the way of clearing up each special bubble, we simply continue appending to the Queue and sequentially deal with each special bubble as per needed.
+
+This strategy is best in my opinion because there is a possibility of infinitely many special bubbles to be dealt with when one is being dealt with and if we have already “cleared them through explosions or the sort” before appending them to some sort of data structure, we will lose track of them. Plus, it wouldn’t make sense physically if all the bubbles just get cleared all at the exact same time!
 
 ############################
 # Problem 6: Class Diagram #
@@ -46,19 +114,58 @@ Please save your diagram as `class-diagram.png` in the root directory of the rep
 # Problem 7: Testing #
 ######################
 
-Your Answer here
+Level Designer Tests:
+
+
+
+Game Engine Tests:
+
+
 
 
 ###################################
 # Problem 8: The Bells & Whistles #
 ###################################
 
-Your Answer here
+List of improvements / functionalities added:
+
+To be added upon adding them
+
+1. Fruit theme integration (done)
+2. Game Score (not yet done)
+3. Rules for losing / winning game! (not yet done)
+4. Limited Number of Bubbles (not yet done)
+5. Global Hi-score (not yet done)
+6. Tweet score achieved (not yet done)
+7. Facebook score achieved (not yet done)
+8. Background music for the game (not yet done)
+9. Switch between current and next bubble (not yet done)
+10. Fluffy rolling sheep when game is in action (not yet done)
+11. Explosion sprites (not yet done)
+12. Lightning sprites (not yet done)
 
 
 ###############################
 # Problem 9: Final Reflection #
 ###############################
 
-Your Answer here
+Comments on design of MVC architecture:
+
+-
+-
+
+Comments on design of game engine:
+
+-
+-
+
+How to improve MVC architecture design:
+
+-
+-
+
+How to improve game engine design:
+
+-
+-
 
