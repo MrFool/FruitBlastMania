@@ -55,6 +55,7 @@ Orange
 Green
 Blue
 
+
 ##########################
 # Problem 3: Integration #
 ##########################
@@ -70,6 +71,8 @@ Advantages:
 2. Able to more easily visualise on the storyboard how the different scenes of the game connect, i.e. easier to see how the game flows on the storyboard
 
 3. Can build up the levels using code (as shown by the packaged level one to five)
+
+4. Since levels are in code, there is no need to worry about app structure changes introduced by what we’re based on (note: file structure change in apps from Apple)
 
 Disadvantages:
 
@@ -93,9 +96,11 @@ Disadvantages:
 
 2. Might not be apparent to a non-technical person how the game scenes actually link with each other etc.
 
-b)
+b) Have two different view controllers to manage level designing and gameplay separately but make them load from and save to plists that represents the levels separately. Very similar to our strategy employed except for the plist part. Advantages and disadvantages are very similar except:
 
-…
+Main difference:
+
+If app structure somehow changes, there will need to be changes in the app or else it won’t be backwards compatible.
 
 
 ###############
@@ -106,11 +111,13 @@ My general strategy for implementing these special behaviours is to detect when 
 
 This strategy is best in my opinion because there is a possibility of infinitely many special bubbles to be dealt with when one is being dealt with and if we have already “cleared them through explosions or the sort” before appending them to some sort of data structure, we will lose track of them. Plus, it wouldn’t make sense physically if all the bubbles just get cleared all at the exact same time!
 
+
 ############################
 # Problem 6: Class Diagram #
 ############################
 
 Please save your diagram as `class-diagram.png` in the root directory of the repository.
+
 
 ######################
 # Problem 7: Testing #

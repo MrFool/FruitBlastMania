@@ -263,7 +263,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         return false
     }
     
-    // TODO Improve on the kind of bubbles being given, but other than that it's ok enough already
+    // TODO Improve on the kind of bubbles being given
     func addNewBubbleToShooter() {
         for viewController in self.parentViewController!.childViewControllers {
             if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
@@ -300,7 +300,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             }
         }
     }
-    // TODO Improve on the kind of bubbles being given, but other than that it's ok enough already
+    // TODO Improve on the kind of bubbles being given
     
     func removeCurrentlyShotBubble() {
         if let doesShotBubbleExist = self.view.viewWithTag(FruitBlastManiaConstants.shotBubbleTag) {

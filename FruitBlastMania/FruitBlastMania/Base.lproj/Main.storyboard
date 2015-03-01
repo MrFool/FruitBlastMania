@@ -45,7 +45,7 @@
             <objects>
                 <collectionViewController title="Fruit Blast Mania Game Grid View Controller" id="rgS-yj-XIJ" customClass="FruitBlastManiaGameGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e80-Pg-J7h">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l8m-1L-qHz">
@@ -81,7 +81,7 @@
             <objects>
                 <collectionViewController id="keE-gc-p9b" customClass="FruitBlastManiaLevelDesignerGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3R1-fA-PTb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uaO-Md-eWZ">
@@ -338,7 +338,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oBt-BP-tc2"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0dv-be-uAn" userLabel="palette">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivm-2O-Xj9" userLabel="bubbleSelectionView">
@@ -504,7 +504,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PvH-2U-3sb"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="CTi-Fv-Zjg" userLabel="shooterArea">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGW-Vm-iwj" userLabel="currentBubbleToBeShot">
@@ -560,9 +560,9 @@
         <image name="selector-background" width="467" height="712"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dK5-Tq-x4U"/>
+        <segue reference="bTb-nR-Paz"/>
         <segue reference="QUU-H2-Vod"/>
-        <segue reference="diU-OS-qkG"/>
-        <segue reference="LXu-ug-sbz"/>
+        <segue reference="p3L-vR-iU2"/>
+        <segue reference="8Ux-1o-55Z"/>
     </inferredMetricsTieBreakers>
 </document>
