@@ -20,6 +20,14 @@ class BubbleFactory {
             bubbleFileNameToReturn = FruitBlastManiaConstants.greenBubbleFileName
         case FruitBlastManiaConstants.blueBubbleName:
             bubbleFileNameToReturn = FruitBlastManiaConstants.blueBubbleFileName
+        case FruitBlastManiaConstants.indestructibleBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.indestructibleBubbleFileName
+        case FruitBlastManiaConstants.lightningBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.lightningBubbleFileName
+        case FruitBlastManiaConstants.bombBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.bombBubbleFileName
+        case FruitBlastManiaConstants.starBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.starBubbleFileName
         default:
             break
         }
@@ -57,6 +65,34 @@ class BubbleFactory {
             bubbleFileNameToReturn = FruitBlastManiaConstants.blueBubbleFileName
             colorBubbleToReturn = ColorBubble(
                 nameGiven: FruitBlastManiaConstants.blueBubbleName,
+                bodyCenter: aPoint,
+                anIndexPath: anIndexPath
+            )
+        case FruitBlastManiaConstants.indestructibleBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.indestructibleBubbleFileName
+            colorBubbleToReturn = ColorBubble(
+                nameGiven: FruitBlastManiaConstants.indestructibleBubbleName,
+                bodyCenter: aPoint,
+                anIndexPath: anIndexPath
+            )
+        case FruitBlastManiaConstants.lightningBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.lightningBubbleFileName
+            colorBubbleToReturn = ColorBubble(
+                nameGiven: FruitBlastManiaConstants.lightningBubbleName,
+                bodyCenter: aPoint,
+                anIndexPath: anIndexPath
+            )
+        case FruitBlastManiaConstants.bombBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.bombBubbleFileName
+            colorBubbleToReturn = ColorBubble(
+                nameGiven: FruitBlastManiaConstants.bombBubbleName,
+                bodyCenter: aPoint,
+                anIndexPath: anIndexPath
+            )
+        case FruitBlastManiaConstants.starBubbleName:
+            bubbleFileNameToReturn = FruitBlastManiaConstants.starBubbleFileName
+            colorBubbleToReturn = ColorBubble(
+                nameGiven: FruitBlastManiaConstants.starBubbleName,
                 bodyCenter: aPoint,
                 anIndexPath: anIndexPath
             )

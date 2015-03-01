@@ -419,22 +419,6 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             
             removeCurrentlyShotBubble()
         }
-        
-        // might not need this part onwards, KIV, remove to test
-        resetGrid()
-        
-        for key in thisCurrentLevel!.collectionOfBubbles.keys {
-            let cellToUpdate = self.collectionView!.cellForItemAtIndexPath(key) as GridCollectionViewCell
-            
-            let bubbleName = thisCurrentLevel!.collectionOfBubbles[key]!
-            
-            let createdBubbleValues: (String, ColorBubble) = bubbleFactory.createBubble(bubbleName,
-                aPoint: cellToUpdate.center,
-                anIndexPath: key
-            )
-            
-            cellToUpdate.bubbleAttached = createdBubbleValues.1
-        }
     }
     
     // MARK: Gesture func(s)
