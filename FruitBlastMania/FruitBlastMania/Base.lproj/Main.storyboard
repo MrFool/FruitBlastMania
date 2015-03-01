@@ -44,7 +44,7 @@
         <scene sceneID="Nf3-A5-O03">
             <objects>
                 <collectionViewController title="Fruit Blast Mania Game Grid View Controller" id="rgS-yj-XIJ" customClass="FruitBlastManiaGameGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e80-Pg-J7h">
+                    <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e80-Pg-J7h">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -308,12 +308,14 @@
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kw4-86-Tsz" userLabel="gameGridContainerView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="rgS-yj-XIJ" kind="embed" id="QRH-Fd-eb2"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBg-F7-ZQC" userLabel="gameShooterContainerView">
                                 <rect key="frame" x="0.0" y="924" width="768" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="REk-I4-IMu" kind="embed" id="iWF-Fd-NL6"/>
                                 </connections>
@@ -501,26 +503,31 @@
                         <viewControllerLayoutGuide type="top" id="rTN-2P-VcL"/>
                         <viewControllerLayoutGuide type="bottom" id="PvH-2U-3sb"/>
                     </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CTi-Fv-Zjg" userLabel="shooterArea">
+                    <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="CTi-Fv-Zjg" userLabel="shooterArea">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGW-Vm-iwj" userLabel="currentBubbleToBeShot">
-                                <rect key="frame" x="352" y="36" width="64" height="64"/>
+                                <rect key="frame" x="236" y="36" width="64" height="64"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXZ-fV-7L5" userLabel="nextBubbleToBeShot">
                                 <rect key="frame" x="0.0" y="36" width="64" height="64"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-N7-maA">
-                                <rect key="frame" x="700" y="36" width="64" height="64"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <state key="normal" title="| |">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3B-Aa-D1R" userLabel="cannonItself">
+                                <rect key="frame" x="320" y="-133" width="128" height="233"/>
+                            </imageView>
+                            <button opaque="NO" alpha="0.59999999999999964" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-N7-maA">
+                                <rect key="frame" x="704" y="42" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Quit"/>
                                 <connections>
                                     <segue destination="jpf-rO-hBD" kind="show" id="QUU-H2-Vod"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cannon-base" translatesAutoresizingMaskIntoConstraints="NO" id="tFw-eE-F1g">
+                                <rect key="frame" x="320" y="36" width="128" height="64"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -528,6 +535,7 @@
                     <connections>
                         <outlet property="currentBubbleToBeShot" destination="iGW-Vm-iwj" id="ihs-V8-pNr"/>
                         <outlet property="nextBubbleToBeShot" destination="VXZ-fV-7L5" id="qRp-Pa-dFN"/>
+                        <outlet property="theCannon" destination="c3B-Aa-D1R" id="u7d-Yu-oAV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vum-9T-1Ak" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -544,6 +552,7 @@
         <image name="bubble-orange" width="640" height="634"/>
         <image name="bubble-red" width="577" height="640"/>
         <image name="bubble-star" width="160" height="160"/>
+        <image name="cannon-base" width="400" height="200"/>
         <image name="eraser-1" width="254" height="152"/>
         <image name="game-background" width="553" height="725"/>
         <image name="menu-background" width="474" height="723"/>

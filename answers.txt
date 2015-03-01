@@ -69,6 +69,8 @@ Advantages:
 
 2. Able to more easily visualise on the storyboard how the different scenes of the game connect, i.e. easier to see how the game flows on the storyboard
 
+3. Can build up the levels using code (as shown by the packaged level one to five)
+
 Disadvantages:
 
 1. Have to load another view controller entirely and can’t share certain portions of code that might be used on both the designer controller and the game controller

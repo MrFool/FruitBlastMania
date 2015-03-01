@@ -52,7 +52,7 @@ struct FruitBlastManiaConstants {
     static let expansionRadius: CGFloat = bubbleWidth / 16
     
     // Projectile constants
-    static let projectileVelocity: Float = Float(15)
+    static let projectileVelocity: Float = Float(22.5)
     static let projectileInitialStartPoint: CGPoint = CGPoint(x: deviceWidth / 2, y: deviceHeight - (Int(bubbleHeight) / 2))
     
     // Bubble shorthand names

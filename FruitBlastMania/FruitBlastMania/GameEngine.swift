@@ -512,8 +512,7 @@ class GameEngine {
         return projectileY - FruitBlastManiaConstants.bubbleRadius <= FruitBlastManiaConstants.deviceTopBarrier
     }
     
-    // TODO refactor
-    func assignVelocityToProjectile(tappedPoint: CGPoint) -> (Float, Float) {
+    func assignVelocityToProjectileAndGetAngle(tappedPoint: CGPoint) -> (Float, Float, CGFloat, String) {
         let tappedPointX = tappedPoint.x
         let tappedPointY = tappedPoint.y
         
@@ -539,12 +538,11 @@ class GameEngine {
         let speedInYDirection = Float(cos(angle)) * FruitBlastManiaConstants.projectileVelocity
         
         if shootLeft {
-            return (-speedInXDirection, speedInYDirection)
+            return (-speedInXDirection, speedInYDirection, angle, "left")
         } else {
-            return (speedInXDirection, speedInYDirection)
+            return (speedInXDirection, speedInYDirection, angle, "right")
         }
     }
-    // TODO refactor
     
     func generateBubbleToBeShotName() -> String {
         var existingBubblesChecker: Dictionary<String, Bool> = Dictionary<String, Bool>()

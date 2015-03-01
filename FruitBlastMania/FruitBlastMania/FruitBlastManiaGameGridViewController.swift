@@ -20,7 +20,14 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     var nextBubbleToBeShotName: String?
     var bubbleToBeShotName: String?
     
+    var isCannonAnimating: Bool = false
+    var shouldAnimateCannonPauser1: Bool = false
+    var shouldAnimateCannonPauser2: Bool = false
+    var currentCannonAnimation: Int = 0
+    var cannonAnimationAngle: CGFloat = 0
+    
     var isGameInitialised: Bool = false
+    var waitCountBeforeInitialising: Int = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +82,10 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     }
     
     // MARK: Helper functions to help with the game loop
+    
     func snapToClosestCell(aMovingBubble: ProjectileBubble) {
+        removeCurrentlyShotBubble()
+        
         var sortedDistance: [(NSIndexPath, CGFloat)] = [(NSIndexPath, CGFloat)]()
         
         func insertPathSorted(pathToInsert: NSIndexPath, distanceToInsert: CGFloat) {
@@ -93,8 +103,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 sortedDistance.insert((pathToInsert, distanceToInsert), atIndex: indexToInsertAt)
             }
         }
-        
-        // TODO find a better way so that there won't be a throttle upon collision
+
         func distanceBetweenTwoPoints(pointA: CGPoint, pointB: CGPoint) -> CGFloat {
             let xDistance: Float = fabsf(Float(pointA.x) - Float(pointB.x))
             let yDistance: Float = fabsf(Float(pointA.y) - Float(pointB.y))
@@ -225,7 +234,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 if gameEngine!.isCollided(theMovingBubble, staticBubblePoint: cell.center) {
                     isBubbleShooting = false
                     
-                    snapToClosestCell(theMovingBubble, self.collectionView!.indexPathForCell)
+                    snapToClosestCell(theMovingBubble)
                     
                     break
                     // do not remove, to ensure that even if the projectile 
@@ -428,21 +437,76 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         self.view.addSubview(imageView)
     }
     
+    func animateCannon() {
+        if isCannonAnimating {
+            if shouldAnimateCannonPauser1 {
+                if shouldAnimateCannonPauser2 {
+                    if currentCannonAnimation == 10 {
+                        isCannonAnimating = false
+                    }
+                    
+                    var thatViewController: FruitBlastManiaBubbleShooterViewController
+                    
+                    currentCannonAnimation += 1
+                    
+                    for viewController in self.parentViewController!.childViewControllers {
+                        if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                            thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                            
+                            let cannonAnimationToTransitionTo = thatViewController.arrayOfCannonImages[currentCannonAnimation]
+                            
+                            thatViewController.theCannon.transform = CGAffineTransformMakeRotation(cannonAnimationAngle)
+                            
+                            thatViewController.theCannon.image = cannonAnimationToTransitionTo
+                        }
+                    }
+                    
+                    shouldAnimateCannonPauser1 = false
+                    shouldAnimateCannonPauser2 = false
+                    
+                    if currentCannonAnimation == 11 {
+                        currentCannonAnimation = 0
+                    }
+                } else {
+                    shouldAnimateCannonPauser2 = true
+                }
+            } else {
+                shouldAnimateCannonPauser1 = true
+            }
+        } else {
+            for viewController in self.parentViewController!.childViewControllers {
+                if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                    let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                    
+                    let cannonAnimationToTransitionTo = thatViewController.arrayOfCannonImages[0]
+                    
+                    thatViewController.theCannon.image = cannonAnimationToTransitionTo
+                }
+            }
+        }
+    }
+    
     // MARK: The game loop itself
     
     func updateGame() {
-        if !isGameInitialised {
-            initialiseGame()
-        }
-        
-        if isBubbleShooting {
-            dealWithShootingBubble()
-        } else {
-            if currentlyNoBubbleToBeShot() {
-                addNewBubbleToShooter()
+        if waitCountBeforeInitialising == 0 {
+            if !isGameInitialised {
+                initialiseGame()
             }
             
-            removeCurrentlyShotBubble()
+            animateCannon()
+            
+            if isBubbleShooting {
+                dealWithShootingBubble()
+            } else {
+                if currentlyNoBubbleToBeShot() {
+                    addNewBubbleToShooter()
+                }
+                
+                removeCurrentlyShotBubble()
+            }
+        } else {
+            waitCountBeforeInitialising -= 1
         }
     }
     
@@ -463,12 +527,20 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                     }
                 }
                 
-                let xySpeed: (Float, Float) = gameEngine!.assignVelocityToProjectile(tappedLocation)
+                let xySpeedAndAngle: (Float, Float, CGFloat, String) = gameEngine!.assignVelocityToProjectileAndGetAngle(tappedLocation)
+                
+                isCannonAnimating = true
+                
+                if xySpeedAndAngle.3 == "left" {
+                    cannonAnimationAngle = CGFloat(M_PI) * 2 - xySpeedAndAngle.2
+                } else {
+                    cannonAnimationAngle = xySpeedAndAngle.2
+                }
                 
                 currentlyShotBubble = ProjectileBubble(
                     nameGiven: bubbleToBeShotName!,
-                    xSpeed: xySpeed.0,
-                    ySpeed: xySpeed.1,
+                    xSpeed: xySpeedAndAngle.0,
+                    ySpeed: xySpeedAndAngle.1,
                     bodyCenter: FruitBlastManiaConstants.projectileInitialStartPoint
                 )
                 
