@@ -384,6 +384,31 @@ class GameEngine {
         return arrayToReturn
     }
     
+    func checkForSpecialBubbles(aBubble: ColorBubble) -> [(NSIndexPath, String)] {
+        let anIndexPath = aBubble.indexPath
+        
+        if !numUtils.isOdd(aBubble.indexPath.section) {
+            let indexPathTopLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section - 1)
+            let indexPathTopRight = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section - 1)
+            let indexPathLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section)
+            let indexPathRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section)
+            let indexPathBottomLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section + 1)
+            let indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
+            
+            
+        } else {
+            let indexPathTopLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section - 1)
+            let indexPathTopRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section - 1)
+            let indexPathLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section)
+            let indexPathRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section)
+            let indexPathBottomLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
+            let indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section + 1)
+            
+        }
+        
+        return [(NSIndexPath, String)]()
+    }
+    
     func unattachedBubbles() -> [NSIndexPath] {
         var arrayToReturn = [NSIndexPath]()
         var arrayOfBubblesToNotRemove = [ColorBubble]()

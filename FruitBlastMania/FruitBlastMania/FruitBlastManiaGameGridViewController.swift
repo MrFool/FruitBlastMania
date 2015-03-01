@@ -151,6 +151,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         let allCells = self.collectionView!.visibleCells() as [GridCollectionViewCell]
         let cellsThatNeedsToHaveTheirBubblesRemoved: [NSIndexPath] = gameEngine!.bubblesToPopAfterSnapping(createdBubbleValues.1)
         
+        let specialBubbleEffects: [(NSIndexPath, String)] = gameEngine!.checkForSpecialBubbles(createdBubbleValues.1)
+        
         for cellIndexPath in cellsThatNeedsToHaveTheirBubblesRemoved {
             var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
             
