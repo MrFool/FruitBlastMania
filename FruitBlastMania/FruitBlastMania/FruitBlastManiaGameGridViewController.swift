@@ -11,11 +11,15 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     let reuseIdentifier = "gameBubbleCell"
     
     var numUtils = NumberUtilities()
+    var bubbleFactory = BubbleFactory()
     var gameEngine: GameEngine?
+    var thisCurrentLevel: BasicLevel?
     
     var isBubbleShooting: Bool = false
     var currentlyShotBubble: ProjectileBubble?
     var bubbleToBeShotName: String?
+    
+    var isGameInitialised: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,188 +73,147 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         return cell
     }
     
-    func singleTapHandler(sender: UITapGestureRecognizer) {
-        let tappedLocation = sender.locationInView(self.collectionView)
+    // MARK: Helper functions to help with the game loop
+    func snapToClosestCell(aMovingBubble: ProjectileBubble) {
+        var sortedDistance: [(NSIndexPath, CGFloat)] = [(NSIndexPath, CGFloat)]()
         
-        if bubbleToBeShotName != nil {
-            if !isBubbleShooting {
-                isBubbleShooting = true
+        func insertPathSorted(pathToInsert: NSIndexPath, distanceToInsert: CGFloat) {
+            var indexToInsertAt = 0
+            
+            if sortedDistance.isEmpty {
+                sortedDistance.append((pathToInsert, distanceToInsert))
+            } else {
+                let numberOfPathsInsertedBefore = sortedDistance.count
                 
-                for viewController in self.parentViewController!.childViewControllers {
-                    if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
-                        let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
-                        
-                        thatViewController.currentBubbleToBeShot.image = nil
-                    }
+                while indexToInsertAt < numberOfPathsInsertedBefore && sortedDistance[indexToInsertAt].1 < distanceToInsert {
+                    indexToInsertAt++
                 }
                 
-                let xySpeed: (Float, Float) = gameEngine!.assignVelocityToProjectile(tappedLocation)
-                
-                currentlyShotBubble = ProjectileBubble(
-                    nameGiven: bubbleToBeShotName!,
-                    xSpeed: xySpeed.0,
-                    ySpeed: xySpeed.1,
-                    bodyCenter: FruitBlastManiaConstants.projectileInitialStartPoint
+                sortedDistance.insert((pathToInsert, distanceToInsert), atIndex: indexToInsertAt)
+            }
+        }
+        
+        // TODO find a better way so that there won't be a throttle upon collision
+        func distanceBetweenTwoPoints(pointA: CGPoint, pointB: CGPoint) -> CGFloat {
+            let xDistance: Float = fabsf(Float(pointA.x) - Float(pointB.x))
+            let yDistance: Float = fabsf(Float(pointA.y) - Float(pointB.y))
+            
+            let absDistance:Float = sqrt(((xDistance * xDistance) + (yDistance * yDistance)))
+            return CGFloat(absDistance)
+        }
+        
+        let currentBallPoint = aMovingBubble.centerPoint!
+        
+        let collectionViewOfCells = self.collectionView
+        
+        for cell in collectionViewOfCells!.visibleCells() as [GridCollectionViewCell] {
+            insertPathSorted(
+                collectionViewOfCells!.indexPathForCell(cell)!,
+                distanceBetweenTwoPoints(currentBallPoint, cell.center)
+            )
+        }
+        
+        let closestCellIndexPathToSnapTo = sortedDistance[0].0
+        
+        let cellToSnapTo = collectionViewOfCells!.cellForItemAtIndexPath(closestCellIndexPathToSnapTo) as GridCollectionViewCell
+        
+        let bubbleName = aMovingBubble.getBubbleName()
+        
+        let createdBubbleValues: (String, ColorBubble) = bubbleFactory.createBubble(bubbleName,
+            aPoint: cellToSnapTo.center,
+            anIndexPath: closestCellIndexPathToSnapTo
+        )
+        
+        let bubbleImage = UIImage(named: createdBubbleValues.0)
+        let imageView = UIImageView(image: bubbleImage)
+        
+        imageView.frame.size.width = FruitBlastManiaConstants.bubbleWidth
+        imageView.frame.size.height = FruitBlastManiaConstants.bubbleHeight
+        
+        cellToSnapTo.addSubview(imageView)
+        
+        cellToSnapTo.bubbleAttached = createdBubbleValues.1
+        
+        gameEngine!.bubbleSnapped(createdBubbleValues.1, aCollectionView: self.collectionView!)
+        
+        // clean up after snapping + animations
+        
+        let allCells = self.collectionView!.visibleCells() as [GridCollectionViewCell]
+        let cellsThatNeedsToHaveTheirBubblesRemoved: [NSIndexPath] = gameEngine!.bubblesToPopAfterSnapping(createdBubbleValues.1)
+        
+        for cellIndexPath in cellsThatNeedsToHaveTheirBubblesRemoved {
+            var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
+            
+            for bubbleView in cellToAnimate.subviews as [UIImageView] {
+                var newBubbleView = UIImageView(
+                    frame: CGRect(
+                        x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                        y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                        width: FruitBlastManiaConstants.bubbleWidth,
+                        height: FruitBlastManiaConstants.bubbleWidth
+                    )
                 )
                 
-                bubbleToBeShotName = nil
-            }
-        }
-    }
-    
-    func resetGridInitial() {
-        for cell in self.collectionView!.visibleCells() as [GridCollectionViewCell] {
-            for view in cell.subviews {
-                view.removeFromSuperview()
+                newBubbleView.image = bubbleView.image!
+                
+                self.collectionView!.addSubview(newBubbleView)
+                
+                bubbleView.removeFromSuperview()
+                
+                UIView.animateWithDuration(0.375,
+                    delay: 0.0,
+                    options: .CurveEaseOut,
+                    animations: {
+                    newBubbleView.frame.size.width = FruitBlastManiaConstants.bubbleWidth +
+                        FruitBlastManiaConstants.expansionRadius
+                    newBubbleView.frame.size.height = FruitBlastManiaConstants.bubbleHeight +
+                        FruitBlastManiaConstants.expansionRadius
+                    newBubbleView.alpha = 0
+                    }, completion: { finished in
+                        newBubbleView.removeFromSuperview()
+                })
             }
             
-            cell.bubbleAttached = nil
+            cellToAnimate.bubbleAttached = nil
         }
-    }
-    
-    func resetGrid() {
-        for cell in self.collectionView!.visibleCells() as [GridCollectionViewCell] {
-            cell.bubbleAttached = nil
+        
+        if !cellsThatNeedsToHaveTheirBubblesRemoved.isEmpty {
+            let cellsThatNeedsToHaveTheirBubblesAnimateDownwards: [NSIndexPath] = gameEngine!.unattachedBubbles()
+            
+            for cellToCheckIndexPath in cellsThatNeedsToHaveTheirBubblesAnimateDownwards {
+                var cellToAnimate =  self.collectionView!.cellForItemAtIndexPath(cellToCheckIndexPath) as GridCollectionViewCell
+                
+                for bubbleView in cellToAnimate.subviews as [UIImageView] {
+                    var newBubbleView = UIImageView(
+                        frame: CGRect(
+                            x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                            y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                            width: FruitBlastManiaConstants.bubbleWidth,
+                            height: FruitBlastManiaConstants.bubbleWidth
+                        )
+                    )
+                    
+                    newBubbleView.image = bubbleView.image!
+                    
+                    self.collectionView!.addSubview(newBubbleView)
+                    
+                    bubbleView.removeFromSuperview()
+                    
+                    // TODO make it more physically accurate
+                    UIView.animateWithDuration(0.875,
+                        delay: 0.25,
+                        options: .CurveEaseIn,
+                        animations: {
+                        newBubbleView.center.y = CGFloat(FruitBlastManiaConstants.deviceBottomBarrier) +
+                            CGFloat(FruitBlastManiaConstants.bubbleHeight)
+                        }, completion: { finished in
+                            newBubbleView.removeFromSuperview()
+                    })
+                }
+                
+                cellToAnimate.bubbleAttached = nil
+            }
         }
-    }
-    
-    func snapToClosestCell(aMovingBubble: ProjectileBubble) {
-//        var sortedDistance: [(NSIndexPath, CGFloat)] = [(NSIndexPath, CGFloat)]()
-//        
-//        func insertPathSorted(pathToInsert: NSIndexPath, distanceToInsert: CGFloat) {
-//            var indexToInsertAt = 0
-//            
-//            if sortedDistance.isEmpty {
-//                sortedDistance.append((pathToInsert, distanceToInsert))
-//            } else {
-//                let numberOfPathsInsertedBefore = sortedDistance.count
-//                
-//                while indexToInsertAt < numberOfPathsInsertedBefore && sortedDistance[indexToInsertAt].1 < distanceToInsert {
-//                    indexToInsertAt++
-//                }
-//                
-//                sortedDistance.insert((pathToInsert, distanceToInsert), atIndex: indexToInsertAt)
-//            }
-//        }
-//        
-//        func distanceBetweenTwoPoints(pointA: CGPoint, pointB: CGPoint) -> CGFloat {
-//            let xDistance: Float = fabsf(Float(pointA.x) - Float(pointB.x))
-//            let yDistance: Float = fabsf(Float(pointA.y) - Float(pointB.y))
-//            
-//            let absDistance:Float = sqrt(((xDistance * xDistance) + (yDistance * yDistance)))
-//            // TA:  A little overlap with your collision detection in your game engine
-//            //      Can take out and put inside the Utils class we talked about in PS3.
-//            return CGFloat(absDistance)
-//        }
-//        
-//        let currentBallPoint = aMovingBubble.centerPoint!
-//        
-//        let collectionViewOfCells = self.collectionView
-//        
-//        for cell in collectionViewOfCells!.visibleCells() as [GridCollectionViewCell] {
-//            insertPathSorted(collectionViewOfCells!.indexPathForCell(cell)!, distanceBetweenTwoPoints(currentBallPoint, cell.center))
-//        }
-//        
-//        let closestCellIndexPathToSnapTo = sortedDistance[0].0
-//        
-//        let cellToSnapTo = collectionViewOfCells!.cellForItemAtIndexPath(closestCellIndexPathToSnapTo) as GridCollectionViewCell
-//        
-//        var newBubbleFileName: String?
-//        var newBubbleObject: ColorBubble?
-//        
-//        switch aMovingBubble.getBubbleName() {
-//        case "blue":
-//            newBubbleFileName = BubblePhysicsConstants.blueBubbleFileName
-//            newBubbleObject = ColorBubble(nameGiven: "blue", bodyCenter: cellToSnapTo.center, anIndexPath: closestCellIndexPathToSnapTo)
-//        case "red":
-//            newBubbleFileName = BubblePhysicsConstants.redBubbleFileName
-//            newBubbleObject = ColorBubble(nameGiven: "red", bodyCenter: cellToSnapTo.center, anIndexPath: closestCellIndexPathToSnapTo)
-//        case "orange":
-//            newBubbleFileName = BubblePhysicsConstants.orangeBubbleFileName
-//            newBubbleObject = ColorBubble(nameGiven: "orange", bodyCenter: cellToSnapTo.center, anIndexPath: closestCellIndexPathToSnapTo)
-//        case "green":
-//            newBubbleFileName = BubblePhysicsConstants.greenBubbleFileName
-//            newBubbleObject = ColorBubble(nameGiven: "green", bodyCenter: cellToSnapTo.center, anIndexPath: closestCellIndexPathToSnapTo)
-//        default:
-//            break
-//        }
-//        
-//        let bubbleImage = UIImage(named: newBubbleFileName!)
-//        let imageView = UIImageView(image: bubbleImage)
-//        
-//        imageView.frame.size.width = BubblePhysicsConstants.bubbleWidth
-//        imageView.frame.size.height = BubblePhysicsConstants.bubbleHeight
-//        
-//        cellToSnapTo.addSubview(imageView)
-//        
-//        cellToSnapTo.bubbleAttached = newBubbleObject
-//        
-//        gameEngine!.bubbleSnapped(newBubbleObject!, aCollectionView: self.collectionView!)
-//        
-//        // clean up after snapping + animations
-//        
-//        let allCells = self.collectionView!.visibleCells() as [GridCollectionViewCell]
-//        let cellsThatNeedsToHaveTheirBubblesRemoved: [NSIndexPath] = gameEngine!.bubblesToPopAfterSnapping(newBubbleObject!)
-//        
-//        for cellIndexPath in cellsThatNeedsToHaveTheirBubblesRemoved {
-//            var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
-//            
-//            for bubbleView in cellToAnimate.subviews as [UIImageView] {
-//                var newBubbleView = UIImageView(frame: CGRect(x: cellToAnimate.center.x - CGFloat(BubblePhysicsConstants.bubbleRadius), y: cellToAnimate.center.y - CGFloat(BubblePhysicsConstants.bubbleRadius), width: BubblePhysicsConstants.bubbleWidth, height: BubblePhysicsConstants.bubbleWidth))
-//                
-//                newBubbleView.image = bubbleView.image!
-//                
-//                self.collectionView!.addSubview(newBubbleView)
-//                
-//                bubbleView.removeFromSuperview()
-//                
-//                UIView.animateWithDuration(0.375, delay: 0.0, options: .CurveEaseOut, animations: {
-//                    newBubbleView.frame.size.width = BubblePhysicsConstants.bubbleWidth + BubblePhysicsConstants.expansionRadius
-//                    newBubbleView.frame.size.height = BubblePhysicsConstants.bubbleHeight + BubblePhysicsConstants.expansionRadius
-//                    newBubbleView.alpha = 0
-//                    }, completion: { finished in
-//                        newBubbleView.removeFromSuperview()
-//                })
-//            }
-//            
-//            cellToAnimate.bubbleAttached = nil
-//        }
-//        
-//        if !cellsThatNeedsToHaveTheirBubblesRemoved.isEmpty {
-//            let cellsThatNeedsToHaveTheirBubblesAnimateDownwards: [NSIndexPath] = gameEngine!.unattachedBubbles()
-//            
-//            for cellToCheckIndexPath in cellsThatNeedsToHaveTheirBubblesAnimateDownwards {
-//                var cellToAnimate =  self.collectionView!.cellForItemAtIndexPath(cellToCheckIndexPath) as GridCollectionViewCell
-//                
-//                for bubbleView in cellToAnimate.subviews as [UIImageView] {
-//                    var newBubbleView = UIImageView(frame: CGRect(x: cellToAnimate.center.x - CGFloat(BubblePhysicsConstants.bubbleRadius), y: cellToAnimate.center.y - CGFloat(BubblePhysicsConstants.bubbleRadius), width: BubblePhysicsConstants.bubbleWidth, height: BubblePhysicsConstants.bubbleWidth))
-//                    
-//                    newBubbleView.image = bubbleView.image!
-//                    
-//                    self.collectionView!.addSubview(newBubbleView)
-//                    
-//                    bubbleView.removeFromSuperview()
-//                    
-//                    UIView.animateWithDuration(0.875, delay: 0.25, options: .CurveEaseIn, animations: {
-//                        newBubbleView.center.y = CGFloat(BubblePhysicsConstants.deviceBottomBarrier) + CGFloat(BubblePhysicsConstants.bubbleHeight)
-//                        // TA:  This is not how physics work. According to your
-//                        //      code, bubbles that are not at the same row will
-//                        //      reach the bottom of the device at the same time.
-//                        //      If you throw a ball down from 11th floor and from
-//                        //      5th floor. They shouldn't reach the ground floor
-//                        //      at the same time right?
-//                        //      Simple increment the y-value by the device height
-//                        //      to ensure that the top row bubbles will definitely
-//                        //      be out of the screen after dropping. We can ignore
-//                        //      gravitational acceleration.
-//                        }, completion: { finished in
-//                            newBubbleView.removeFromSuperview()
-//                    })
-//                }
-//                
-//                cellToAnimate.bubbleAttached = nil
-//            }
-//        }
     }
     
     func checkForCollisionWithOtherBubbles(theMovingBubble: ProjectileBubble) {
@@ -291,33 +254,20 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     }
     
     func addNewBubbleToShooter() {
-//        for viewController in self.parentViewController!.childViewControllers {
-//            if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
-//                let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
-//                let aNewRandomBubbleName = gameEngine!.generateBubbleToBeShotName()
-//                
-//                var newBubbleFileName: String?
-//                
-//                switch aNewRandomBubbleName {
-//                case "blue":
-//                    newBubbleFileName = FruitBlastManiaConstants.blueBubbleFileName
-//                case "red":
-//                    newBubbleFileName = FruitBlastManiaConstants.redBubbleFileName
-//                case "orange":
-//                    newBubbleFileName = FruitBlastManiaConstants.orangeBubbleFileName
-//                case "green":
-//                    newBubbleFileName = FruitBlastManiaConstants.greenBubbleFileName
-//                default:
-//                    break
-//                }
-//                
-//                bubbleToBeShotName = aNewRandomBubbleName
-//                
-//                let bubbleImage = UIImage(named: newBubbleFileName!)
-//                
-//                thatViewController.currentBubbleToBeShot.image = bubbleImage
-//            }
-//        }
+        for viewController in self.parentViewController!.childViewControllers {
+            if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                let aNewRandomBubbleName = gameEngine!.generateBubbleToBeShotName()
+                
+                var newBubbleFileName: String = bubbleFactory.createBubble(aNewRandomBubbleName)
+                
+                bubbleToBeShotName = aNewRandomBubbleName
+                
+                let bubbleImage = UIImage(named: newBubbleFileName)
+                
+                thatViewController.currentBubbleToBeShot.image = bubbleImage
+            }
+        }
     }
     
     func removeCurrentlyShotBubble() {
@@ -326,145 +276,195 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         }
     }
     
+    func resetGridInitial() {
+        for cell in self.collectionView!.visibleCells() as [GridCollectionViewCell] {
+            for view in cell.subviews {
+                view.removeFromSuperview()
+            }
+            
+            cell.bubbleAttached = nil
+        }
+    }
+    
+    func resetGrid() {
+        for cell in self.collectionView!.visibleCells() as [GridCollectionViewCell] {
+            cell.bubbleAttached = nil
+        }
+    }
+    
+    func initialiseGame() {
+        resetGridInitial()
+        
+        let parentViewController = self.parentViewController! as FruitBlastManiaGameViewMainController
+        
+        let theLevelName: String = parentViewController.currentLevelName!
+        
+        switch theLevelName {
+        case FruitBlastManiaConstants.levelOne:
+            thisCurrentLevel = BasicLevel()
+            thisCurrentLevel!.buildLevelOne()
+            
+            parentViewController.currentLevel = BasicLevel()
+            parentViewController.currentLevel!.buildLevelOne()
+        case FruitBlastManiaConstants.levelTwo:
+            thisCurrentLevel = BasicLevel()
+            thisCurrentLevel!.buildLevelTwo()
+            
+            parentViewController.currentLevel = BasicLevel()
+            parentViewController.currentLevel!.buildLevelTwo()
+        case FruitBlastManiaConstants.levelThree:
+            thisCurrentLevel = BasicLevel()
+            thisCurrentLevel!.buildLevelThree()
+            
+            parentViewController.currentLevel = BasicLevel()
+            parentViewController.currentLevel!.buildLevelThree()
+        case FruitBlastManiaConstants.levelFour:
+            thisCurrentLevel = BasicLevel()
+            thisCurrentLevel!.buildLevelFour()
+            
+            parentViewController.currentLevel = BasicLevel()
+            parentViewController.currentLevel!.buildLevelFour()
+        case FruitBlastManiaConstants.levelFive:
+            thisCurrentLevel = BasicLevel()
+            thisCurrentLevel!.buildLevelFive()
+            
+            parentViewController.currentLevel = BasicLevel()
+            parentViewController.currentLevel!.buildLevelFive()
+        case FruitBlastManiaConstants.customLevel:
+            thisCurrentLevel = BasicLevel()
+            
+            let levelToCopyFrom = parentViewController.currentLevel!
+            
+            for key in levelToCopyFrom.collectionOfBubbles.keys {
+                thisCurrentLevel!.collectionOfBubbles[key] = levelToCopyFrom.collectionOfBubbles[key]
+            }
+        default:
+            break
+        }
+        
+        gameEngine = GameEngine(aLevel: thisCurrentLevel!, aCollectionView: self.collectionView!)
+        
+        for key in thisCurrentLevel!.collectionOfBubbles.keys {
+            let cellToUpdate = self.collectionView!.cellForItemAtIndexPath(key) as GridCollectionViewCell
+            
+            var bubbleName = thisCurrentLevel!.collectionOfBubbles[key]!
+            
+            let createdBubbleValues: (String, ColorBubble) = bubbleFactory.createBubble(bubbleName,
+                aPoint: cellToUpdate.center,
+                anIndexPath: key
+            )
+            
+            let bubbleImage = UIImage(named: createdBubbleValues.0)
+            let imageView = UIImageView(image: bubbleImage)
+            
+            imageView.frame.size.width = FruitBlastManiaConstants.bubbleWidth
+            imageView.frame.size.height = FruitBlastManiaConstants.bubbleHeight
+            
+            cellToUpdate.addSubview(imageView)
+            cellToUpdate.bubbleAttached = createdBubbleValues.1
+        }
+        
+        isGameInitialised = true
+    }
+    
+    func dealWithShootingBubble() {
+        if gameEngine!.didCollideWithTopWall(currentlyShotBubble!)  {
+            isBubbleShooting = false
+            snapToClosestCell(currentlyShotBubble!)
+        }
+        
+        checkForCollisionWithOtherBubbles(currentlyShotBubble!)
+        
+        if gameEngine!.didCollideWithLeftWall(currentlyShotBubble!) {
+            currentlyShotBubble!.xSpeed = -currentlyShotBubble!.xSpeed!
+        }
+        
+        if gameEngine!.didCollideWithRightWall(currentlyShotBubble!) {
+            currentlyShotBubble!.xSpeed = -currentlyShotBubble!.xSpeed!
+        }
+        
+        removeCurrentlyShotBubble()
+        
+        currentlyShotBubble!.centerPoint!.x += CGFloat(currentlyShotBubble!.xSpeed!)
+        currentlyShotBubble!.centerPoint!.y += CGFloat(-currentlyShotBubble!.ySpeed!)
+        
+        let bubbleName = currentlyShotBubble!.getBubbleName()
+        
+        var newBubbleFileName: String = bubbleFactory.createBubble(bubbleName)
+        
+        let bubbleImage = UIImage(named: newBubbleFileName)
+        let imageView = UIImageView(image: bubbleImage)
+        
+        imageView.frame.size.width = FruitBlastManiaConstants.bubbleWidth
+        imageView.frame.size.height = FruitBlastManiaConstants.bubbleHeight
+        imageView.center = currentlyShotBubble!.centerPoint!
+        imageView.tag = FruitBlastManiaConstants.shotBubbleTag
+        
+        self.view.addSubview(imageView)
+    }
+    
+    // MARK: The game loop itself
+    
     func updateGame() {
-        // by here, the current level name in the parent view controller is already set
-        // from there, build the basic level
-//        if sampleLevel == nil {
-//            sampleLevel = BasicLevel()
-//            sampleLevel!.buildTestLevel()
-//        }
-//        
-//        if gameEngine == nil {
-//            gameEngine = BubblePhysicsGameEngine(aLevel: sampleLevel!, aCollectionView: self.collectionView!)
-//            
-//            resetGridInitial()
-//            
-//            let currentLevel = gameEngine!.currentLevel!
-//            
-//            for key in currentLevel.collectionOfBubbles.keys {
-//                let cellToUpdate = self.collectionView!.cellForItemAtIndexPath(key) as GridCollectionViewCell
-//                var newBubbleFileName: String?
-//                var newBubbleObject: ColorBubble?
-//                
-//                switch currentLevel.collectionOfBubbles[key]! {
-//                case "blue":
-//                    newBubbleFileName = BubblePhysicsConstants.blueBubbleFileName
-//                    newBubbleObject = ColorBubble(nameGiven: "blue", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//                case "red":
-//                    newBubbleFileName = BubblePhysicsConstants.redBubbleFileName
-//                    newBubbleObject = ColorBubble(nameGiven: "red", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//                case "orange":
-//                    newBubbleFileName = BubblePhysicsConstants.orangeBubbleFileName
-//                    newBubbleObject = ColorBubble(nameGiven: "orange", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//                case "green":
-//                    newBubbleFileName = BubblePhysicsConstants.greenBubbleFileName
-//                    newBubbleObject = ColorBubble(nameGiven: "green", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//                default:
-//                    break
-//                }
-//                
-//                let bubbleImage = UIImage(named: newBubbleFileName!)
-//                let imageView = UIImageView(image: bubbleImage)
-//                
-//                imageView.frame.size.width = BubblePhysicsConstants.bubbleWidth
-//                imageView.frame.size.height = BubblePhysicsConstants.bubbleHeight
-//                
-//                cellToUpdate.addSubview(imageView)
-//                cellToUpdate.bubbleAttached = newBubbleObject
-//            }
-//        }
-//        
-//        if isBubbleShooting {
-//            if gameEngine!.didCollideWithTopWall(currentlyShotBubble!)  {
-//                isBubbleShooting = false
-//                snapToClosestCell(currentlyShotBubble!)
-//            }
-//            
-//            checkForCollisionWithOtherBubbles(currentlyShotBubble!)
-//            
-//            if gameEngine!.didCollideWithLeftWall(currentlyShotBubble!) {
-//                currentlyShotBubble!.xSpeed = -currentlyShotBubble!.xSpeed!
-//            }
-//            
-//            if gameEngine!.didCollideWithRightWall(currentlyShotBubble!) {
-//                currentlyShotBubble!.xSpeed = -currentlyShotBubble!.xSpeed!
-//            }
-//            
-//            removeCurrentlyShotBubble()
-//            
-//            currentlyShotBubble!.centerPoint!.x += CGFloat(currentlyShotBubble!.xSpeed!)
-//            currentlyShotBubble!.centerPoint!.y += CGFloat(-currentlyShotBubble!.ySpeed!)
-//            
-//            var newBubbleFileName: String?
-//            var newBubbleObject: ProjectileBubble?
-//            
-//            switch currentlyShotBubble!.getBubbleName() {
-//            case "blue":
-//                newBubbleFileName = BubblePhysicsConstants.blueBubbleFileName
-//                newBubbleObject = ProjectileBubble(nameGiven: "blue", xSpeed: BubblePhysicsConstants.projectileVelocity, ySpeed: BubblePhysicsConstants.projectileVelocity, bodyCenter: currentlyShotBubble!.centerPoint!)
-//            case "red":
-//                newBubbleFileName = BubblePhysicsConstants.redBubbleFileName
-//                newBubbleObject = ProjectileBubble(nameGiven: "red", xSpeed: BubblePhysicsConstants.projectileVelocity, ySpeed: BubblePhysicsConstants.projectileVelocity, bodyCenter: currentlyShotBubble!.centerPoint!)
-//            case "orange":
-//                newBubbleFileName = BubblePhysicsConstants.orangeBubbleFileName
-//                newBubbleObject = ProjectileBubble(nameGiven: "orange", xSpeed: BubblePhysicsConstants.projectileVelocity, ySpeed: BubblePhysicsConstants.projectileVelocity, bodyCenter: currentlyShotBubble!.centerPoint!)
-//            case "green":
-//                newBubbleFileName = BubblePhysicsConstants.greenBubbleFileName
-//                newBubbleObject = ProjectileBubble(nameGiven: "green", xSpeed: BubblePhysicsConstants.projectileVelocity, ySpeed: BubblePhysicsConstants.projectileVelocity, bodyCenter: currentlyShotBubble!.centerPoint!)
-//            default:
-//                break
-//            }
-//            
-//            let bubbleImage = UIImage(named: newBubbleFileName!)
-//            let imageView = UIImageView(image: bubbleImage)
-//            
-//            imageView.frame.size.width = BubblePhysicsConstants.bubbleWidth
-//            imageView.frame.size.height = BubblePhysicsConstants.bubbleHeight
-//            imageView.center = currentlyShotBubble!.centerPoint!
-//            imageView.tag = BubblePhysicsConstants.shotBubbleTag
-//            
-//            self.view.addSubview(imageView)
-//        } else {
-//            if currentlyNoBubbleToBeShot() {
-//                addNewBubbleToShooter()
-//            }
-//            
-//            removeCurrentlyShotBubble()
-//        }
-//        
-//        resetGrid()
-//        
-//        let currentLevel = gameEngine!.currentLevel!
-//        
-//        for key in currentLevel.collectionOfBubbles.keys {
-//            let cellToUpdate = self.collectionView!.cellForItemAtIndexPath(key) as GridCollectionViewCell
-//            var newBubbleFileName: String?
-//            var newBubbleObject: ColorBubble?
-//            
-//            switch currentLevel.collectionOfBubbles[key]! {
-//            case "blue":
-//                newBubbleFileName = BubblePhysicsConstants.blueBubbleFileName
-//                newBubbleObject = ColorBubble(nameGiven: "blue", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//            case "red":
-//                newBubbleFileName = BubblePhysicsConstants.redBubbleFileName
-//                newBubbleObject = ColorBubble(nameGiven: "red", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//            case "orange":
-//                newBubbleFileName = BubblePhysicsConstants.orangeBubbleFileName
-//                newBubbleObject = ColorBubble(nameGiven: "orange", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//            case "green":
-//                newBubbleFileName = BubblePhysicsConstants.greenBubbleFileName
-//                newBubbleObject = ColorBubble(nameGiven: "green", bodyCenter: cellToUpdate.center, anIndexPath: key)
-//            default:
-//                break
-//            }
-//            // TA:  FOURTH time I'm seeing this switch case here. Create a Factory
-//            //      class to handle creation of your bubbles!
-//            //      Too much repeated code: -2 marks
-//            
-//            //      Obviously you copied and pasted without giving it much thought.
-//            //      newBubbleFileName is not even used here.
-//            
-//            cellToUpdate.bubbleAttached = newBubbleObject
-//        }
+        if !isGameInitialised {
+            initialiseGame()
+        }
+        
+        if isBubbleShooting {
+            dealWithShootingBubble()
+        } else {
+            if currentlyNoBubbleToBeShot() {
+                addNewBubbleToShooter()
+            }
+            
+            removeCurrentlyShotBubble()
+        }
+        
+        // might not need this part onwards, KIV, remove to test
+        resetGrid()
+        
+        for key in thisCurrentLevel!.collectionOfBubbles.keys {
+            let cellToUpdate = self.collectionView!.cellForItemAtIndexPath(key) as GridCollectionViewCell
+            
+            let bubbleName = thisCurrentLevel!.collectionOfBubbles[key]!
+            
+            let createdBubbleValues: (String, ColorBubble) = bubbleFactory.createBubble(bubbleName,
+                aPoint: cellToUpdate.center,
+                anIndexPath: key
+            )
+            
+            cellToUpdate.bubbleAttached = createdBubbleValues.1
+        }
+    }
+    
+    // MARK: Gesture func(s)
+    
+    func singleTapHandler(sender: UITapGestureRecognizer) {
+        let tappedLocation = sender.locationInView(self.collectionView)
+        
+        if bubbleToBeShotName != nil {
+            if !isBubbleShooting {
+                isBubbleShooting = true
+                
+                for viewController in self.parentViewController!.childViewControllers {
+                    if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                        let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                        
+                        thatViewController.currentBubbleToBeShot.image = nil
+                    }
+                }
+                
+                let xySpeed: (Float, Float) = gameEngine!.assignVelocityToProjectile(tappedLocation)
+                
+                currentlyShotBubble = ProjectileBubble(
+                    nameGiven: bubbleToBeShotName!,
+                    xSpeed: xySpeed.0,
+                    ySpeed: xySpeed.1,
+                    bodyCenter: FruitBlastManiaConstants.projectileInitialStartPoint
+                )
+                
+                bubbleToBeShotName = nil
+            }
+        }
     }
 }

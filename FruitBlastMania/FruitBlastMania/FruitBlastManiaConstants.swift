@@ -104,4 +104,5 @@ struct FruitBlastManiaConstants {
     static let levelThree = "Level Three"
     static let levelFour = "Level Four"
     static let levelFive = "Level Five"
+    static let customLevel = "Custom Level"
 }

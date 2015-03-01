@@ -41,7 +41,7 @@ class FruitBlastManiaPaletteViewController: UIViewController {
                 }
             }
             
-            thatViewController.currentLevelName = "Custom"
+            thatViewController.currentLevelName = FruitBlastManiaConstants.customLevel
             thatViewController.currentLevel = basicLevelToPassOver
         }
     }

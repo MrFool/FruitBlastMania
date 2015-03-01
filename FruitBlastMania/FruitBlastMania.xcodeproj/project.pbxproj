@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		346AD5631AA26C65009BB688 /* BubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346AD5621AA26C65009BB688 /* BubbleFactory.swift */; };
+		346AD5671AA30728009BB688 /* SoundUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346AD5661AA30728009BB688 /* SoundUtilities.swift */; };
 		34BFE8711AA2409900F63E0E /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFE8701AA2409900F63E0E /* FileUtilities.swift */; };
 		34CF55421AA100750048A92D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55411AA100750048A92D /* AppDelegate.swift */; };
 		34CF55471AA100750048A92D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55451AA100750048A92D /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		346AD5621AA26C65009BB688 /* BubbleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleFactory.swift; sourceTree = "<group>"; };
+		346AD5661AA30728009BB688 /* SoundUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundUtilities.swift; sourceTree = "<group>"; };
 		34BFE8701AA2409900F63E0E /* FileUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		34CF553C1AA100750048A92D /* FruitBlastMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitBlastMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CF55401AA100750048A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				34CF55781AA101470048A92D /* NumberUtilities.swift */,
 				34BFE8701AA2409900F63E0E /* FileUtilities.swift */,
+				346AD5661AA30728009BB688 /* SoundUtilities.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				34CF557D1AA101580048A92D /* PhysicsBody.swift in Sources */,
 				34CF558B1AA101880048A92D /* BasicGridFlowLayout.swift in Sources */,
 				34CF55751AA1013A0048A92D /* GameEngine.swift in Sources */,
+				346AD5671AA30728009BB688 /* SoundUtilities.swift in Sources */,
 				34CF556D1AA1011C0048A92D /* Queue.swift in Sources */,
 				34CF55421AA100750048A92D /* AppDelegate.swift in Sources */,
 				34EA55341AA2676D008BB78E /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */,

@@ -579,6 +579,13 @@ class GameEngine {
         
         let randomNumber = Int(arc4random_uniform(UInt32(randomRollerArray.count)))
         
+        if randomRollerArray.count == 0 {
+            return FruitBlastManiaConstants.redBubbleName
+            // realistically should return a random of any of the bubble because by now
+            // any kind of bubble should allow the user to finish the game, or of course cannot
+            // finish if the design of the level is bad
+        }
+        
         return randomRollerArray[randomNumber]
     }
 }
