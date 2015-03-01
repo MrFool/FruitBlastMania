@@ -17,9 +17,9 @@ Rules for standard bubble interaction
 Rules for special bubble interaction
 
 - Indestructible bubbles have to be removed by falling out of the screen OR be bombed OR be electrocuted by the lightning bubble
-- Lightning bubbles removes all bubbles in the same row and if any other lightning or bomb bubbles are removed that way, they are triggered as well. If a star bubble is triggered that way, nothing special happens.
-- Bomb bubbles removes all bubbles adjacent to the cell it is at and if any other lightning or bomb bubbles are removed that way, they are triggered as well. If a star bubble is triggered that way, nothing special happens.
-- Star bubbles removed all bubbles of the same color of the bubble that triggered it (can only be a normal bubble).
+- Lightning bubbles removes all bubbles in the same row and if any other lightning or bomb bubbles are removed that way, they are triggered as well.
+- Bomb bubbles removes all bubbles adjacent to the cell it is at and if any other lightning or bomb bubbles are removed that way, they are triggered as well.
+- Star bubbles removed all bubbles of the same color of the bubble that triggered it (or most recently snapped bubble that triggered it)
 
 Rules for winning game
 
@@ -162,6 +162,7 @@ To be added upon adding them
 10. Fluffy rolling sheep when game is in action (not yet done)
 11. Explosion sprites (not yet done)
 12. Lightning sprites (not yet done)
+13. App Logo (done)
 
 
 ###############################

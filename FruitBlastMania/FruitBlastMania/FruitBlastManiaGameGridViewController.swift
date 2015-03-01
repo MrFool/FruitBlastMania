@@ -17,6 +17,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     
     var isBubbleShooting: Bool = false
     var currentlyShotBubble: ProjectileBubble?
+    var mostRecentlySnappedBubble: ColorBubble?
     var nextBubbleToBeShotName: String?
     var bubbleToBeShotName: String?
     
@@ -28,6 +29,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     
     var isGameInitialised: Bool = false
     var waitCountBeforeInitialising: Int = 10
+    
+    var specialBubbleEffects: Queue<ColorBubble> = Queue<ColorBubble>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,6 +147,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         
         cellToSnapTo.bubbleAttached = createdBubbleValues.1
         
+        mostRecentlySnappedBubble = createdBubbleValues.1
+        
         gameEngine!.bubbleSnapped(createdBubbleValues.1, aCollectionView: self.collectionView!)
         
         // clean up after snapping + animations
@@ -151,42 +156,14 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         let allCells = self.collectionView!.visibleCells() as [GridCollectionViewCell]
         let cellsThatNeedsToHaveTheirBubblesRemoved: [NSIndexPath] = gameEngine!.bubblesToPopAfterSnapping(createdBubbleValues.1)
         
-        let specialBubbleEffects: [(NSIndexPath, String)] = gameEngine!.checkForSpecialBubbles(createdBubbleValues.1)
+        let specialBubbles: [ColorBubble] = gameEngine!.checkForSpecialBubbles(createdBubbleValues.1)
+        
+        for bubble in specialBubbles {
+            specialBubbleEffects.enqueue(bubble)
+        }
         
         for cellIndexPath in cellsThatNeedsToHaveTheirBubblesRemoved {
-            var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
-            
-            for bubbleView in cellToAnimate.subviews as [UIImageView] {
-                var newBubbleView = UIImageView(
-                    frame: CGRect(
-                        x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
-                        y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
-                        width: FruitBlastManiaConstants.bubbleWidth,
-                        height: FruitBlastManiaConstants.bubbleWidth
-                    )
-                )
-                
-                newBubbleView.image = bubbleView.image!
-                
-                self.collectionView!.addSubview(newBubbleView)
-                
-                bubbleView.removeFromSuperview()
-                
-                UIView.animateWithDuration(0.375,
-                    delay: 0.0,
-                    options: .CurveEaseOut,
-                    animations: {
-                    newBubbleView.frame.size.width = FruitBlastManiaConstants.bubbleWidth +
-                        FruitBlastManiaConstants.expansionRadius
-                    newBubbleView.frame.size.height = FruitBlastManiaConstants.bubbleHeight +
-                        FruitBlastManiaConstants.expansionRadius
-                    newBubbleView.alpha = 0
-                    }, completion: { finished in
-                        newBubbleView.removeFromSuperview()
-                })
-            }
-            
-            cellToAnimate.bubbleAttached = nil
+            animateBurst(cellIndexPath)
         }
         
         if !cellsThatNeedsToHaveTheirBubblesRemoved.isEmpty {
@@ -493,6 +470,109 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         }
     }
     
+    func handleSpecialBubble() {
+        let specialBubble = specialBubbleEffects.dequeue()
+        
+        switch specialBubble!.getBubbleName() {
+        case FruitBlastManiaConstants.lightningBubbleName:
+            let bubbleIndexPathsToBeRemoved = gameEngine!.handleLightningBubble(specialBubble!)
+            
+            var moreSpecialBubbles: [ColorBubble] = [ColorBubble]()
+            
+            for indexPath in bubbleIndexPathsToBeRemoved {
+                let cellToCheck = self.collectionView!.cellForItemAtIndexPath(indexPath) as GridCollectionViewCell
+                
+                if let cellHasBubble = cellToCheck.bubbleAttached {
+                    if gameEngine!.isSpecialBubble(cellToCheck.bubbleAttached!) {
+                        moreSpecialBubbles.append(cellToCheck.bubbleAttached!)
+                    }
+                }
+            }
+            
+            for bubble in moreSpecialBubbles {
+                specialBubbleEffects.enqueue(bubble)
+            }
+            
+            for cellIndexPath in bubbleIndexPathsToBeRemoved {
+                animateBurst(cellIndexPath)
+            }
+            
+            removeHangingBubbles()
+        case FruitBlastManiaConstants.bombBubbleName:
+            let bubbleIndexPathsToBeRemoved = gameEngine!.handleBombBubble(specialBubble!)
+            
+            var moreSpecialBubbles: [ColorBubble] = [ColorBubble]()
+            
+            for indexPath in bubbleIndexPathsToBeRemoved {
+                let cellToCheck = self.collectionView!.cellForItemAtIndexPath(indexPath) as GridCollectionViewCell
+                
+                if let cellHasBubble = cellToCheck.bubbleAttached {
+                    if gameEngine!.isSpecialBubble(cellToCheck.bubbleAttached!) {
+                        moreSpecialBubbles.append(cellToCheck.bubbleAttached!)
+                    }
+                }
+            }
+            
+            for bubble in moreSpecialBubbles {
+                specialBubbleEffects.enqueue(bubble)
+            }
+            
+            for cellIndexPath in bubbleIndexPathsToBeRemoved {
+                animateBurst(cellIndexPath)
+            }
+            
+            removeHangingBubbles()
+        case FruitBlastManiaConstants.starBubbleName:
+            let bubbleIndexPathsToBeRemoved = gameEngine!.handleStarBubble(mostRecentlySnappedBubble!,
+                aSpecialBubble: specialBubble!
+            )
+            
+            for cellIndexPath in bubbleIndexPathsToBeRemoved {
+                animateBurst(cellIndexPath)
+            }
+            
+            removeHangingBubbles()
+        default:
+            break
+        }
+    }
+    
+    func animateBurst(cellIndexPath: NSIndexPath) {
+        var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
+        
+        for bubbleView in cellToAnimate.subviews as [UIImageView] {
+            var newBubbleView = UIImageView(
+                frame: CGRect(
+                    x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    width: FruitBlastManiaConstants.bubbleWidth,
+                    height: FruitBlastManiaConstants.bubbleWidth
+                )
+            )
+            
+            newBubbleView.image = bubbleView.image!
+            
+            self.collectionView!.addSubview(newBubbleView)
+            
+            bubbleView.removeFromSuperview()
+            
+            UIView.animateWithDuration(0.375,
+                delay: 0.0,
+                options: .CurveEaseOut,
+                animations: {
+                    newBubbleView.frame.size.width = FruitBlastManiaConstants.bubbleWidth +
+                        FruitBlastManiaConstants.expansionRadius
+                    newBubbleView.frame.size.height = FruitBlastManiaConstants.bubbleHeight +
+                        FruitBlastManiaConstants.expansionRadius
+                    newBubbleView.alpha = 0
+                }, completion: { finished in
+                    newBubbleView.removeFromSuperview()
+            })
+        }
+        
+        cellToAnimate.bubbleAttached = nil
+    }
+    
     // MARK: The game loop itself
     
     func updateGame() {
@@ -506,8 +586,12 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             if isBubbleShooting {
                 dealWithShootingBubble()
             } else {
-                if currentlyNoBubbleToBeShot() {
-                    addNewBubbleToShooter()
+                if !specialBubbleEffects.isEmpty {
+                    handleSpecialBubble()
+                } else {
+                    if currentlyNoBubbleToBeShot() {
+                        addNewBubbleToShooter()
+                    }
                 }
                 
                 removeCurrentlyShotBubble()

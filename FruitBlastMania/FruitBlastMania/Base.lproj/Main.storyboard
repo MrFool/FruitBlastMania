@@ -45,7 +45,7 @@
             <objects>
                 <collectionViewController title="Fruit Blast Mania Game Grid View Controller" id="rgS-yj-XIJ" customClass="FruitBlastManiaGameGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e80-Pg-J7h">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l8m-1L-qHz">
@@ -504,7 +504,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PvH-2U-3sb"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="CTi-Fv-Zjg" userLabel="shooterArea">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGW-Vm-iwj" userLabel="currentBubbleToBeShot">
@@ -516,6 +516,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3B-Aa-D1R" userLabel="cannonItself">
                                 <rect key="frame" x="320" y="-133" width="128" height="233"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cannon-base" translatesAutoresizingMaskIntoConstraints="NO" id="tFw-eE-F1g">
+                                <rect key="frame" x="320" y="36" width="128" height="64"/>
+                            </imageView>
                             <button opaque="NO" alpha="0.59999999999999964" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-N7-maA">
                                 <rect key="frame" x="704" y="42" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -525,9 +528,6 @@
                                     <segue destination="jpf-rO-hBD" kind="show" id="QUU-H2-Vod"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cannon-base" translatesAutoresizingMaskIntoConstraints="NO" id="tFw-eE-F1g">
-                                <rect key="frame" x="320" y="36" width="128" height="64"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>

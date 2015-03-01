@@ -359,14 +359,14 @@ class BasicLevel: NSObject, NSCoding {
     }
     
     func buildLevelFive() {
-        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.greenBubbleName
-        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
-        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 0)] = FruitBlastManiaConstants.orangeBubbleName
-        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 0)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
-        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
-        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
         self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
         
         self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 1)] = FruitBlastManiaConstants.redBubbleName

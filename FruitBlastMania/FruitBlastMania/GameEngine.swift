@@ -13,6 +13,8 @@ class GameEngine {
     var currentLevel: BasicLevel?
     var numUtils = NumberUtilities()
     
+    var theCollectionView: UICollectionView?
+    
     let rootNode = Node<ColorBubble>(ColorBubble(
         nameGiven: "rootNode",
         bodyCenter: CGPoint(x: 0, y: 0),
@@ -29,6 +31,8 @@ class GameEngine {
     init(aLevel: BasicLevel, aCollectionView: UICollectionView) {
         currentLevel = aLevel
         
+        theCollectionView = aCollectionView
+        
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = currentLevel!.collectionOfBubbles
         
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
@@ -36,7 +40,7 @@ class GameEngine {
         for key in dictionaryOfBubblesInStringFormat.keys {
             let bubbleConstructed = ColorBubble(
                 nameGiven: dictionaryOfBubblesInStringFormat[key]!,
-                bodyCenter: aCollectionView.cellForItemAtIndexPath(key)!.center,
+                bodyCenter: theCollectionView!.cellForItemAtIndexPath(key)!.center,
                 anIndexPath: key
             )
             
@@ -50,7 +54,6 @@ class GameEngine {
         }
     }
     
-    // TODO refactor
     func updateGraphByAddingNode(anIndexPath: NSIndexPath, aDictionary: Dictionary<NSIndexPath, ColorBubble>) {
         let bubble = aDictionary[anIndexPath]
         let bubbleNode: N = Node<ColorBubble>(bubble!)
@@ -66,163 +69,44 @@ class GameEngine {
             let indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
             
             if anIndexPath.section == 0 {
-                switch anIndexPath.row {
-                case 0:
-                    let edgeToRootNode = Edge<ColorBubble>(source: bubbleNode, destination: rootNode)
-                    graphRepresentationOfGameState.addEdge(edgeToRootNode)
-                    
-                    if let rightBubble = aDictionary[indexPathRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomRightBubble = aDictionary[indexPathBottomRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                case 11:
-                    let edgeToRootNode = Edge<ColorBubble>(source: bubbleNode, destination: rootNode)
-                    graphRepresentationOfGameState.addEdge(edgeToRootNode)
-                    
-                    if let leftBubble = aDictionary[indexPathLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                default:
-                    let edgeToRootNode = Edge<ColorBubble>(source: bubbleNode, destination: rootNode)
-                    graphRepresentationOfGameState.addEdge(edgeToRootNode)
-                    
-                    if let leftBubble = aDictionary[indexPathLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let rightBubble = aDictionary[indexPathRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomRightBubble = aDictionary[indexPathBottomRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                }
-            } else if anIndexPath.section == 8 {
-                switch anIndexPath.row {
-                case 0:
-                    if let topRightBubble = aDictionary[indexPathTopRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let rightBubble = aDictionary[indexPathRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                case 11:
-                    if let topLeftBubble = aDictionary[indexPathTopLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let leftBubble = aDictionary[indexPathLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                default:
-                    if let topLeftBubble = aDictionary[indexPathTopLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let topRightBubble = aDictionary[indexPathTopRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let leftBubble = aDictionary[indexPathLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let rightBubble = aDictionary[indexPathRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                }
-            } else {
-                switch anIndexPath.row {
-                case 0:
-                    if let topRightBubble = aDictionary[indexPathTopRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let rightBubble = aDictionary[indexPathRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomRightBubble = aDictionary[indexPathBottomRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                case 11:
-                    if let topLeftBubble = aDictionary[indexPathTopLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let leftBubble = aDictionary[indexPathLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                default:
-                    if let topLeftBubble = aDictionary[indexPathTopLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let topRightBubble = aDictionary[indexPathTopRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let leftBubble = aDictionary[indexPathLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let rightBubble = aDictionary[indexPathRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomLeftBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                    
-                    if let bottomRightBubble = aDictionary[indexPathBottomRight] {
-                        let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomRightBubble))
-                        graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                    }
-                }
+                let edgeToRootNode = Edge<ColorBubble>(source: bubbleNode, destination: rootNode)
+                graphRepresentationOfGameState.addEdge(edgeToRootNode)
+            }
+            
+            if let topLeftBubble = aDictionary[indexPathTopLeft] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(topLeftBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let topRightBubble = aDictionary[indexPathTopRight] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(topRightBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let leftBubble = aDictionary[indexPathLeft] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(leftBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let rightBubble = aDictionary[indexPathRight] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(rightBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(bottomLeftBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let bottomRightBubble = aDictionary[indexPathBottomRight] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(bottomRightBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
             }
         } else {
             let indexPathTopLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section - 1)
@@ -232,91 +116,43 @@ class GameEngine {
             let indexPathBottomLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
             let indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section + 1)
             
-            switch anIndexPath.row {
-            case 0:
-                if let topLeftBubble = aDictionary[indexPathTopLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topLeftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let topRightBubble = aDictionary[indexPathTopRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topRightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let rightBubble = aDictionary[indexPathRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomLeftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let bottomRightBubble = aDictionary[indexPathBottomRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomRightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-            case 10:
-                if let topLeftBubble = aDictionary[indexPathTopLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topLeftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let topRightBubble = aDictionary[indexPathTopRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topRightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let leftBubble = aDictionary[indexPathLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomLeftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let bottomRightBubble = aDictionary[indexPathBottomRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomRightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-            default:
-                if let topLeftBubble = aDictionary[indexPathTopLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topLeftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let topRightBubble = aDictionary[indexPathTopRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(topRightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let leftBubble = aDictionary[indexPathLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(leftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let rightBubble = aDictionary[indexPathRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(rightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomLeftBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
-                
-                if let bottomRightBubble = aDictionary[indexPathBottomRight] {
-                    let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode, destination: Node<ColorBubble>(bottomRightBubble))
-                    graphRepresentationOfGameState.addEdge(edgeToThatNode)
-                }
+            if let topLeftBubble = aDictionary[indexPathTopLeft] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(topLeftBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let topRightBubble = aDictionary[indexPathTopRight] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(topRightBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let leftBubble = aDictionary[indexPathLeft] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(leftBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let rightBubble = aDictionary[indexPathRight] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(rightBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(bottomLeftBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
+            }
+            
+            if let bottomRightBubble = aDictionary[indexPathBottomRight] {
+                let edgeToThatNode = Edge<ColorBubble>(source:bubbleNode,
+                    destination: Node<ColorBubble>(bottomRightBubble))
+                graphRepresentationOfGameState.addEdge(edgeToThatNode)
             }
         }
     }
-    // TODO refactor
     
     func bubblesToPopAfterSnapping(snappedBubble: ColorBubble) -> [NSIndexPath] {
         var arrayToReturn = [NSIndexPath]()
@@ -364,7 +200,7 @@ class GameEngine {
             }
         }
         
-        if arrayToReturn.count != 0 {
+        if !arrayToReturn.isEmpty {
             for bubble in arrayOfBubblesToRemove {
                 let bubbleNode: N = Node<ColorBubble>(bubble)
                 
@@ -384,8 +220,26 @@ class GameEngine {
         return arrayToReturn
     }
     
-    func checkForSpecialBubbles(aBubble: ColorBubble) -> [(NSIndexPath, String)] {
+    func checkForSpecialBubbles(aBubble: ColorBubble) -> [ColorBubble] {
+        var arrayToReturn: [ColorBubble] = [ColorBubble]()
+        
         let anIndexPath = aBubble.indexPath
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = currentLevel!.collectionOfBubbles
+        
+        var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: theCollectionView!.cellForItemAtIndexPath(key)!.center,
+                anIndexPath: key
+            )
+            
+            dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
+        }
+        
+        let aDictionary = dictionaryOfBubblesInColorBubbleFormat
         
         if !numUtils.isOdd(aBubble.indexPath.section) {
             let indexPathTopLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section - 1)
@@ -395,7 +249,41 @@ class GameEngine {
             let indexPathBottomLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section + 1)
             let indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
             
+            if let topLeftBubble = aDictionary[indexPathTopLeft] {
+                if isSpecialBubble(topLeftBubble) {
+                    arrayToReturn.append(topLeftBubble)
+                }
+            }
             
+            if let topRightBubble = aDictionary[indexPathTopRight] {
+                if isSpecialBubble(topRightBubble) {
+                    arrayToReturn.append(topRightBubble)
+                }
+            }
+            
+            if let leftBubble = aDictionary[indexPathLeft] {
+                if isSpecialBubble(leftBubble) {
+                    arrayToReturn.append(leftBubble)
+                }
+            }
+            
+            if let rightBubble = aDictionary[indexPathRight] {
+                if isSpecialBubble(rightBubble) {
+                    arrayToReturn.append(rightBubble)
+                }
+            }
+            
+            if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
+                if isSpecialBubble(bottomLeftBubble) {
+                    arrayToReturn.append(bottomLeftBubble)
+                }
+            }
+            
+            if let bottomRightBubble = aDictionary[indexPathBottomRight] {
+                if isSpecialBubble(bottomRightBubble) {
+                    arrayToReturn.append(bottomRightBubble)
+                }
+            }
         } else {
             let indexPathTopLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section - 1)
             let indexPathTopRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section - 1)
@@ -404,9 +292,236 @@ class GameEngine {
             let indexPathBottomLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
             let indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section + 1)
             
+            if let topLeftBubble = aDictionary[indexPathTopLeft] {
+                if isSpecialBubble(topLeftBubble) {
+                    arrayToReturn.append(topLeftBubble)
+                }
+            }
+            
+            if let topRightBubble = aDictionary[indexPathTopRight] {
+                if isSpecialBubble(topRightBubble) {
+                    arrayToReturn.append(topRightBubble)
+                }
+            }
+            
+            if let leftBubble = aDictionary[indexPathLeft] {
+                if isSpecialBubble(leftBubble) {
+                    arrayToReturn.append(leftBubble)
+                }
+            }
+            
+            if let rightBubble = aDictionary[indexPathRight] {
+                if isSpecialBubble(rightBubble) {
+                    arrayToReturn.append(rightBubble)
+                }
+            }
+            
+            if let bottomLeftBubble = aDictionary[indexPathBottomLeft] {
+                if isSpecialBubble(bottomLeftBubble) {
+                    arrayToReturn.append(bottomLeftBubble)
+                }
+            }
+            
+            if let bottomRightBubble = aDictionary[indexPathBottomRight] {
+                if isSpecialBubble(bottomRightBubble) {
+                    arrayToReturn.append(bottomRightBubble)
+                }
+            }
         }
         
-        return [(NSIndexPath, String)]()
+        return arrayToReturn
+    }
+    
+    func isSpecialBubble(aBubble: ColorBubble) -> Bool {
+        switch aBubble.getBubbleName() {
+        case FruitBlastManiaConstants.lightningBubbleName:
+            return true
+        case FruitBlastManiaConstants.bombBubbleName:
+            return true
+        case FruitBlastManiaConstants.starBubbleName:
+            return true
+        default:
+            return false
+        }
+    }
+    
+    func handleStarBubble(aBubble: ColorBubble, aSpecialBubble: ColorBubble) -> [NSIndexPath] {
+        var arrayToReturn = [NSIndexPath]()
+        
+        let nameOfBubblesToBurst = aBubble.getBubbleName()
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = currentLevel!.collectionOfBubbles
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            if dictionaryOfBubblesInStringFormat[key] == nameOfBubblesToBurst {
+                arrayToReturn.append(key)
+            }
+        }
+        
+        arrayToReturn.append(aSpecialBubble.indexPath)
+        
+        var dictionaryOfBubblesToRemove: Dictionary<NSIndexPath, Bool> = Dictionary<NSIndexPath, Bool>()
+        
+        for indexPath in arrayToReturn {
+            dictionaryOfBubblesToRemove[indexPath] = true
+        }
+        
+        let allNodes = graphRepresentationOfGameState.nodes
+        
+        if !arrayToReturn.isEmpty {
+            for node in allNodes {
+                let bubble: ColorBubble = node.getLabel()
+                
+                if dictionaryOfBubblesToRemove[bubble.indexPath] == true {
+                    let bubbleNode: N = Node<ColorBubble>(bubble)
+                    
+                    let adjacentNodes: [N] = graphRepresentationOfGameState.adjacentNodesFromNode(bubbleNode)
+                    
+                    for node in adjacentNodes {
+                        let edgeToRemove: E = Edge<ColorBubble>(source: bubbleNode, destination: node)
+                        
+                        graphRepresentationOfGameState.removeEdge(edgeToRemove)
+                        graphRepresentationOfGameState.removeNode(bubbleNode)
+                    }
+                    
+                    self.currentLevel!.collectionOfBubbles[bubble.indexPath] = nil
+                }
+            }
+        }
+
+        return arrayToReturn
+    }
+    
+    func handleLightningBubble(aSpecialBubble: ColorBubble) -> [NSIndexPath] {
+        var arrayToReturn = [NSIndexPath]()
+        
+        let sectionOfBubblesToBurst = aSpecialBubble.indexPath.section
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = currentLevel!.collectionOfBubbles
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            if let bubbleExist = dictionaryOfBubblesInStringFormat[key] {
+                if key.section == sectionOfBubblesToBurst {
+                    arrayToReturn.append(key)
+                }
+            }
+        }
+        
+        arrayToReturn.append(aSpecialBubble.indexPath)
+        
+        var dictionaryOfBubblesToRemove: Dictionary<NSIndexPath, Bool> = Dictionary<NSIndexPath, Bool>()
+        
+        for indexPath in arrayToReturn {
+            dictionaryOfBubblesToRemove[indexPath] = true
+        }
+        
+        let allNodes = graphRepresentationOfGameState.nodes
+        
+        if !arrayToReturn.isEmpty {
+            for node in allNodes {
+                let bubble: ColorBubble = node.getLabel()
+                
+                if dictionaryOfBubblesToRemove[bubble.indexPath] == true {
+                    let bubbleNode: N = Node<ColorBubble>(bubble)
+                    
+                    let adjacentNodes: [N] = graphRepresentationOfGameState.adjacentNodesFromNode(bubbleNode)
+                    
+                    for node in adjacentNodes {
+                        let edgeToRemove: E = Edge<ColorBubble>(source: bubbleNode, destination: node)
+                        
+                        graphRepresentationOfGameState.removeEdge(edgeToRemove)
+                        graphRepresentationOfGameState.removeNode(bubbleNode)
+                    }
+                    
+                    self.currentLevel!.collectionOfBubbles[bubble.indexPath] = nil
+                }
+            }
+        }
+        
+        return arrayToReturn
+    }
+    
+    func handleBombBubble(aSpecialBubble: ColorBubble) -> [NSIndexPath] {
+        var arrayToReturn = [NSIndexPath]()
+        
+        let anIndexPath = aSpecialBubble.indexPath
+        
+        var indexPathTopLeft: NSIndexPath?
+        var indexPathTopRight: NSIndexPath?
+        var indexPathLeft: NSIndexPath?
+        var indexPathRight: NSIndexPath?
+        var indexPathBottomLeft: NSIndexPath?
+        var indexPathBottomRight: NSIndexPath?
+        
+        if !numUtils.isOdd(anIndexPath.section) {
+            indexPathTopLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section - 1)
+            indexPathTopRight = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section - 1)
+            indexPathLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section)
+            indexPathRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section)
+            indexPathBottomLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section + 1)
+            indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
+        } else {
+            indexPathTopLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section - 1)
+            indexPathTopRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section - 1)
+            indexPathLeft = NSIndexPath(forRow: anIndexPath.row - 1, inSection: anIndexPath.section)
+            indexPathRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section)
+            indexPathBottomLeft = NSIndexPath(forRow: anIndexPath.row, inSection: anIndexPath.section + 1)
+            indexPathBottomRight = NSIndexPath(forRow: anIndexPath.row + 1, inSection: anIndexPath.section + 1)
+        }
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = currentLevel!.collectionOfBubbles
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            switch key {
+            case indexPathTopLeft!:
+                arrayToReturn.append(key)
+            case indexPathTopRight!:
+                arrayToReturn.append(key)
+            case indexPathLeft!:
+                arrayToReturn.append(key)
+            case indexPathRight!:
+                arrayToReturn.append(key)
+            case indexPathBottomLeft!:
+                arrayToReturn.append(key)
+            case indexPathBottomRight!:
+                arrayToReturn.append(key)
+            default:
+            break
+            }
+        }
+        
+        arrayToReturn.append(aSpecialBubble.indexPath)
+        
+        var dictionaryOfBubblesToRemove: Dictionary<NSIndexPath, Bool> = Dictionary<NSIndexPath, Bool>()
+        
+        for indexPath in arrayToReturn {
+            dictionaryOfBubblesToRemove[indexPath] = true
+        }
+        
+        let allNodes = graphRepresentationOfGameState.nodes
+        
+        if !arrayToReturn.isEmpty {
+            for node in allNodes {
+                let bubble: ColorBubble = node.getLabel()
+                
+                if dictionaryOfBubblesToRemove[bubble.indexPath] == true {
+                    let bubbleNode: N = Node<ColorBubble>(bubble)
+                    
+                    let adjacentNodes: [N] = graphRepresentationOfGameState.adjacentNodesFromNode(bubbleNode)
+                    
+                    for node in adjacentNodes {
+                        let edgeToRemove: E = Edge<ColorBubble>(source: bubbleNode, destination: node)
+                        
+                        graphRepresentationOfGameState.removeEdge(edgeToRemove)
+                        graphRepresentationOfGameState.removeNode(bubbleNode)
+                    }
+                    
+                    self.currentLevel!.collectionOfBubbles[bubble.indexPath] = nil
+                }
+            }
+        }
+        
+        return arrayToReturn
     }
     
     func unattachedBubbles() -> [NSIndexPath] {
@@ -459,7 +574,7 @@ class GameEngine {
         
         let allNodes = graphRepresentationOfGameState.nodes
         
-        if arrayToReturn.count != 0 {
+        if !arrayToReturn.isEmpty {
             for node in allNodes {
                 let bubble: ColorBubble = node.getLabel()
                 
