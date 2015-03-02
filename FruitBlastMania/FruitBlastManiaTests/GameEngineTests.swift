@@ -295,27 +295,38 @@ class BubblePhysicsTests: XCTestCase {
         let thatSpecialBombBubble: ColorBubble = ColorBubble(
             nameGiven: FruitBlastManiaConstants.bombBubbleName,
             bodyCenter: CGPoint(x: 0, y: 0),
-            anIndexPath: NSIndexPath(forRow: 1, inSection: 0)
+            anIndexPath: NSIndexPath(forRow: 1, inSection: 1)
         )
         
-        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.handleBombBubble(thatSpecialBombBubble)
+        let arrayOfBombedBubbles: [NSIndexPath] = testingGameEngine!.handleBombBubble(thatSpecialBombBubble)
         
-        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 bubbles surrounding bomb bubble did not explode them")
+        XCTAssert(arrayOfBombedBubbles.count == 3, "Game State with 2 bubbles surrounding bomb bubble did not explode them and itself")
     }
     
     func testLightning() {
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 1)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 1)] = FruitBlastManiaConstants.lightningBubbleName
         
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 7)] = FruitBlastManiaConstants.blueBubbleName
-        
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
-        
-        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
+        var dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
         
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
+        let thatSpecialLightningBubble: ColorBubble = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.lightningBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 1, inSection: 1)
+        )
+        
+        dictionaryOfBubblesInStringFormat[thatSpecialLightningBubble.indexPath] = thatSpecialLightningBubble.getBubbleName()
+        
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: CGPoint(x: 0, y: 0),
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -324,24 +335,26 @@ class BubblePhysicsTests: XCTestCase {
             testingGameEngine!.updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
         }
         
-        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.unattachedBubbles()
+        let arrayOfElectrocutedBubbles: [NSIndexPath] = testingGameEngine!.handleLightningBubble(thatSpecialLightningBubble, anIndexPath: NSIndexPath(forRow: 2, inSection: 2))
         
-        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
+        XCTAssert(arrayOfElectrocutedBubbles.count == 3, "Game State with 2 bubbles surrounding lightning with only one on the same section bubble did not electrocute that one bubble, the lightning bubble itself, and the bubble activating it")
     }
     
     func testStar() {
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
-        
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 7)] = FruitBlastManiaConstants.blueBubbleName
-        
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 1)] = FruitBlastManiaConstants.blueBubbleName
         
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
         
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: CGPoint(x: 0, y: 0),
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -350,9 +363,19 @@ class BubblePhysicsTests: XCTestCase {
             testingGameEngine!.updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
         }
         
-        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.unattachedBubbles()
+        let thatSpecialStarBubble: ColorBubble = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.starBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 1, inSection: 1)
+        )
         
-        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
+        let arrayOfStarredBubbles: [NSIndexPath] = testingGameEngine!.handleStarBubble(ColorBubble(
+            nameGiven: FruitBlastManiaConstants.blueBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 2, inSection: 2)
+            ), aSpecialBubble: thatSpecialStarBubble)
+        
+        XCTAssert(arrayOfStarredBubbles.count == 4, "Game State with 3 blue bubbles and a star bubble being handled did not result in 4 bubbles being removed")
     }
     
     func testDidLose() {
