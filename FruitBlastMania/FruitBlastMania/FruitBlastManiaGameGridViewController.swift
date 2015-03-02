@@ -5,11 +5,15 @@
 
 import UIKit
 import Social
+import AVFoundation
 
 class FruitBlastManiaGameGridViewController: UICollectionViewController {
     let defaultLayout: BasicGridFlowLayout = BasicGridFlowLayout()
     let defaultGrid: BasicGrid = BasicGrid()
     let reuseIdentifier = "gameBubbleCell"
+    
+    var mehSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("meh", ofType: "wav")!)
+    var mehSoundPlayer = AVAudioPlayer()
     
     var numUtils = NumberUtilities()
     var bubbleFactory = BubbleFactory()
@@ -31,6 +35,9 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     var isGameInitialised: Bool = false
     var waitCountBeforeInitialising: Int = 10
     var quitIsPressed: Bool = false
+    
+    var isSheepUp: Bool = true
+    var isSheepLeft: Bool = true
     
     var specialBubbleEffects: Queue<ColorBubble> = Queue<ColorBubble>()
     
@@ -55,6 +62,12 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             userInfo: nil,
             repeats: true
         )
+        
+        
+        mehSoundPlayer = AVAudioPlayer(contentsOfURL: mehSound, error: nil)
+        
+        mehSoundPlayer.numberOfLoops = 0
+        mehSoundPlayer.prepareToPlay()
     }
     
     override func didReceiveMemoryWarning() {
@@ -357,6 +370,16 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         }
     }
     
+    func updateScore() {
+        for viewController in self.parentViewController!.childViewControllers {
+            if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                
+                thatViewController.scoreNumber.text = String(gameEngine!.currentScore)
+            }
+        }
+    }
+    
     func initialiseGame() {
         resetGridInitial()
         
@@ -530,7 +553,41 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     }
     
     func animateSheep() {
+        let parentViewController = self.parentViewController! as FruitBlastManiaGameViewMainController
         
+        let sheepView = parentViewController.sheepImage
+        
+        if isSheepLeft {
+            sheepView.center.x -= 1
+        } else {
+            sheepView.center.x += 1
+        }
+        
+        if sheepView.center.x < CGFloat(FruitBlastManiaConstants.deviceLeftBarrier) +
+            CGFloat(FruitBlastManiaConstants.bubbleRadius) {
+            isSheepLeft = false
+        }
+        
+        if sheepView.center.x > CGFloat(FruitBlastManiaConstants.deviceRightBarrier) -
+            CGFloat(FruitBlastManiaConstants.bubbleRadius) {
+            isSheepLeft = true
+        }
+        
+        if isSheepUp {
+            sheepView.center.y += 2
+            
+            isSheepUp = false
+        } else {
+            sheepView.center.y -= 2
+            
+            isSheepUp = true
+        }
+        
+        if isBubbleShooting {
+            if gameEngine!.isCollided(currentlyShotBubble!, staticBubblePoint: sheepView.center)  {
+                mehSoundPlayer.play()
+            }
+        }
     }
     
     func handleSpecialBubble() {
@@ -765,16 +822,50 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     }
     
     func handleWin() {
-        let winDismissActionHandler = { (action: UIAlertAction!) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+        var twitterSheet: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+        var facebookSheet: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+        
+        let parentViewController = self.parentViewController! as FruitBlastManiaGameViewMainController
+        
+        let parentViewControllersPresentingViewController = parentViewController.presentingViewController!
+        
+        if gameEngine!.numberOfBubbles > 0 {
+            gameEngine!.currentScore += gameEngine!.numberOfBubbles
+        } else if gameEngine!.numberOfBubbles == 0 {
+            gameEngine!.currentScore += 1
+        } else {
+            // it's -1, don't add anything!
         }
         
-        let winAlert = UIAlertController(title: "Winner!", message: "You've won!", preferredStyle: .Alert)
-        winAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: winDismissActionHandler))
+        let initialText = "I just won " + parentViewController.currentLevelName! +
+            " on Fruit Blast Mania with a score of " +
+            String(gameEngine!.currentScore)
+        
+        twitterSheet.setInitialText(initialText)
+        facebookSheet.setInitialText(initialText)
+        
+        let facebookActionHandler = { (action: UIAlertAction!) in
+            parentViewControllersPresentingViewController.presentViewController(facebookSheet,
+                animated: true, completion: nil)
+        }
+        
+        let tweetActionHandler = { (action: UIAlertAction!) in
+            parentViewControllersPresentingViewController.presentViewController(twitterSheet,
+                animated: true, completion: nil)
+        }
+        
+        let winAlert = UIAlertController(title: "Winner!", message: "You've won " +
+            parentViewController.currentLevelName! + " on Fruit Blast Mania with a score of " +
+            String(gameEngine!.currentScore), preferredStyle: .Alert)
+        winAlert.addAction(UIAlertAction(title: "Yay", style: .Default, handler: nil))
+        winAlert.addAction(UIAlertAction(title: "Tweet", style: .Default, handler: tweetActionHandler))
+        winAlert.addAction(UIAlertAction(title: "Post To Facebook", style: .Default, handler: facebookActionHandler))
         
         quitIsPressed = true
         
-        presentViewController(winAlert, animated: true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        parentViewControllersPresentingViewController.presentViewController(winAlert, animated: true, completion: nil)
     }
     
     func handleLoseNoMoreBubble() {
@@ -786,6 +877,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             message: "You've lost",
             preferredStyle: .Alert
         )
+        
         winAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: winDismissActionHandler))
         
         quitIsPressed = true
@@ -802,6 +894,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             message: "You've lost",
             preferredStyle: .Alert
         )
+        
         winAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: winDismissActionHandler))
         
         quitIsPressed = true
@@ -831,6 +924,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 animateSheep()
                 
                 updateBubbleCount()
+                
+                updateScore()
                 
                 if isBubbleShooting {
                     dealWithShootingBubble()

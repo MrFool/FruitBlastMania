@@ -13,6 +13,7 @@ class GameEngine {
     var numberOfBubbles: Int = FruitBlastManiaConstants.numberOfBubblesAtStart
     
     var currentLevel: BasicLevel?
+    var currentScore: Int = 0
     var numUtils = NumberUtilities()
     
     var theCollectionView: UICollectionView?
@@ -203,6 +204,8 @@ class GameEngine {
         }
         
         if !arrayToReturn.isEmpty {
+            currentScore += arrayToReturn.count
+            
             for bubble in arrayOfBubblesToRemove {
                 let bubbleNode: N = Node<ColorBubble>(bubble)
                 
@@ -371,6 +374,8 @@ class GameEngine {
         let allNodes = graphRepresentationOfGameState.nodes
         
         if !arrayToReturn.isEmpty {
+            currentScore += arrayToReturn.count
+            
             for node in allNodes {
                 let bubble: ColorBubble = node.getLabel()
                 
@@ -420,6 +425,8 @@ class GameEngine {
         let allNodes = graphRepresentationOfGameState.nodes
         
         if !arrayToReturn.isEmpty {
+            currentScore += arrayToReturn.count
+            
             for node in allNodes {
                 let bubble: ColorBubble = node.getLabel()
                 
@@ -503,6 +510,8 @@ class GameEngine {
         let allNodes = graphRepresentationOfGameState.nodes
         
         if !arrayToReturn.isEmpty {
+            currentScore += arrayToReturn.count
+            
             for node in allNodes {
                 let bubble: ColorBubble = node.getLabel()
                 
@@ -577,6 +586,8 @@ class GameEngine {
         let allNodes = graphRepresentationOfGameState.nodes
         
         if !arrayToReturn.isEmpty {
+            currentScore += arrayToReturn.count
+            
             for node in allNodes {
                 let bubble: ColorBubble = node.getLabel()
                 

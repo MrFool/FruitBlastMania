@@ -42,6 +42,7 @@ struct FruitBlastManiaConstants {
     static let explosionAnimationFileName: String = "explosion-animation"
     static let lightningAnimationFileName: String = "lightning-animation"
     static let starAnimationFileName: String = "star-animation"
+    static let cannonFileName: String = "cannon"
     
     // Bubble Object constants
     static let bubbleWidth: CGFloat = CGFloat(deviceWidth / maxNumberOfBubblesPerRow)
@@ -111,7 +112,7 @@ struct FruitBlastManiaConstants {
     static let levelFour = "Level Four"
     static let levelFive = "Level Five"
     static let coolLevel = "Cool Level"
-    static let customLevel = "Custom Level"
+    static let customLevel = "My Own Level"
     
     // Number of bubbles inititaly
     static let numberOfBubblesAtStart = 25

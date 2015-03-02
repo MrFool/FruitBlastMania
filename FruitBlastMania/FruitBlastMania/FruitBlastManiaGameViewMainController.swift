@@ -6,6 +6,8 @@
 import UIKit
 
 class FruitBlastManiaGameViewMainController: UIViewController {
+    @IBOutlet weak var sheepImage: UIImageView!
+    
     var currentLevelName: String?
     var currentLevel: BasicLevel?
     

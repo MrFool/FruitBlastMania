@@ -3,11 +3,21 @@
 */
 
 import UIKit
+import AVFoundation
 
 class FruitBlastManiaMainViewController: UIViewController {
+    var backgroundSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("background", ofType: "wav")!)
+    var backgroundSoundPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundSoundPlayer = AVAudioPlayer(contentsOfURL: backgroundSound, error: nil)
+        
+        backgroundSoundPlayer.numberOfLoops = -1
+        backgroundSoundPlayer.prepareToPlay()
+        
+        backgroundSoundPlayer.play()
     }
     
     override func didReceiveMemoryWarning() {

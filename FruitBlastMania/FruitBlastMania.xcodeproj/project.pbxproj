@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		342584901AA476CD004A3CFD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3425848F1AA476CC004A3CFD /* AVFoundation.framework */; };
+		342584941AA4796E004A3CFD /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 342584931AA4796E004A3CFD /* background.wav */; };
+		342584971AA47A0D004A3CFD /* meh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 342584961AA47A0D004A3CFD /* meh.wav */; };
 		346AD5631AA26C65009BB688 /* BubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346AD5621AA26C65009BB688 /* BubbleFactory.swift */; };
-		346AD5671AA30728009BB688 /* SoundUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346AD5661AA30728009BB688 /* SoundUtilities.swift */; };
 		34BFE8711AA2409900F63E0E /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFE8701AA2409900F63E0E /* FileUtilities.swift */; };
 		34CF55421AA100750048A92D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55411AA100750048A92D /* AppDelegate.swift */; };
 		34CF55471AA100750048A92D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34CF55451AA100750048A92D /* Main.storyboard */; };
@@ -74,8 +76,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3425848F1AA476CC004A3CFD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		342584931AA4796E004A3CFD /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
+		342584961AA47A0D004A3CFD /* meh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meh.wav; sourceTree = "<group>"; };
 		346AD5621AA26C65009BB688 /* BubbleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleFactory.swift; sourceTree = "<group>"; };
-		346AD5661AA30728009BB688 /* SoundUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundUtilities.swift; sourceTree = "<group>"; };
 		34BFE8701AA2409900F63E0E /* FileUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		34CF553C1AA100750048A92D /* FruitBlastMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitBlastMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CF55401AA100750048A92D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				342584901AA476CD004A3CFD /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +140,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		342584951AA47971004A3CFD /* Sound(s) */ = {
+			isa = PBXGroup;
+			children = (
+				342584931AA4796E004A3CFD /* background.wav */,
+				342584961AA47A0D004A3CFD /* meh.wav */,
+			);
+			name = "Sound(s)";
+			sourceTree = "<group>";
+		};
 		346AD5641AA26C6A009BB688 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +160,7 @@
 		34CF55331AA100750048A92D = {
 			isa = PBXGroup;
 			children = (
+				3425848F1AA476CC004A3CFD /* AVFoundation.framework */,
 				34CF553E1AA100750048A92D /* FruitBlastMania */,
 				34CF55541AA100750048A92D /* FruitBlastManiaTests */,
 				34CF553D1AA100750048A92D /* Products */,
@@ -176,6 +191,7 @@
 				34CF55691AA100E70048A92D /* GridCell */,
 				34CF556A1AA100EB0048A92D /* Grid */,
 				34CF556B1AA100EE0048A92D /* Controllers */,
+				342584951AA47971004A3CFD /* Sound(s) */,
 				34CF55451AA100750048A92D /* Main.storyboard */,
 				34CF554A1AA100750048A92D /* LaunchScreen.xib */,
 				34CF55481AA100750048A92D /* Images.xcassets */,
@@ -254,7 +270,6 @@
 			children = (
 				34CF55781AA101470048A92D /* NumberUtilities.swift */,
 				34BFE8701AA2409900F63E0E /* FileUtilities.swift */,
-				346AD5661AA30728009BB688 /* SoundUtilities.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -400,6 +415,8 @@
 			files = (
 				34CF55471AA100750048A92D /* Main.storyboard in Resources */,
 				34CF554C1AA100750048A92D /* LaunchScreen.xib in Resources */,
+				342584971AA47A0D004A3CFD /* meh.wav in Resources */,
+				342584941AA4796E004A3CFD /* background.wav in Resources */,
 				34CF55491AA100750048A92D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,7 +443,6 @@
 				34CF557D1AA101580048A92D /* PhysicsBody.swift in Sources */,
 				34CF558B1AA101880048A92D /* BasicGridFlowLayout.swift in Sources */,
 				34CF55751AA1013A0048A92D /* GameEngine.swift in Sources */,
-				346AD5671AA30728009BB688 /* SoundUtilities.swift in Sources */,
 				34CF556D1AA1011C0048A92D /* Queue.swift in Sources */,
 				34CF55421AA100750048A92D /* AppDelegate.swift in Sources */,
 				34EA55341AA2676D008BB78E /* FruitBlastManiaLevelDesignerGridViewController.swift in Sources */,

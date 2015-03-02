@@ -10,13 +10,14 @@ class FruitBlastManiaBubbleShooterViewController: UIViewController {
     @IBOutlet weak var nextBubbleToBeShot: UIImageView!
     @IBOutlet weak var theCannon: UIImageView!
     @IBOutlet weak var bubbleNumber: UILabel!
+    @IBOutlet weak var scoreNumber: UILabel!
     
     var arrayOfCannonImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let cannonSpriteSheet = UIImage(named: "cannon")!.CGImage
+        let cannonSpriteSheet = UIImage(named: FruitBlastManiaConstants.cannonFileName)!.CGImage
         
         let cropRect0 = CGRect(x: 20 + 360 * 0, y: 100, width: 360, height: 700)
         let cropRect1 = CGRect(x: 60 + 360 * 1, y: 100, width: 360, height: 700)

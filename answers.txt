@@ -162,7 +162,7 @@ To be added upon adding them
 changes to design:
 Not much, just rehabbed the whole game to look like a fruit farm / have a lot of fruity fruity stuff!
 
-2. Game Score (not yet done)
+2. Game Score (done)
 changes to design:
 Added tracking of game score and score addition mechanism
 
@@ -178,15 +178,15 @@ Added tracking of number of bubbles to be shot
 changes to design:
 None, just build the extra and more creative levels in Swift code inside BasicLevel class
 
-6. Tweet score achieved / finished special level (not yet done)
+6. Tweet score achieved on level x (done)
 changes to design:
 None, just import Social framework from Apple
 
-7. Facebook score achieved / finished special level (not yet done)
+7. Facebook score achieved on level x(done)
 changes to design:
 None, just import Social framework from Apple
 
-8. Background music for the game (not yet done)
+8. Background music for the game (done)
 changes to design:
 Added a singleton soundManager class that plays the sound once the first screen has been initiated
 
@@ -194,7 +194,7 @@ Added a singleton soundManager class that plays the sound once the first screen 
 changes to design:
 Keep track of both bubbles and switch them accordingly when the swap button is pressed
 
-10. Fluffy rolling sheep when game is in action (not yet done)
+10. Fluffy rolling sheep when game is in action (done)
 changes to design:
 None, just fluff animation, just add a sheep jumping around lol
 
@@ -218,7 +218,9 @@ None, just add the appropriate image into the AppIcon .xcassets
 changes to design:
 Just added a credits screen with a default UIView in the storyboard
 
-
+16. Special thing will happen if you shoot a bubble and hit the sheep (done)
+changes to design:
+Just made the sound class play CNY song instead of the background music
 
 ###############################
 # Problem 9: Final Reflection #

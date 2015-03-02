@@ -406,10 +406,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sheep" translatesAutoresizingMaskIntoConstraints="NO" id="ujh-b1-Y1R" userLabel="sheepImage">
+                                <rect key="frame" x="704" y="516" width="64" height="64"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="sheepImage" destination="ujh-b1-Y1R" id="ZO2-pd-D0L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xnp-P4-ohh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -606,7 +612,7 @@
                                 <rect key="frame" x="320" y="36" width="128" height="64"/>
                             </imageView>
                             <button opaque="NO" alpha="0.59999999999999964" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tt7-N7-maA">
-                                <rect key="frame" x="704" y="42" width="64" height="64"/>
+                                <rect key="frame" x="704" y="36" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Quit"/>
@@ -629,6 +635,12 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JnG-cA-Eye" userLabel="scoreLabel">
+                                <rect key="frame" x="704" y="0.0" width="64" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -637,6 +649,7 @@
                         <outlet property="bubbleNumber" destination="SE6-9d-wSE" id="Eq9-xk-IgE"/>
                         <outlet property="currentBubbleToBeShot" destination="iGW-Vm-iwj" id="ihs-V8-pNr"/>
                         <outlet property="nextBubbleToBeShot" destination="VXZ-fV-7L5" id="qRp-Pa-dFN"/>
+                        <outlet property="scoreNumber" destination="JnG-cA-Eye" id="whW-7u-uxl"/>
                         <outlet property="theCannon" destination="c3B-Aa-D1R" id="u7d-Yu-oAV"/>
                     </connections>
                 </viewController>
@@ -660,6 +673,7 @@
         <image name="menu-background" width="474" height="723"/>
         <image name="scroll" width="1280" height="956"/>
         <image name="selector-background" width="467" height="712"/>
+        <image name="sheep" width="615" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dK5-Tq-x4U"/>
