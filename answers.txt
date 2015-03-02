@@ -139,7 +139,15 @@ Game Flow Tests:
 
 Glass Box Testing
 
+Level Designer Tests:
 
+
+
+Game Engine Tests:
+
+
+
+Game Flow Tests:
 
 
 ###################################
@@ -151,19 +159,65 @@ List of improvements / functionalities added:
 To be added upon adding them
 
 1. Fruit theme integration (done)
+changes to design:
+Not much, just rehabbed the whole game to look like a fruit farm / have a lot of fruity fruity stuff!
+
 2. Game Score (not yet done)
+changes to design:
+Added tracking of game score and score addition mechanism
+
 3. Rules for losing / winning game! (not yet done)
+changes to design:
+Added functions inside the game engine to check whether any of the win / lose conditions are met and if they are met, the controller can take over the handling. In that sense, we also added tracking of certain information such as whether the arena is empty, whether there are still bubbles to be shot etc.
+
 4. Limited Number of Bubbles (not yet done)
-5. Global Hi-score (not yet done)
+changes to design:
+Added tracking of number of bubbles to be shot
+
+5. More than 3 levels [5 + 1 really cool level] (not yet done)
+changes to design:
+None, just build the extra and more creative levels in Swift code inside BasicLevel class
+
 6. Tweet score achieved (not yet done)
+changes to design:
+None, just import Social framework from Apple
+
 7. Facebook score achieved (not yet done)
+changes to design:
+None, just import Social framework from Apple
+
 8. Background music for the game (not yet done)
-9. Switch between current and next bubble (not yet done)
+changes to design:
+Added a singleton soundManager class that plays the sound once the first screen has been initiated
+
+9. Switch between current and next bubble (done)
+changes to design:
+Keep track of both bubbles and switch them accordingly when the swap button is pressed
+
 10. Fluffy rolling sheep when game is in action (not yet done)
-11. Explosion animation (not yet done)
-12. Lightning animation (not yet done)
-13. App Logo (done)
-14. Swap Bubble (done)
+changes to design:
+None, just fluff animation, just add a sheep jumping around lol
+
+11. Explosion animation (done)
+changes to design:
+None, just add the image and animate it using UIImage animations
+
+12. Lightning animation (done)
+changes to design:
+None, just add the image and animate it using UIImage animations
+
+13. Star animation (done)
+changes to design:
+None, just add the image and animate it using UIImage animations
+
+14. App Logo (done)
+changes to design:
+None, just add the appropriate image into the AppIcon .xcassets
+
+15. Credits Screen (done)
+changes to design:
+Just added a credits screen with a default UIView in the storyboard
+
 
 
 ###############################
@@ -172,21 +226,23 @@ To be added upon adding them
 
 Comments on design of MVC architecture:
 
--
--
+- Not too good, existing unnecessary access from one view controller to another which leads to complication
+- Not too good, too many instantiating of the same views over and over again by the same view controller
+- Decent, views do not know about the model or the view controllers
+- Decent, model logic is separated from view controller’s logic
 
 Comments on design of game engine:
 
--
--
+- Not too good, game engine has direct access to the view controller itself and is not prevented from actually doing things to the view controller if it wanted to
+- Decent, separated from the view controller and can be unit-tested
+- Decent, game’s logic is separated from logic to “redraw” the view
 
 How to improve MVC architecture design:
 
--
--
+- Use delegates and NSNotifications to “call” one another instead of directly accessing each other which degrades maintainability by a lot
+- Create utility classes for the bubbles images and just reference them instead of instantiating a new one every time
 
 How to improve game engine design:
 
--
--
+- Instead of giving the game engine direct access to the view controller, we could (knowing the geometry of the game arena and the view), calculate what we need and / or find other ways of finding what we need instead of passing the view controller to the game engine entirely! Not very good abstraction to have view controller which contains a game engine that has access to itself!
 

@@ -509,7 +509,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             }
             
             for cellIndexPath in bubbleIndexPathsToBeRemoved {
-                animateBurst(cellIndexPath)
+                animateLightning(cellIndexPath)
             }
             
             removeHangingBubbles()
@@ -533,7 +533,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             }
             
             for cellIndexPath in bubbleIndexPathsToBeRemoved {
-                animateBurst(cellIndexPath)
+                animateExplosion(cellIndexPath)
             }
             
             removeHangingBubbles()
@@ -543,7 +543,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             )
             
             for cellIndexPath in bubbleIndexPathsToBeRemoved {
-                animateBurst(cellIndexPath)
+                animateStar(cellIndexPath)
             }
             
             removeHangingBubbles()
@@ -582,6 +582,134 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                     newBubbleView.alpha = 0
                 }, completion: { finished in
                     newBubbleView.removeFromSuperview()
+            })
+        }
+        
+        cellToAnimate.bubbleAttached = nil
+    }
+    
+    func animateExplosion(cellIndexPath: NSIndexPath) {
+        var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
+        
+        for bubbleView in cellToAnimate.subviews as [UIImageView] {
+            var animationView = UIImageView(
+                frame: CGRect(
+                    x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    width: FruitBlastManiaConstants.bubbleWidth,
+                    height: FruitBlastManiaConstants.bubbleWidth
+                )
+            )
+            
+            let explosionImage = UIImage(named: FruitBlastManiaConstants.explosionAnimationFileName)
+            
+            animationView.image = explosionImage
+            
+            self.collectionView!.addSubview(animationView)
+            
+            bubbleView.removeFromSuperview()
+            
+            UIView.animateWithDuration(0.75,
+                delay: 0.0,
+                options: .CurveEaseOut,
+                animations: {
+                    animationView.frame.size.width = FruitBlastManiaConstants.bubbleWidth +
+                        FruitBlastManiaConstants.expansionRadius * 3
+                    animationView.frame.size.height = FruitBlastManiaConstants.bubbleHeight +
+                        FruitBlastManiaConstants.expansionRadius * 3
+                    animationView.alpha = 0
+                }, completion: { finished in
+                    animationView.removeFromSuperview()
+            })
+        }
+        
+        cellToAnimate.bubbleAttached = nil
+    }
+    
+    func animateLightning(cellIndexPath: NSIndexPath) {
+        var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
+        
+        for bubbleView in cellToAnimate.subviews as [UIImageView] {
+            var animationView = UIImageView(
+                frame: CGRect(
+                    x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    width: FruitBlastManiaConstants.bubbleWidth,
+                    height: FruitBlastManiaConstants.bubbleWidth
+                )
+            )
+            
+            let lightningImage = UIImage(named: FruitBlastManiaConstants.lightningAnimationFileName)
+            
+            animationView.image = lightningImage
+            
+            self.collectionView!.addSubview(animationView)
+            
+            bubbleView.removeFromSuperview()
+            
+            UIView.animateWithDuration(0.1,
+                delay: 0.0,
+                options: .CurveEaseOut,
+                animations: {
+                    animationView.center.y += 16
+                }, completion: { finished in
+                    UIView.animateWithDuration(0.1,
+                        delay: 0.0,
+                        options: .CurveEaseOut,
+                        animations: {
+                            animationView.center.y -= 16
+                        }, completion: { finished in
+                            UIView.animateWithDuration(0.1,
+                                delay: 0.0,
+                                options: .CurveEaseOut,
+                                animations: {
+                                    animationView.center.y -= 16
+                                }, completion: { finished in
+                                    UIView.animateWithDuration(0.1,
+                                        delay: 0.0,
+                                        options: .CurveEaseOut,
+                                        animations: {
+                                            animationView.center.y += 32
+                                            animationView.alpha = 0
+                                        }, completion: { finished in
+                                            animationView.removeFromSuperview()
+                                    })
+                            })
+                    })
+            })
+        }
+        
+        cellToAnimate.bubbleAttached = nil
+    }
+    
+    func animateStar(cellIndexPath: NSIndexPath) {
+        var cellToAnimate = self.collectionView!.cellForItemAtIndexPath(cellIndexPath) as GridCollectionViewCell
+        
+        for bubbleView in cellToAnimate.subviews as [UIImageView] {
+            var animationView = UIImageView(
+                frame: CGRect(
+                    x: cellToAnimate.center.x - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    y: cellToAnimate.center.y - CGFloat(FruitBlastManiaConstants.bubbleRadius),
+                    width: FruitBlastManiaConstants.bubbleWidth,
+                    height: FruitBlastManiaConstants.bubbleWidth
+                )
+            )
+            
+            let starImage = UIImage(named: FruitBlastManiaConstants.starAnimationFileName)
+            
+            animationView.image = starImage
+            
+            self.collectionView!.addSubview(animationView)
+            
+            bubbleView.removeFromSuperview()
+            
+            UIView.animateWithDuration(1.25,
+                delay: 0.0,
+                options: .CurveEaseOut,
+                animations: {
+                    animationView.alpha = 0
+                }, completion: { finished in
+                    animationView.removeFromSuperview()
             })
         }
         

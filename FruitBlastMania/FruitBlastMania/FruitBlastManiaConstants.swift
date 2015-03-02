@@ -39,6 +39,9 @@ struct FruitBlastManiaConstants {
     static let bombBubbleFileName: String = "bubble-bomb"
     static let starBubbleFileName: String = "bubble-star"
     static let eraserFileName: String = "eraser-1"
+    static let explosionAnimationFileName: String = "explosion-animation"
+    static let lightningAnimationFileName: String = "lightning-animation"
+    static let starAnimationFileName: String = "star-animation"
     
     // Bubble Object constants
     static let bubbleWidth: CGFloat = CGFloat(deviceWidth / maxNumberOfBubblesPerRow)
