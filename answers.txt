@@ -19,7 +19,7 @@ Rules for special bubble interaction
 - Indestructible bubbles have to be removed by falling out of the screen OR be bombed OR be electrocuted by the lightning bubble
 - Lightning bubbles removes all bubbles in the same row and if any other lightning or bomb bubbles are removed that way, they are triggered as well.
 - Bomb bubbles removes all bubbles adjacent to the cell it is at and if any other lightning or bomb bubbles are removed that way, they are triggered as well.
-- Star bubbles removed all bubbles of the same color of the bubble that triggered it (or most recently snapped bubble that triggered it)
+- Star bubbles removed all bubbles of the same colour of the bubble that triggered it (or most recently snapped bubble that triggered it)
 
 Rules for winning game
 
@@ -123,7 +123,7 @@ Please save your diagram as `class-diagram.png` in the root directory of the rep
 # Problem 7: Testing #
 ######################
 
-Black Box Testing
+Black Box Testing (using game interface, non-unit tests)
 
 Test implementation of level designer
 	Tap on palette
@@ -155,7 +155,7 @@ Test implementation of level designer
 		Play one object (try different types)
 		Play with no object at the top barrier (try different types)
 		Play with one object of each type
-		Play with many objects
+		Play with many mixed objects
 Test implementation of game engine
 	Bubble Bursting
 		3 or more of same coloured bubble
@@ -174,7 +174,7 @@ Test implementation of game engine
 		Chain it with lightning
 		Chain it with star
 	Star Bubble
-		Removes all of the same color that collided with it
+		Removes all of the same colour that collided with it
 		Chain it with lightning
 		Chain it with bomb
 	Ball Launching
@@ -220,9 +220,15 @@ Test implementation of game rules
 		With no bubbles
 		With bubbles
 		With hanging bubbles
-Test implementation of background sound
+Test implementation of sound
 	Open app
 		Transition to all possible screens
+	Game play
+		Pop bubbles
+		Explode bubbles
+		Lightning bubbles
+		Star bubbles
+		Meh Meh
 Test implementation of sheep sound and animation
 	Play any level and shoot a bubble towards sheep
 		Meh sound should play
@@ -230,27 +236,72 @@ Test implementation of twitter and Facebook integration
 	Win any level
 		Try to tweet
 		Try to share to Facebook
-Glass Box Testing
+Test implementation of ball algorithm
+	Play any level
+		Did not get any bubble that is not on the arena
+		If next bubble to shoot is no longer on arena, changes upon “entering” cannon
 
+Glass Box Testing (inside code, unit-testing)
+
+Test implementation of Queue
+	Enqueue
+	Dequeue
+	Peek
+	Count
+	IsEmpty
+	RemoveAll
+	ToArray
+Test implementation of Node
+	Create
+	Equality
+Test implementation of Edge
+	Reverse
+	Reverse Twice
+	Equality
+	Create
+Test implementation of Graphs
+	Create
+	AddNode
+	RemoveNode
+	AddEdge
+	RemoveEdge
+	ContainsEdge
+	EdgesFromNode
+	AdjacentNodesFromNode
 Test implementation of level designer
-
+	Save, Load
+		Pack/Unpack empty level
+		Pack/Unpack single cell level
+		Pack/Unpack full level
+		Overwriting level
+Test implementation of colour bubble building
+	Create
+	GetName
+	SetName
 Test implementation of game engine
-
-Test implementation of cannon
-
-Test implementation of game flow
-
+	Root Node must be created
+		Empty with root node or not
+		Non empty with root node or not
+	Bubble Popping
+		3 bubbles should pop
+		Less than 3 shouldn’t pop
+	Bubble Falling
+		Unattached should fall
+		No unattached, nothing should fall
+	Bubble Exploding
+		All six around it should explode
+	Bubble Lightning
+		Other on same section should electrocute
+	Bubble Star
+		Other similar should ding
 Test implementation of game rules
-
-Test implementation of background sound
-
-Test implementation of sheep sound and animation
-
-Test implementation of twitter and Facebook integration
-
-Test implementation of bubble swapping
-
-
+	Game Lose
+		numberOfBubbles is -2
+		numberOfBubbles > -2
+	Game Win
+		graph only has only node
+		graph has more than one node
+		
 
 ###################################
 # Problem 8: The Bells & Whistles #
@@ -324,6 +375,25 @@ Just added a credits screen with a default UIView in the storyboard
 changes to design:
 Just made the sound class play meh meh sound on top of background music
 
+17. Own Splash Screen (done)
+changes to design:
+None, just added assets to the loading screen
+
+18. Explosion sound (done)
+changes to design:
+None, just add the sound and play it when happening
+
+19. Lightning sound (done)
+changes to design:
+None, just add the sound and play it when happening
+
+20. Star sound (done)
+changes to design:
+None, just add the sound and play it when happening
+
+21. Pop sound (done)
+changes to design:
+None, just add the sound and play it when happening
 
 ###############################
 # Problem 9: Final Reflection #

@@ -771,7 +771,7 @@ class GameEngine {
     }
     
     func didLoseGame() -> Bool {
-        return numberOfBubbles == -1
+        return numberOfBubbles == -2
     }
     
     func decrementBubbleCount() {

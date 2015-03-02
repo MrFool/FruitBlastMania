@@ -221,6 +221,84 @@ class BubblePhysicsTests: XCTestCase {
         XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
     }
     
+    func testExplosion() {
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 7)] = FruitBlastManiaConstants.blueBubbleName
+        
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
+        
+        var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            
+            dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
+        }
+        
+        for key in dictionaryOfBubblesInColorBubbleFormat.keys {
+            testingGameEngine!.updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
+        }
+        
+        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.unattachedBubbles()
+        
+        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
+    }
+    
+    func testLightning() {
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 7)] = FruitBlastManiaConstants.blueBubbleName
+        
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
+        
+        var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            
+            dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
+        }
+        
+        for key in dictionaryOfBubblesInColorBubbleFormat.keys {
+            testingGameEngine!.updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
+        }
+        
+        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.unattachedBubbles()
+        
+        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
+    }
+    
+    func testStar() {
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 7)] = FruitBlastManiaConstants.blueBubbleName
+        
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
+        
+        var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            
+            dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
+        }
+        
+        for key in dictionaryOfBubblesInColorBubbleFormat.keys {
+            testingGameEngine!.updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
+        }
+        
+        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.unattachedBubbles()
+        
+        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
+    }
+    
     // MARK: test examples
     
     func DISABLED_testExample() {

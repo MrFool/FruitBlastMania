@@ -63,6 +63,130 @@ class LevelSavingLoadingTests: XCTestCase {
         
         assert(basicLevel.collectionOfBubbles == levelToLookAt.collectionOfBubbles,
             "The overwriting basic level was not done right!")
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 0)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 0)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 0)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 0)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 0)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 1)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 1)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 1)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 1)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 1)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 1)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 1)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 1)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 2)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 2)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 2)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 2)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 2)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 2)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 2)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 2)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 2)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 3)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 3)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 3)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 3)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 3)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 3)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 3)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 4)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 4)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 4)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 4)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 4)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 5)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 5)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 5)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 5)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 5)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 5)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 5)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 5)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 5)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 5)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 5)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 6)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 6)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 6)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 6)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 6)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 6)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 6)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 6)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 6)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 6)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 6)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 6)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 7)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 7)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 7)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 7)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 7)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 7)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 7)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 7)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 7)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 7)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 7)] = FruitBlastManiaConstants.blueBubbleName
+        
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 8)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 8)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 8)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 8)] = FruitBlastManiaConstants.redBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 8)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 8)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 8)] = FruitBlastManiaConstants.orangeBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 8)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 8)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 8)] = FruitBlastManiaConstants.greenBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 8)] = FruitBlastManiaConstants.blueBubbleName
+        basicLevel.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 8)] = FruitBlastManiaConstants.blueBubbleName
+        
+        filePath = fileUtils.documentsDirectory().stringByAppendingPathComponent("testingEmptyBasicLevel" +
+            FruitBlastManiaConstants.levelExtension)
+        
+        NSKeyedArchiver.archiveRootObject([basicLevel], toFile: filePath)
+        
+        unarchivedLevel = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as [BasicLevel]
+        levelToLookAt = unarchivedLevel[0]
+        
+        assert(basicLevel.collectionOfBubbles == levelToLookAt.collectionOfBubbles,
+            "Saving of a full level and overwriting is not done right!")
     }
     
     // Mark: test examples

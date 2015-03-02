@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		342584901AA476CD004A3CFD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3425848F1AA476CC004A3CFD /* AVFoundation.framework */; };
-		342584941AA4796E004A3CFD /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 342584931AA4796E004A3CFD /* background.wav */; };
 		342584971AA47A0D004A3CFD /* meh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 342584961AA47A0D004A3CFD /* meh.wav */; };
+		342584991AA4A453004A3CFD /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 342584981AA4A453004A3CFD /* background.wav */; };
+		3425849E1AA4A783004A3CFD /* bubble-explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3425849A1AA4A783004A3CFD /* bubble-explosion.wav */; };
+		3425849F1AA4A783004A3CFD /* bubble-lightning.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3425849B1AA4A783004A3CFD /* bubble-lightning.wav */; };
+		342584A01AA4A783004A3CFD /* bubble-pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3425849C1AA4A783004A3CFD /* bubble-pop.wav */; };
+		342584A11AA4A783004A3CFD /* bubble-star.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3425849D1AA4A783004A3CFD /* bubble-star.wav */; };
 		346AD5631AA26C65009BB688 /* BubbleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346AD5621AA26C65009BB688 /* BubbleFactory.swift */; };
 		34BFE8711AA2409900F63E0E /* FileUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BFE8701AA2409900F63E0E /* FileUtilities.swift */; };
 		34CF55421AA100750048A92D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CF55411AA100750048A92D /* AppDelegate.swift */; };
@@ -77,8 +81,12 @@
 
 /* Begin PBXFileReference section */
 		3425848F1AA476CC004A3CFD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		342584931AA4796E004A3CFD /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
 		342584961AA47A0D004A3CFD /* meh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meh.wav; sourceTree = "<group>"; };
+		342584981AA4A453004A3CFD /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
+		3425849A1AA4A783004A3CFD /* bubble-explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bubble-explosion.wav"; sourceTree = "<group>"; };
+		3425849B1AA4A783004A3CFD /* bubble-lightning.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bubble-lightning.wav"; sourceTree = "<group>"; };
+		3425849C1AA4A783004A3CFD /* bubble-pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bubble-pop.wav"; sourceTree = "<group>"; };
+		3425849D1AA4A783004A3CFD /* bubble-star.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "bubble-star.wav"; sourceTree = "<group>"; };
 		346AD5621AA26C65009BB688 /* BubbleFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleFactory.swift; sourceTree = "<group>"; };
 		34BFE8701AA2409900F63E0E /* FileUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtilities.swift; sourceTree = "<group>"; };
 		34CF553C1AA100750048A92D /* FruitBlastMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FruitBlastMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,7 +151,11 @@
 		342584951AA47971004A3CFD /* Sound(s) */ = {
 			isa = PBXGroup;
 			children = (
-				342584931AA4796E004A3CFD /* background.wav */,
+				3425849A1AA4A783004A3CFD /* bubble-explosion.wav */,
+				3425849B1AA4A783004A3CFD /* bubble-lightning.wav */,
+				3425849C1AA4A783004A3CFD /* bubble-pop.wav */,
+				3425849D1AA4A783004A3CFD /* bubble-star.wav */,
+				342584981AA4A453004A3CFD /* background.wav */,
 				342584961AA47A0D004A3CFD /* meh.wav */,
 			);
 			name = "Sound(s)";
@@ -413,10 +425,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				342584A11AA4A783004A3CFD /* bubble-star.wav in Resources */,
+				3425849E1AA4A783004A3CFD /* bubble-explosion.wav in Resources */,
 				34CF55471AA100750048A92D /* Main.storyboard in Resources */,
+				342584A01AA4A783004A3CFD /* bubble-pop.wav in Resources */,
+				342584991AA4A453004A3CFD /* background.wav in Resources */,
 				34CF554C1AA100750048A92D /* LaunchScreen.xib in Resources */,
 				342584971AA47A0D004A3CFD /* meh.wav in Resources */,
-				342584941AA4796E004A3CFD /* background.wav in Resources */,
+				3425849F1AA4A783004A3CFD /* bubble-lightning.wav in Resources */,
 				34CF55491AA100750048A92D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
