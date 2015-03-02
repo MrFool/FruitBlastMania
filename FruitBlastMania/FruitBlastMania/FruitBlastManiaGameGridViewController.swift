@@ -29,6 +29,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     
     var isGameInitialised: Bool = false
     var waitCountBeforeInitialising: Int = 10
+    var quitIsPressed: Bool = false
     
     var specialBubbleEffects: Queue<ColorBubble> = Queue<ColorBubble>()
     
@@ -143,31 +144,35 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         imageView.frame.size.width = FruitBlastManiaConstants.bubbleWidth
         imageView.frame.size.height = FruitBlastManiaConstants.bubbleHeight
         
-        cellToSnapTo.addSubview(imageView)
-        
-        cellToSnapTo.bubbleAttached = createdBubbleValues.1
-        
-        mostRecentlySnappedBubble = createdBubbleValues.1
-        
-        gameEngine!.bubbleSnapped(createdBubbleValues.1, aCollectionView: self.collectionView!)
-        
-        // clean up after snapping + animations
-        
-        let allCells = self.collectionView!.visibleCells() as [GridCollectionViewCell]
-        let cellsThatNeedsToHaveTheirBubblesRemoved: [NSIndexPath] = gameEngine!.bubblesToPopAfterSnapping(createdBubbleValues.1)
-        
-        let specialBubbles: [ColorBubble] = gameEngine!.checkForSpecialBubbles(createdBubbleValues.1)
-        
-        for bubble in specialBubbles {
-            specialBubbleEffects.enqueue(bubble)
-        }
-        
-        for cellIndexPath in cellsThatNeedsToHaveTheirBubblesRemoved {
-            animateBurst(cellIndexPath)
-        }
-        
-        if !cellsThatNeedsToHaveTheirBubblesRemoved.isEmpty {
-            removeHangingBubbles()
+        if cellToSnapTo.bubbleAttached == nil {
+            cellToSnapTo.addSubview(imageView)
+            
+            cellToSnapTo.bubbleAttached = createdBubbleValues.1
+            
+            mostRecentlySnappedBubble = createdBubbleValues.1
+            
+            gameEngine!.bubbleSnapped(createdBubbleValues.1, aCollectionView: self.collectionView!)
+            
+            // clean up after snapping + animations
+            
+            let allCells = self.collectionView!.visibleCells() as [GridCollectionViewCell]
+            let cellsThatNeedsToHaveTheirBubblesRemoved: [NSIndexPath] = gameEngine!.bubblesToPopAfterSnapping(createdBubbleValues.1)
+            
+            let specialBubbles: [ColorBubble] = gameEngine!.checkForSpecialBubbles(createdBubbleValues.1)
+            
+            for bubble in specialBubbles {
+                specialBubbleEffects.enqueue(bubble)
+            }
+            
+            for cellIndexPath in cellsThatNeedsToHaveTheirBubblesRemoved {
+                animateBurst(cellIndexPath)
+            }
+            
+            if !cellsThatNeedsToHaveTheirBubblesRemoved.isEmpty {
+                removeHangingBubbles()
+            }
+        } else {
+            handleLoseOutOfBounds()
         }
     }
     
@@ -208,23 +213,34 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         return false
     }
     
-    // TODO Improve on the kind of bubbles being given
     func addNewBubbleToShooter() {
         for viewController in self.parentViewController!.childViewControllers {
             if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
                 let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
-                let aNewRandomBubbleName = gameEngine!.generateBubbleToBeShotName()
+                let aNewRandomBubbleName1 = gameEngine!.generateBubbleToBeShotName()
                 
-                var newBubbleFileName: String = bubbleFactory.createBubble(aNewRandomBubbleName)
+                var newBubbleFileName1: String = bubbleFactory.createBubble(aNewRandomBubbleName1)
                 
                 bubbleToBeShotName = nextBubbleToBeShotName
                 
-                let bubbleImage = UIImage(named: newBubbleFileName)
+                let bubbleImage1 = UIImage(named: newBubbleFileName1)
                 
                 thatViewController.currentBubbleToBeShot.image = thatViewController.nextBubbleToBeShot.image
-                thatViewController.nextBubbleToBeShot.image = bubbleImage
+                thatViewController.nextBubbleToBeShot.image = bubbleImage1
                 
-                nextBubbleToBeShotName = aNewRandomBubbleName
+                nextBubbleToBeShotName = aNewRandomBubbleName1
+                
+                if !gameEngine!.isValidBubble(bubbleToBeShotName!) {
+                    let aNewRandomBubbleName2 = gameEngine!.generateBubbleToBeShotName()
+                    
+                    var newBubbleFileName2: String = bubbleFactory.createBubble(aNewRandomBubbleName2)
+                    
+                    bubbleToBeShotName = aNewRandomBubbleName2
+                    
+                    let bubbleImage2 = UIImage(named: newBubbleFileName2)
+                    
+                    thatViewController.currentBubbleToBeShot.image = bubbleImage2
+                }
             }
         }
     }
@@ -245,7 +261,6 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             }
         }
     }
-    // TODO Improve on the kind of bubbles being given
     
     func removeCurrentlyShotBubble() {
         if let doesShotBubbleExist = self.view.viewWithTag(FruitBlastManiaConstants.shotBubbleTag) {
@@ -573,31 +588,86 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         cellToAnimate.bubbleAttached = nil
     }
     
+    func handleWin() {
+        let winDismissActionHandler = { (action: UIAlertAction!) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        let winAlert = UIAlertController(title: "Winner!", message: "You've won!", preferredStyle: .Alert)
+        winAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: winDismissActionHandler))
+        
+        quitIsPressed = true
+        
+        presentViewController(winAlert, animated: true, completion: nil)
+    }
+    
+    func handleLoseNoMoreBubble() {
+        let winDismissActionHandler = { (action: UIAlertAction!) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        let winAlert = UIAlertController(title: "No more bubbles!",
+            message: "You've lost",
+            preferredStyle: .Alert
+        )
+        winAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: winDismissActionHandler))
+        
+        quitIsPressed = true
+        
+        presentViewController(winAlert, animated: true, completion: nil)
+    }
+    
+    func handleLoseOutOfBounds() {
+        let winDismissActionHandler = { (action: UIAlertAction!) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        let winAlert = UIAlertController(title: "Out of arena!",
+            message: "You've lost",
+            preferredStyle: .Alert
+        )
+        winAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: winDismissActionHandler))
+        
+        quitIsPressed = true
+        
+        presentViewController(winAlert, animated: true, completion: nil)
+    }
+    
     // MARK: The game loop itself
     
     func updateGame() {
-        if waitCountBeforeInitialising == 0 {
-            if !isGameInitialised {
-                initialiseGame()
-            }
-            
-            animateCannon()
-            
-            if isBubbleShooting {
-                dealWithShootingBubble()
-            } else {
-                if !specialBubbleEffects.isEmpty {
-                    handleSpecialBubble()
-                } else {
-                    if currentlyNoBubbleToBeShot() {
-                        addNewBubbleToShooter()
-                    }
+        if !quitIsPressed {
+            if waitCountBeforeInitialising == 0 {
+                if !isGameInitialised {
+                    initialiseGame()
                 }
                 
-                removeCurrentlyShotBubble()
+                if gameEngine!.didWinGame() {
+                    handleWin()
+                }
+                
+                if gameEngine!.didLoseGame() {
+                    handleLoseNoMoreBubble()
+                }
+                
+                animateCannon()
+                
+                if isBubbleShooting {
+                    dealWithShootingBubble()
+                } else {
+                    if !specialBubbleEffects.isEmpty {
+                        handleSpecialBubble()
+                    } else {
+                        if currentlyNoBubbleToBeShot() {
+                            addNewBubbleToShooter()
+                        }
+                    }
+                    
+                    removeCurrentlyShotBubble()
+                }
+            } else {
+                waitCountBeforeInitialising -= 1
             }
-        } else {
-            waitCountBeforeInitialising -= 1
         }
     }
     

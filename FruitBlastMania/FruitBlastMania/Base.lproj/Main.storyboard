@@ -45,7 +45,7 @@
             <objects>
                 <collectionViewController title="Fruit Blast Mania Game Grid View Controller" id="rgS-yj-XIJ" customClass="FruitBlastManiaGameGridViewController" customModule="FruitBlastMania" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="e80-Pg-J7h">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="924"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l8m-1L-qHz">
@@ -320,6 +320,13 @@
                                     <segue destination="REk-I4-IMu" kind="embed" id="iWF-Fd-NL6"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" alpha="0.69999999999999973" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkc-cd-d3b" userLabel="redLine&quot;Button&quot;">
+                                <rect key="frame" x="0.0" y="504" width="768" height="4"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -504,7 +511,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PvH-2U-3sb"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="CTi-Fv-Zjg" userLabel="shooterArea">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGW-Vm-iwj" userLabel="currentBubbleToBeShot">
@@ -525,7 +532,15 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Quit"/>
                                 <connections>
-                                    <segue destination="jpf-rO-hBD" kind="show" id="QUU-H2-Vod"/>
+                                    <action selector="quitPressed:" destination="REk-I4-IMu" eventType="touchUpInside" id="Kff-Z1-rGf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qE-mP-i0d">
+                                <rect key="frame" x="122" y="36" width="64" height="64"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Swap"/>
+                                <connections>
+                                    <action selector="swapPressed:" destination="REk-I4-IMu" eventType="touchUpInside" id="FWd-0T-GuD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -560,9 +575,9 @@
         <image name="selector-background" width="467" height="712"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bTb-nR-Paz"/>
-        <segue reference="QUU-H2-Vod"/>
-        <segue reference="p3L-vR-iU2"/>
         <segue reference="8Ux-1o-55Z"/>
+        <segue reference="bTb-nR-Paz"/>
+        <segue reference="Mfc-Wy-m5o"/>
+        <segue reference="p3L-vR-iU2"/>
     </inferredMetricsTieBreakers>
 </document>

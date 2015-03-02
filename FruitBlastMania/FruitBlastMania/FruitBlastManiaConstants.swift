@@ -92,6 +92,9 @@ struct FruitBlastManiaConstants {
         "starBubbleFileName": starBubbleFileName
     ]
     
+    // Full Bubble array
+    static let allStaticBubbleArray: [String] = [redBubbleName, orangeBubbleName, greenBubbleName, blueBubbleName]
+    
     // File Type constants
     static let levelExtension: String = ".level"
     

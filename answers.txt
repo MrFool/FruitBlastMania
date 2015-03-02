@@ -160,9 +160,10 @@ To be added upon adding them
 8. Background music for the game (not yet done)
 9. Switch between current and next bubble (not yet done)
 10. Fluffy rolling sheep when game is in action (not yet done)
-11. Explosion sprites (not yet done)
-12. Lightning sprites (not yet done)
+11. Explosion animation (not yet done)
+12. Lightning animation (not yet done)
 13. App Logo (done)
+14. Swap Bubble (done)
 
 
 ###############################

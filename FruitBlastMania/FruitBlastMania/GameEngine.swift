@@ -717,13 +717,47 @@ class GameEngine {
         
         let randomNumber = Int(arc4random_uniform(UInt32(randomRollerArray.count)))
         
-        if randomRollerArray.count == 0 {
-            return FruitBlastManiaConstants.redBubbleName
-            // realistically should return a random of any of the bubble because by now
-            // any kind of bubble should allow the user to finish the game, or of course cannot
-            // finish if the design of the level is bad
+        if randomRollerArray.isEmpty {
+            let fullRandomNumber = Int(arc4random_uniform(UInt32(FruitBlastManiaConstants.allStaticBubbleArray.count)))
+            
+            return FruitBlastManiaConstants.allStaticBubbleArray[fullRandomNumber]
         }
         
         return randomRollerArray[randomNumber]
+    }
+    
+    func isValidBubble(aBubbleName: String) -> Bool {
+        var existingBubblesChecker: Dictionary<String, Bool> = Dictionary<String, Bool>()
+        
+        existingBubblesChecker[FruitBlastManiaConstants.redBubbleName] = false
+        existingBubblesChecker[FruitBlastManiaConstants.orangeBubbleName] = false
+        existingBubblesChecker[FruitBlastManiaConstants.greenBubbleName] = false
+        existingBubblesChecker[FruitBlastManiaConstants.blueBubbleName] = false
+        
+        let allNodes = graphRepresentationOfGameState.nodes
+        
+        for node in allNodes {
+            let bubbleName: String = node.getLabel().getBubbleName()
+            
+            if existingBubblesChecker[bubbleName] == nil {
+                // do nothing, this is a special bubble, open for changes in the future if we allow
+                // for shooting of special bubbles but for now there's no need to care about this case
+            } else {
+                if existingBubblesChecker[bubbleName] == false {
+                    existingBubblesChecker[bubbleName] = true
+                }
+            }
+        }
+        
+        return existingBubblesChecker[aBubbleName] == true
+    }
+    
+    func didWinGame() -> Bool {
+        return graphRepresentationOfGameState.nodes.count == 1
+        // note: It' 1 because we'll always have the root node!
+    }
+    
+    func didLoseGame() -> Bool {
+        return false
     }
 }
