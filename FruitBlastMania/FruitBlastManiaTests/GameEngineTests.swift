@@ -37,7 +37,11 @@ class BubblePhysicsTests: XCTestCase {
     
     func testAddOneNode() {
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
-        let colorBubbleConstructued = ColorBubble(nameGiven: FruitBlastManiaConstants.blueBubbleName, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        let colorBubbleConstructued = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.blueBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 0, inSection: 0)
+        )
         let nodeConstructed = Node<ColorBubble>(colorBubbleConstructued)
         
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
@@ -45,7 +49,11 @@ class BubblePhysicsTests: XCTestCase {
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: CGPoint(x: 0, y: 0),
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -62,15 +70,33 @@ class BubblePhysicsTests: XCTestCase {
     
     func testAddFewNodes() {
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
-        let colorBubbleConstructued1 = ColorBubble(nameGiven: FruitBlastManiaConstants.blueBubbleName, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        
+        let colorBubbleConstructued1 = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.blueBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 0, inSection: 0)
+        )
+        
         let nodeConstructed1 = Node<ColorBubble>(colorBubbleConstructued1)
         
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
-        let colorBubbleConstructued2 = ColorBubble(nameGiven: FruitBlastManiaConstants.blueBubbleName, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: NSIndexPath(forRow: 1, inSection: 0))
+        
+        let colorBubbleConstructued2 = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.blueBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 1, inSection: 0)
+        )
+        
         let nodeConstructed2 = Node<ColorBubble>(colorBubbleConstructued2)
         
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
-        let colorBubbleConstructued3 = ColorBubble(nameGiven: FruitBlastManiaConstants.blueBubbleName, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: NSIndexPath(forRow: 2, inSection: 0))
+        
+        let colorBubbleConstructued3 = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.blueBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 2, inSection: 0)
+        )
+        
         let nodeConstructed3 = Node<ColorBubble>(colorBubbleConstructued3)
         
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
@@ -78,7 +104,11 @@ class BubblePhysicsTests: XCTestCase {
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: CGPoint(x: 0, y: 0),
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -113,7 +143,12 @@ class BubblePhysicsTests: XCTestCase {
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
         
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
-        let colorBubbleConstructued = ColorBubble(nameGiven: FruitBlastManiaConstants.blueBubbleName, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: NSIndexPath(forRow: 3, inSection: 0))
+        
+        let colorBubbleConstructued = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.blueBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 3, inSection: 0)
+        )
         
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
         
@@ -140,7 +175,12 @@ class BubblePhysicsTests: XCTestCase {
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
         
         aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
-        let colorBubbleConstructued = ColorBubble(nameGiven: FruitBlastManiaConstants.blueBubbleName, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: NSIndexPath(forRow: 2, inSection: 0))
+        
+        let colorBubbleConstructued = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.blueBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 2, inSection: 0)
+        )
         
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
         
@@ -181,7 +221,11 @@ class BubblePhysicsTests: XCTestCase {
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: CGPoint(x: 0, y: 0),
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -207,7 +251,11 @@ class BubblePhysicsTests: XCTestCase {
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
         
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: CGPoint(x: 0, y: 0),
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -222,18 +270,20 @@ class BubblePhysicsTests: XCTestCase {
     }
     
     func testExplosion() {
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
-        
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 7)] = FruitBlastManiaConstants.blueBubbleName
-        
-        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.blueBubbleName
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 1)] = FruitBlastManiaConstants.blueBubbleName
         
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
         
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
-        g
+        
         for key in dictionaryOfBubblesInStringFormat.keys {
-            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            let bubbleConstructed = ColorBubble(
+                nameGiven: dictionaryOfBubblesInStringFormat[key]!,
+                bodyCenter: CGPoint(x: 0, y: 0),
+                anIndexPath: key
+            )
             
             dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
         }
@@ -242,9 +292,15 @@ class BubblePhysicsTests: XCTestCase {
             testingGameEngine!.updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
         }
         
-        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.unattachedBubbles()
+        let thatSpecialBombBubble: ColorBubble = ColorBubble(
+            nameGiven: FruitBlastManiaConstants.bombBubbleName,
+            bodyCenter: CGPoint(x: 0, y: 0),
+            anIndexPath: NSIndexPath(forRow: 1, inSection: 0)
+        )
         
-        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
+        let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.handleBombBubble(thatSpecialBombBubble)
+        
+        XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 bubbles surrounding bomb bubble did not explode them")
     }
     
     func testLightning() {
