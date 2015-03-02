@@ -31,6 +31,8 @@ class FruitBlastManiaLevelSelectorViewMainController: UIViewController {
                 thatViewController.currentLevelName = FruitBlastManiaConstants.levelFour
             case FruitBlastManiaConstants.levelFive:
                 thatViewController.currentLevelName = FruitBlastManiaConstants.levelFive
+            case FruitBlastManiaConstants.coolLevel:
+                thatViewController.currentLevelName = FruitBlastManiaConstants.coolLevel
             default:
                 break
             }

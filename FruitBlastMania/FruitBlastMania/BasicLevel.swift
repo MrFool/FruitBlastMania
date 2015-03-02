@@ -442,6 +442,83 @@ class BasicLevel: NSObject, NSCoding {
         self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 7)] = FruitBlastManiaConstants.indestructibleBubbleName
     }
     
+    func buildCoolLevel() {
+        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 0)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 0)] = FruitBlastManiaConstants.lightningBubbleName
+        
+        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 1)] = FruitBlastManiaConstants.lightningBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 1)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 1)] = FruitBlastManiaConstants.bombBubbleName
+        
+        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 2)] = FruitBlastManiaConstants.bombBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 2)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 2)] = FruitBlastManiaConstants.lightningBubbleName
+        
+        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.lightningBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 3)] = FruitBlastManiaConstants.bombBubbleName
+        
+        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 4)] = FruitBlastManiaConstants.bombBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 4)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 4)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 4)] = FruitBlastManiaConstants.redBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 4)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 4)] = FruitBlastManiaConstants.orangeBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 4)] = FruitBlastManiaConstants.greenBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 4)] = FruitBlastManiaConstants.blueBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 11, inSection: 4)] = FruitBlastManiaConstants.lightningBubbleName
+        
+        self.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 1, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 2, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 3, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 4, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 5, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 6, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 7, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 8, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 9, inSection: 5)] = FruitBlastManiaConstants.indestructibleBubbleName
+        self.collectionOfBubbles[NSIndexPath(forRow: 10, inSection: 5)] = FruitBlastManiaConstants.bombBubbleName
+    }
+    
     private func _checkRep() {
         // disabling checks to reduce latency
     }

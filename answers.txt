@@ -42,7 +42,7 @@ The user is supposed to select the cannon direction by simply tapping the screen
 # Problem 2: Upcoming Bubbles #
 ###############################
 
-Number of bubble(s) to show: 1
+Number of next bubble(s) to show: 1
 
 Algorithm:
 
@@ -166,23 +166,23 @@ Not much, just rehabbed the whole game to look like a fruit farm / have a lot of
 changes to design:
 Added tracking of game score and score addition mechanism
 
-3. Rules for losing / winning game! (not yet done)
+3. Rules for losing / winning game! (done)
 changes to design:
 Added functions inside the game engine to check whether any of the win / lose conditions are met and if they are met, the controller can take over the handling. In that sense, we also added tracking of certain information such as whether the arena is empty, whether there are still bubbles to be shot etc.
 
-4. Limited Number of Bubbles (not yet done)
+4. Limited Number of Bubbles (done)
 changes to design:
 Added tracking of number of bubbles to be shot
 
-5. More than 3 levels [5 + 1 really cool level] (not yet done)
+5. More than 3 levels [5 + 1 really cool level] (done)
 changes to design:
 None, just build the extra and more creative levels in Swift code inside BasicLevel class
 
-6. Tweet score achieved (not yet done)
+6. Tweet score achieved / finished special level (not yet done)
 changes to design:
 None, just import Social framework from Apple
 
-7. Facebook score achieved (not yet done)
+7. Facebook score achieved / finished special level (not yet done)
 changes to design:
 None, just import Social framework from Apple
 

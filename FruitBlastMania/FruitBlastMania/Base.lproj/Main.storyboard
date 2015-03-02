@@ -279,6 +279,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBb-NI-dfM">
+                                <rect key="frame" x="300" y="323" width="167" height="125"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Level One" backgroundImage="scroll">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="p3L-vR-iU2"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ha3-id-oLg" userLabel="Level Two">
                                 <rect key="frame" x="301" y="456" width="167" height="125"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
@@ -319,6 +329,16 @@
                                     <segue destination="NUX-D3-2gt" kind="show" id="fia-hx-Dmu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5z0-iG-oHq">
+                                <rect key="frame" x="668" y="891" width="84" height="63"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <state key="normal" title="Cool Level" backgroundImage="scroll">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NUX-D3-2gt" kind="show" id="zvY-Fo-WDd"/>
+                                </connections>
+                            </button>
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JsH-fV-uOs" userLabel="controlView">
                                 <rect key="frame" x="0.0" y="988" width="768" height="36"/>
                                 <subviews>
@@ -341,16 +361,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBb-NI-dfM">
-                                <rect key="frame" x="301" y="323" width="167" height="125"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Level One" backgroundImage="scroll">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="NUX-D3-2gt" kind="show" id="p3L-vR-iU2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -358,7 +368,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aaG-gl-TQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="1006"/>
+            <point key="canvasLocation" x="1150" y="1056"/>
         </scene>
         <!--Fruit Blast Mania Game View Main Controller-->
         <scene sceneID="Ltd-S1-qZD">
@@ -613,11 +623,18 @@
                                     <action selector="swapPressed:" destination="REk-I4-IMu" eventType="touchUpInside" id="FWd-0T-GuD"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SE6-9d-wSE" userLabel="bubbleNumber">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="36"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <connections>
+                        <outlet property="bubbleNumber" destination="SE6-9d-wSE" id="Eq9-xk-IgE"/>
                         <outlet property="currentBubbleToBeShot" destination="iGW-Vm-iwj" id="ihs-V8-pNr"/>
                         <outlet property="nextBubbleToBeShot" destination="VXZ-fV-7L5" id="qRp-Pa-dFN"/>
                         <outlet property="theCannon" destination="c3B-Aa-D1R" id="u7d-Yu-oAV"/>
@@ -645,9 +662,9 @@
         <image name="selector-background" width="467" height="712"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8Ux-1o-55Z"/>
-        <segue reference="Qr9-LG-EOZ"/>
+        <segue reference="dK5-Tq-x4U"/>
         <segue reference="L3P-xR-Ji8"/>
+        <segue reference="bTb-nR-Paz"/>
         <segue reference="p3L-vR-iU2"/>
     </inferredMetricsTieBreakers>
 </document>

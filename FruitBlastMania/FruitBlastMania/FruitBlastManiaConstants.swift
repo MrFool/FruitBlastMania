@@ -110,5 +110,9 @@ struct FruitBlastManiaConstants {
     static let levelThree = "Level Three"
     static let levelFour = "Level Four"
     static let levelFive = "Level Five"
+    static let coolLevel = "Cool Level"
     static let customLevel = "Custom Level"
+    
+    // Number of bubbles inititaly
+    static let numberOfBubblesAtStart = 25
 }

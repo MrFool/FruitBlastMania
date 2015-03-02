@@ -9,6 +9,7 @@ class FruitBlastManiaBubbleShooterViewController: UIViewController {
     @IBOutlet weak var currentBubbleToBeShot: UIImageView!
     @IBOutlet weak var nextBubbleToBeShot: UIImageView!
     @IBOutlet weak var theCannon: UIImageView!
+    @IBOutlet weak var bubbleNumber: UILabel!
     
     var arrayOfCannonImages = [UIImage]()
     

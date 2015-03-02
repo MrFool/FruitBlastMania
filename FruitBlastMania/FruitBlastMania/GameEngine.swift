@@ -10,6 +10,8 @@ class GameEngine {
     typealias E = Edge<ColorBubble>
     
     var graphRepresentationOfGameState: Graph<ColorBubble> = Graph<ColorBubble>(isDirected: false)
+    var numberOfBubbles: Int = FruitBlastManiaConstants.numberOfBubblesAtStart
+    
     var currentLevel: BasicLevel?
     var numUtils = NumberUtilities()
     
@@ -758,6 +760,10 @@ class GameEngine {
     }
     
     func didLoseGame() -> Bool {
-        return false
+        return numberOfBubbles == -1
+    }
+    
+    func decrementBubbleCount() {
+        numberOfBubbles -= 1
     }
 }

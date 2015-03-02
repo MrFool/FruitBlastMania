@@ -4,6 +4,7 @@
 */
 
 import UIKit
+import Social
 
 class FruitBlastManiaGameGridViewController: UICollectionViewController {
     let defaultLayout: BasicGridFlowLayout = BasicGridFlowLayout()
@@ -144,7 +145,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         imageView.frame.size.width = FruitBlastManiaConstants.bubbleWidth
         imageView.frame.size.height = FruitBlastManiaConstants.bubbleHeight
         
-        if cellToSnapTo.bubbleAttached == nil {
+        if cellToSnapTo.bubbleAttached == nil ||
+            (closestCellIndexPathToSnapTo.section == 0 && cellToSnapTo.bubbleAttached != nil) {
             cellToSnapTo.addSubview(imageView)
             
             cellToSnapTo.bubbleAttached = createdBubbleValues.1
@@ -214,35 +216,53 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     }
     
     func addNewBubbleToShooter() {
-        for viewController in self.parentViewController!.childViewControllers {
-            if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
-                let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
-                let aNewRandomBubbleName1 = gameEngine!.generateBubbleToBeShotName()
-                
-                var newBubbleFileName1: String = bubbleFactory.createBubble(aNewRandomBubbleName1)
-                
-                bubbleToBeShotName = nextBubbleToBeShotName
-                
-                let bubbleImage1 = UIImage(named: newBubbleFileName1)
-                
-                thatViewController.currentBubbleToBeShot.image = thatViewController.nextBubbleToBeShot.image
-                thatViewController.nextBubbleToBeShot.image = bubbleImage1
-                
-                nextBubbleToBeShotName = aNewRandomBubbleName1
-                
-                if !gameEngine!.isValidBubble(bubbleToBeShotName!) {
-                    let aNewRandomBubbleName2 = gameEngine!.generateBubbleToBeShotName()
+        if gameEngine!.numberOfBubbles > 0 {
+            for viewController in self.parentViewController!.childViewControllers {
+                if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                    let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                    let aNewRandomBubbleName1 = gameEngine!.generateBubbleToBeShotName()
                     
-                    var newBubbleFileName2: String = bubbleFactory.createBubble(aNewRandomBubbleName2)
+                    var newBubbleFileName1: String = bubbleFactory.createBubble(aNewRandomBubbleName1)
                     
-                    bubbleToBeShotName = aNewRandomBubbleName2
+                    bubbleToBeShotName = nextBubbleToBeShotName
                     
-                    let bubbleImage2 = UIImage(named: newBubbleFileName2)
+                    let bubbleImage1 = UIImage(named: newBubbleFileName1)
                     
-                    thatViewController.currentBubbleToBeShot.image = bubbleImage2
+                    thatViewController.currentBubbleToBeShot.image = thatViewController.nextBubbleToBeShot.image
+                    thatViewController.nextBubbleToBeShot.image = bubbleImage1
+                    
+                    nextBubbleToBeShotName = aNewRandomBubbleName1
+                    
+                    if !gameEngine!.isValidBubble(bubbleToBeShotName!) {
+                        let aNewRandomBubbleName2 = gameEngine!.generateBubbleToBeShotName()
+                        
+                        var newBubbleFileName2: String = bubbleFactory.createBubble(aNewRandomBubbleName2)
+                        
+                        bubbleToBeShotName = aNewRandomBubbleName2
+                        
+                        let bubbleImage2 = UIImage(named: newBubbleFileName2)
+                        
+                        thatViewController.currentBubbleToBeShot.image = bubbleImage2
+                    }
                 }
             }
         }
+        
+        if gameEngine!.numberOfBubbles == 0 {
+            for viewController in self.parentViewController!.childViewControllers {
+                if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                    let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+                    
+                    bubbleToBeShotName = nextBubbleToBeShotName
+                    
+                    thatViewController.currentBubbleToBeShot.image = thatViewController.nextBubbleToBeShot.image
+                    thatViewController.nextBubbleToBeShot.image = nil
+                }
+            }
+
+        }
+        
+        gameEngine!.decrementBubbleCount()
     }
     
     func addInitialBubbleToShooter() {
@@ -260,6 +280,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 thatViewController.nextBubbleToBeShot.image = bubbleImage
             }
         }
+        
+        gameEngine!.decrementBubbleCount()
     }
     
     func removeCurrentlyShotBubble() {
@@ -321,6 +343,20 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
 
     }
     
+    func updateBubbleCount() {
+        for viewController in self.parentViewController!.childViewControllers {
+            if viewController.title == FruitBlastManiaConstants.shooterViewControllerTitle {
+                let thatViewController = viewController as FruitBlastManiaBubbleShooterViewController
+               
+                if gameEngine!.numberOfBubbles >= 0 {
+                    thatViewController.bubbleNumber.text = String(gameEngine!.numberOfBubbles)
+                } else {
+                    thatViewController.bubbleNumber.text = "0"
+                }
+            }
+        }
+    }
+    
     func initialiseGame() {
         resetGridInitial()
         
@@ -359,6 +395,12 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             
             parentViewController.currentLevel = BasicLevel()
             parentViewController.currentLevel!.buildLevelFive()
+        case FruitBlastManiaConstants.coolLevel:
+            thisCurrentLevel = BasicLevel()
+            thisCurrentLevel!.buildCoolLevel()
+            
+            parentViewController.currentLevel = BasicLevel()
+            parentViewController.currentLevel!.buildCoolLevel()
         case FruitBlastManiaConstants.customLevel:
             thisCurrentLevel = BasicLevel()
             
@@ -392,6 +434,8 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
             cellToUpdate.addSubview(imageView)
             cellToUpdate.bubbleAttached = createdBubbleValues.1
         }
+        
+        updateBubbleCount()
         
         addInitialBubbleToShooter()
         
@@ -483,6 +527,10 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 }
             }
         }
+    }
+    
+    func animateSheep() {
+        
     }
     
     func handleSpecialBubble() {
@@ -779,6 +827,10 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
                 }
                 
                 animateCannon()
+                
+                animateSheep()
+                
+                updateBubbleCount()
                 
                 if isBubbleShooting {
                     dealWithShootingBubble()
