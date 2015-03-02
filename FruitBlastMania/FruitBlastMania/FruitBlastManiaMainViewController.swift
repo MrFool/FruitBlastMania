@@ -6,7 +6,7 @@ import UIKit
 import AVFoundation
 
 class FruitBlastManiaMainViewController: UIViewController {
-    var backgroundSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("background", ofType: "wav")!)
+    var backgroundSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(FruitBlastManiaConstants.backgroundSoundName, ofType: "wav")!)
     var backgroundSoundPlayer = AVAudioPlayer()
     
     override func viewDidLoad() {

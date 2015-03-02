@@ -125,29 +125,131 @@ Please save your diagram as `class-diagram.png` in the root directory of the rep
 
 Black Box Testing
 
-Level Designer Tests:
-
-
-
-Game Engine Tests:
-
-
-
-Game Flow Tests:
-
-
-
+Test implementation of level designer
+	Tap on palette
+		All bubble and eraser
+	Pan on grid
+		When any bubble is selected
+		When eraser is selected
+	Tap on grid
+		When eraser is selected
+		When any bubble is selected
+		When on empty grid cell
+		When on non-empty grid cell
+	Long press on grid
+		When on empty grid cell
+		When on non-empty grid cell
+	Reset
+		When grid is empty
+		when grid is not empty
+	Save, Load
+		Save/Load empty screen
+		Save/Load one object (try different types)
+		Save/Load one object of each type
+		Save/Load with many objects
+		Save/Load with screen full of objects
+		Save/load files with “/“ in them
+		Load non-existent file
+	Play
+		Play empty screen
+		Play one object (try different types)
+		Play with no object at the top barrier (try different types)
+		Play with one object of each type
+		Play with many objects
+Test implementation of game engine
+	Bubble Bursting
+		3 or more of same coloured bubble
+	Bubble Dropping
+		Unattached bubbles
+	Indestructible Bubble
+		Dropped by being unattached
+		Try to bomb it
+		Try to electrocute it
+	Lightning Bubble
+		Removes all on same row
+		Chain it with bomb
+		Chain it with star
+	Bomb Bubble
+		Removes all around the grid cell
+		Chain it with lightning
+		Chain it with star
+	Star Bubble
+		Removes all of the same color that collided with it
+		Chain it with lightning
+		Chain it with bomb
+	Ball Launching
+		Shoot left
+		Shoot right
+	Ball Motion
+		Reflect off wall once
+		Reflect off walls multiple times
+		Hit any wall (all 3 sides tested)
+	Bubble Snapping
+		Hit any bubble / Top wall
+Test implementation of cannon
+	Play any level
+		Shoot a few bubbles
+Test implementation of game flow
+	From menu screen
+		Tap Design
+		Tap Play
+		Tap Credits
+	From credits screen
+		Tap Back
+	From level selection screen
+		Tap level one
+		Tap level two
+		Tap level three
+		Tap level four
+		Tap level five
+		Tap cool level
+		Tap Home
+		Tap “I prefer my own challenges”
+	From level designer screen
+		Tap Home
+		Tap “Farmer Bill’s farm”
+		Tap Play this level
+	From game screen
+		Tap Quit
+Test implementation of game rules
+	Play any level
+		Clear screen of all bubbles
+		Shoot finish all number of bubbles available
+		Try to snap a bubble on / beyond the red line
+	Start a designed level
+		With no bubbles
+		With bubbles
+		With hanging bubbles
+Test implementation of background sound
+	Open app
+		Transition to all possible screens
+Test implementation of sheep sound and animation
+	Play any level and shoot a bubble towards sheep
+		Meh sound should play
+Test implementation of twitter and Facebook integration
+	Win any level
+		Try to tweet
+		Try to share to Facebook
 Glass Box Testing
 
-Level Designer Tests:
+Test implementation of level designer
 
+Test implementation of game engine
 
+Test implementation of cannon
 
-Game Engine Tests:
+Test implementation of game flow
 
+Test implementation of game rules
 
+Test implementation of background sound
 
-Game Flow Tests:
+Test implementation of sheep sound and animation
+
+Test implementation of twitter and Facebook integration
+
+Test implementation of bubble swapping
+
 
 
 ###################################
@@ -220,7 +322,8 @@ Just added a credits screen with a default UIView in the storyboard
 
 16. Special thing will happen if you shoot a bubble and hit the sheep (done)
 changes to design:
-Just made the sound class play CNY song instead of the background music
+Just made the sound class play meh meh sound on top of background music
+
 
 ###############################
 # Problem 9: Final Reflection #

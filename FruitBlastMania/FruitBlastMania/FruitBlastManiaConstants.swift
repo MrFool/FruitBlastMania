@@ -44,6 +44,10 @@ struct FruitBlastManiaConstants {
     static let starAnimationFileName: String = "star-animation"
     static let cannonFileName: String = "cannon"
     
+    // Sound file constants
+    static let backgroundSoundName: String = "background"
+    static let mehSoundName: String = "meh"
+    
     // Bubble Object constants
     static let bubbleWidth: CGFloat = CGFloat(deviceWidth / maxNumberOfBubblesPerRow)
     static let bubbleHeight: CGFloat = bubbleWidth

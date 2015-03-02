@@ -12,7 +12,7 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
     let defaultGrid: BasicGrid = BasicGrid()
     let reuseIdentifier = "gameBubbleCell"
     
-    var mehSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("meh", ofType: "wav")!)
+    var mehSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(FruitBlastManiaConstants.mehSoundName, ofType: "wav")!)
     var mehSoundPlayer = AVAudioPlayer()
     
     var numUtils = NumberUtilities()

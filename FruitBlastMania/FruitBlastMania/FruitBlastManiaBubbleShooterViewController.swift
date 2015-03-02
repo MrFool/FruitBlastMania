@@ -79,20 +79,22 @@ class FruitBlastManiaBubbleShooterViewController: UIViewController {
     }
     
     @IBAction func swapPressed(sender: UIButton) {
-        let parentViewController = self.parentViewController! as FruitBlastManiaGameViewMainController
-        
-        let gridViewController = parentViewController.childViewControllers[0] as FruitBlastManiaGameGridViewController
-        
-        let rightImage = currentBubbleToBeShot.image
-        let leftImage = nextBubbleToBeShot.image
-        
-        currentBubbleToBeShot.image = leftImage
-        nextBubbleToBeShot.image = rightImage
-        
-        let gridCurrentBubbleToBeShot = gridViewController.bubbleToBeShotName!
-        let gridNextBubbleToBeShot = gridViewController.nextBubbleToBeShotName!
-        
-        gridViewController.bubbleToBeShotName = gridNextBubbleToBeShot
-        gridViewController.nextBubbleToBeShotName = gridCurrentBubbleToBeShot
+        if nextBubbleToBeShot.image != nil {
+            let parentViewController = self.parentViewController! as FruitBlastManiaGameViewMainController
+            
+            let gridViewController = parentViewController.childViewControllers[0] as FruitBlastManiaGameGridViewController
+            
+            let rightImage = currentBubbleToBeShot.image
+            let leftImage = nextBubbleToBeShot.image
+            
+            currentBubbleToBeShot.image = leftImage
+            nextBubbleToBeShot.image = rightImage
+            
+            let gridCurrentBubbleToBeShot = gridViewController.bubbleToBeShotName!
+            let gridNextBubbleToBeShot = gridViewController.nextBubbleToBeShotName!
+            
+            gridViewController.bubbleToBeShotName = gridNextBubbleToBeShot
+            gridViewController.nextBubbleToBeShotName = gridCurrentBubbleToBeShot
+        }
     }
 }
