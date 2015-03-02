@@ -231,7 +231,7 @@ class BubblePhysicsTests: XCTestCase {
         let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
         
         var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
-        
+        g
         for key in dictionaryOfBubblesInStringFormat.keys {
             let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
             
@@ -297,6 +297,44 @@ class BubblePhysicsTests: XCTestCase {
         let arrayOfUnattachedBubblesIndexPathToPop: [NSIndexPath] = testingGameEngine!.unattachedBubbles()
         
         XCTAssert(arrayOfUnattachedBubblesIndexPathToPop.count == 3, "Game State with 3 unattached bubbles oddly has NO color bubbles that is unattached!")
+    }
+    
+    func testDidLose() {
+        testingGameEngine!.numberOfBubbles = -2
+        
+        XCTAssert(testingGameEngine!.didLoseGame() == true, "Game Engine does not check for losing properly!")
+    }
+    
+    func testDidNotLose() {
+        // initial value of 25, no need to set
+        
+        XCTAssert(testingGameEngine!.didLoseGame() == false, "Game Engine does not check for not losing properly!")
+    }
+    
+    func testDidWin() {
+        // did not add any node, should win
+        
+        XCTAssert(testingGameEngine!.didWinGame() == true, "Game Engine does not check for winning properly!")
+    }
+    
+    func testDidNotWin() {
+        aLevel!.collectionOfBubbles[NSIndexPath(forRow: 0, inSection: 3)] = FruitBlastManiaConstants.blueBubbleName
+        
+        let dictionaryOfBubblesInStringFormat: Dictionary<NSIndexPath, String> = aLevel!.collectionOfBubbles
+        
+        var dictionaryOfBubblesInColorBubbleFormat: Dictionary<NSIndexPath, ColorBubble> = Dictionary<NSIndexPath, ColorBubble>()
+        
+        for key in dictionaryOfBubblesInStringFormat.keys {
+            let bubbleConstructed = ColorBubble(nameGiven: dictionaryOfBubblesInStringFormat[key]!, bodyCenter: CGPoint(x: 0, y: 0), anIndexPath: key)
+            
+            dictionaryOfBubblesInColorBubbleFormat[key] = bubbleConstructed
+        }
+        
+        for key in dictionaryOfBubblesInColorBubbleFormat.keys {
+            testingGameEngine!.updateGraphByAddingNode(key, aDictionary: dictionaryOfBubblesInColorBubbleFormat)
+        }
+        
+        XCTAssert(testingGameEngine!.didWinGame() == false, "Game Engine does not check for not winning properly!")
     }
     
     // MARK: test examples
