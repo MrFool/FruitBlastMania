@@ -628,7 +628,9 @@ class FruitBlastManiaGameGridViewController: UICollectionViewController {
         
         switch specialBubble!.getBubbleName() {
         case FruitBlastManiaConstants.lightningBubbleName:
-            let bubbleIndexPathsToBeRemoved = gameEngine!.handleLightningBubble(specialBubble!)
+            let bubbleIndexPathsToBeRemoved = gameEngine!.handleLightningBubble(specialBubble!,
+                anIndexPath: mostRecentlySnappedBubble!.indexPath
+            )
             
             var moreSpecialBubbles: [ColorBubble] = [ColorBubble]()
             

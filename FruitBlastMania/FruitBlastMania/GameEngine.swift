@@ -399,7 +399,7 @@ class GameEngine {
         return arrayToReturn
     }
     
-    func handleLightningBubble(aSpecialBubble: ColorBubble) -> [NSIndexPath] {
+    func handleLightningBubble(aSpecialBubble: ColorBubble, anIndexPath: NSIndexPath) -> [NSIndexPath] {
         var arrayToReturn = [NSIndexPath]()
         
         let sectionOfBubblesToBurst = aSpecialBubble.indexPath.section
@@ -414,7 +414,7 @@ class GameEngine {
             }
         }
         
-        arrayToReturn.append(aSpecialBubble.indexPath)
+        arrayToReturn.append(anIndexPath)
         
         var dictionaryOfBubblesToRemove: Dictionary<NSIndexPath, Bool> = Dictionary<NSIndexPath, Bool>()
         
